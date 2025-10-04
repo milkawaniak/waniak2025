@@ -18,9 +18,9 @@ The original study recruited 939 participants and conducted various analyses suc
 The study should not take too long, but I am concerned that my sample size may be smaller due to the cost involved in participant recruitment. The biggest challenges in replicating this project may arise from the fact that the analyses conducted in the original paper likely required a larger sample size, and the population I recruit may end up being more subclinical. 
 
 ### A link to the repository
-[waniak2025 repository](https://github.com/milkawaniak/waniak2025/tree/36454a47d884adf9f253ca33ff9ae049c7c75da3)
+<a href="https://github.com/milkawaniak/waniak2025" target="_blank">waniak2025 repository</a>
 
 ### A link to the original paper.
-[Original paper folder](https://github.com/milkawaniak/waniak2025/tree/36454a47d884adf9f253ca33ff9ae049c7c75da3/original%20paper)
+<a href="https://github.com/milkawaniak/waniak2025/tree/main/original%20paper" target="_blank">Original paper folder</a>
 
 
