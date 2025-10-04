@@ -11,11 +11,16 @@ The paper directly relates to my interests in emotional awareness and mental hea
 
 ### A description of the stimuli and procedures that will be required to conduct this experiment, and what the challenges will be.
 
-I will recruit participants through Prolific and ask them to complete the alexithymia (TAS-20), depression (BDI-I), and demographics questionnaires. I will conduct the same analyses as the original study: Cronbach’s alpha coefficient, the “Extended Bayesian Information Criterion” (EBIC), the “Least Absolute Shrinkage and Selection Operator” (LASSO) regularization method, and related network analyses. I will also calculate Pearson’s correlation coefficient.
+I will recruit participants through Prolific and ask them to complete the alexithymia (TAS-20), depression (BDI-I), and demographics questionnaires. 
 
-The original study recruited 839 participants who responded to the online questionnaire, of whom 319 reported a current depressive disorder. Later, the participants underwent therapeutic treatment, but only baseline data were included in the analyses. In my study, I aim to recruit 100 participants.
+The original study recruited 939 participants and conducted various analyses such as: Cronbach’s alpha coefficient, Pearson's correlation coefficient, the “Extended Bayesian Information Criterion” (EBIC), the “Least Absolute Shrinkage and Selection Operator” (LASSO) regularization method, and related network analyses.
 
-The biggest challenges may arise from the fact that the analyses conducted in the original paper likely required a larger sample size, and the population I recruit may end up being subclinical. The study should not take too long, but I am concerned that my sample size may be smaller due to the cost involved in participant recruitment.
+The study should not take too long, but I am concerned that my sample size may be smaller due to the cost involved in participant recruitment. The biggest challenges in replicating this project may arise from the fact that the analyses conducted in the original paper likely required a larger sample size, and the population I recruit may end up being more subclinical. 
 
 ### A link to the repository
+[waniak2025 repository](https://github.com/milkawaniak/waniak2025/tree/36454a47d884adf9f253ca33ff9ae049c7c75da3)
+
 ### A link to the original paper.
+[Original paper folder](https://github.com/milkawaniak/waniak2025/tree/36454a47d884adf9f253ca33ff9ae049c7c75da3/original%20paper)
+
+
