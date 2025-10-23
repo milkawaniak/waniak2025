@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="https://unpkg.com/jspsych@8.2.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@2.1.0"></script>
+    <link href="https://unpkg.com/jspsych@8.2.2/css/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  <script>
+
+    /* initialize jsPsych */
+    var jsPsych = initJsPsych();/*{on_finish: function() { jsPsych.data.get().localSave('csv','AMP_data.csv');}*/
+
+    /* create timeline */
+    var timeline = [];
+
+    /* preload images */
+    var preload = {
+      type: jsPsychPreload,
+      images: ['Mask/ampmask.jpg', 
+      'Primes/pleasant1.jpg', 'Primes/pleasant2.jpg', 'Primes/pleasant3.jpg', 'Primes/pleasant4.jpg', 'Primes/pleasant5.jpg', 
+      'Primes/pleasant6.jpg', 'Primes/pleasant7.jpg', 'Primes/pleasant10.jpg',"Primes/pleasant11.jpg","Primes/pleasant12.jpg",
+      'Targets/pic10.jpg','Targets/pic11.jpg', 'Targets/pic12.jpg','Targets/pic13.jpg','Targets/pic14.jpg','Targets/pic15.jpg',
+      'Targets/pic16.jpg','Targets/pic17.jpg','Targets/pic18.jpg','Targets/pic19.jpg'
+      ]
+    };
+    timeline.push(preload);
+
+    /* define welcome message trial */
+    var goals = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `(WELCOME and CONSENT)`,
+    };
+    timeline.push(goals);
+
+    var goals = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `This study examines how people make simple judgments.<br><br>
+      During the first task, you will see pairs of pictures appear one after the other.<br><br>
+      The first picture will be a real-life image and the second picture will be an abstract painting.<br><br>
+      <b>The first image is simply a warning signal for the abstract painting and should be ignored.<b> <br><br>
+        Your task is to <b>judge how visually pleasant each abstract painting is.<b>`,
+    };
+    timeline.push(goals);
+
+    var instructions_1= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `
+        Put your index finders on the E and I keys of your keyboard.<br><br>
+        If the abstract painting is <b>less visually pleasant than average<b>, please press the <b>E key on the left<b>.<br><br>
+        If the abstract painting is <b>more visually pleasant than average<b>, please press the <b>I key on the right<b>.<br><br>
+        Note that the first (real-life) image can sometimes bias judgments of the abstract paintings.<br><br>
+        <b>Please try your absolute best not to let the real-life images bias your judgment of the abstract paintings.<b>`,
+      post_trial_gap: 1000
+    };
+    timeline.push(instructions_1);
+
+    var instructions_2= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `After each trial we will ask you whether your judgment of the abstract painting was influenced by the real-life image.<br><br>
+        <b>If your judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.<br><br>
+        If your judgment of the abstract painting was <u>NOT<u> 
+        influenced by the image that came before it, then press the 0 key.<b>`,
+            post_trial_gap: 1000
+    };
+    timeline.push(instructions_2);
+
+    var instructions_3= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `Here are some examples of the types of pictures that you will see during the task:<br><br>
+      <b>Category Items<b>
+      <b>Real-life<b> images (6 examples)
+      <b>Abstract Paintings<b> (6 examples)
+        TABLE OF EXAMPLES`,
+            post_trial_gap: 1000
+    };
+    timeline.push(instructions_3);
+    
+    var instructions_4= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus:`We will now provide you with an opportunity to practice the task. Remember: You should judge whether each abstract <br><br>
+      painting is more or less visually pleasant than average by pressing the E or the I key. And if you think your <br><br>
+      rating of the abstract paintingwas influenced by the real-life image that appeared just before it, press the 1 key.<br><br>
+      And if it was not influenced by the real-life image, press the 0 key. When you are ready to try a few practice <br><br>
+      responses, hit the <b>space bar<b>.<br><br>
+      Ready? Press the <b>space bar<b> to begin.`,
+            post_trial_gap: 1000
+    };
+    timeline.push(instructions_4);
+    
+    var instructions_5= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus:`Good! The test phase will now begin. Keep going as before.<br><br>
+      As a reminder: If the abstract painting is less visually pleasant than average, press the E key. And if it is more visually pleasant than average, press the I key.<br><br>
+      Ready? Press the <b>space bar<b> to begin.`,
+      post_trial_gap: 1000
+    };
+    timeline.push(instructions_5);
+
+
+    var fixation = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: '<div style="font-size:60px;">+</div>',
+      choices: "NO_KEYS",
+      trial_duration: 500
+    };
+
+    var mask = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: '<img src="Mask/ampmask.jpg" style="width:100%; max-width:400px;">',
+      choices: "NO_KEYS",
+      trial_duration: 100
+    };
+
+    var test_stimuli = [
+        { prime: 'Primes/pleasant1.jpg', target: 'Targets/pic10.jpg' },
+        { prime: 'Primes/pleasant2.jpg', target: 'Targets/pic11.jpg' },
+    ];
+
+    var target = {
+        type: jsPsychImageKeyboardResponse,
+        stimulus: jsPsych.timelineVariable('target'),
+        choices: ['e', 'i'],
+        data: { task: 'rating' },
+        on_finish: function(data) {
+            data.response_key = data.response;
+            data.rt_ms = data.rt;
+        }
+    };
+
+    /*var influence_question = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: 'Was your judgment influenced by the first image?',
+        choices: ['0', '1'],
+        prompt: '<p>Press 1 if yes, 0 if no.</p>'
+    };*/
+
+   var test_procedure = {
+    timeline: [fixation, mask, target],
+    timeline_variables: test_stimuli,
+    randomize_order: true
+    };
+
+    timeline.push(test_procedure);
+
+    var debrief = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `<p>Thank you! Your responses have been saved.</p><p>Press any key to finish.</p>`
+    };
+    timeline.push(debrief);
+    
+
+    /* 10 TEST TRAILS */
+
+    var instructions_6= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus:`During the second and final task, you will see how a past participant in a study just like this one responded to the abstract paintings.<br><br>
+      Just like you, this participant saw two pictures back to back: first a real-life image and then an abstract painting.<br><br>
+      <b>Just like you, this participant was told that the first image is simply a warning signal for the abstract painting and should be ignored.<b><br><br>
+        The participant’s task, just like yours, was to <b>judge how visually pleasant each abstract painting is. <b>`,
+      post_trial_gap: 1000
+    };
+    timeline.push(instructions_6);
+
+    var instructions_7= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus:`If the abstract painting was <b>less visually pleasant than average<b>, the participant pressed the <b>E key on the left<b>.<br><br>
+        If the abstract painting was <b>more visually pleasant than average<b>, the participant pressed the <b>I key on the right<b>.<br><br>
+        The participant was warned that the first (real-life) image could sometimes bias judgments of the abstract paintings.<br><br>
+        <b>Therefore, the participant was asked to try their absolute best not to let the real-life images bias their judgment of the abstract paintings<b>.`,
+      post_trial_gap: 1000
+    };
+    timeline.push(instructions_7);
+
+    var instructions_8= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus:`On each trial, we will show you the real-life image and the abstract painting that the previous participant saw.<br><br>
+      Afterwards, we will tell you whether the participant rated the abstract painting as <b>Pleasant<b> or as <b>Unpleasant<b><br><br>
+        Similar to the previous task, your job will be to tell us whether you think the other participant’s judgment of the abstract painting was influenced by the real-life image.<br><br>
+        If you think that the participant’s judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.<br><br>
+        And if you think that the participant’s judgment of the abstract painting was NOTinfluenced by the image that came before it, then press the 0 key.`,
+      post_trial_gap: 1000
+    };
+    timeline.push(instructions_8);
+
+    var instructions_9= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus:`Remember: On each trial, we will show you the real-life image and the abstract painting that a previous participant saw. Afterwards, you will be shown if they rated the abstract painting as pleasant or as unpleasant.<br><br>
+      If you think that the participant’s rating of the abstract painting was influenced by the real-life image that appeared just before it, press the 1 key. And if you think it was notinfluenced by the real-life image, press the 0 key.<br><br>
+      Ready? Press the space barto begin.`,
+      post_trial_gap: 1000
+    };
+    timeline.push(instructions_9);
+
+    /* 70 EXPERIMENTAL TRAILS */
+    jsPsych.run(timeline);
+
+    </script>
+  </body>
+</html>
