@@ -1,0 +1,50 @@
+
+
+-----------10 TEST TRIALS----------
+
+70 experimental trials. 
+(a) a fixation cross for 500 ms, 
+(b) a prime (valenced image) for 100 ms 
+---- (sampled randomly, without replacement-- after they exhausted the full set, sampling without replacement began anew):
+-- positive IAPS images served as primes on 35 trials (positive primes condition)
+-- negative IAPS images served asprimes on 35 trials (negative primes condition)
+(c) a blank screen for 100 ms,
+(d) a target (abstract painting) for 100 ms,
+---- Each target stimulus was used on a single trial of the AMP. The order of AMP trials was individually randomized.
+(e) a black-and- white pattern mask until the participant entered a response.
+
+KEYBOARD  “E” to indicate that the target was less pleasant than average and the “I” key to indicate that the target was more pleasant than average.
+*/
+
+
+/* They were asked to judge how pleasant each target was while ignoring the primes Partici-
+pants were told that the primes might sometimes bias their
+judgments of the targets and were asked to do their absolute
+best in trying to resist this biasing influence. .*/
+
+ /* asked whetehr the prime influenced their judgment of the target by pressing the space bar if they were influenced and by waiting for the next trial to start if they were not
+ -- displayed for a fixed duration of 2300 ms, irrespective of whether the participant pressed the space bar or not. participants were not informed of this fact.*/
+
+ /* we asked participants to provide judgments of
+influence awareness not only with respect to their own
+AMP performance (as in Experiments 1–4) but also with respect to a past participant’s AMP
+performance from Experiment 3. */
+
+
+ /* additional items asked after AMP: 
+ (a) the proportion of trials in which a prime was present; 
+ (b) the proportion of trials in which a target was present; 
+ (c) the proportion of trials in which their response to the target was influenced by the prime; 
+ (d) the proportion of trials in which their response to the target was unintentionally influenced by the prime;
+ (e) the proportion of trials in which their response to the target was intentionally influenced by the prime; to describe, in a free response format, 
+ (f) the strategy that they used to decide whether their response to the target was influenced by the prime, 
+ (g) the strategy that they used on trials in which they were unaware of the prime or the target; as well as to indicate 
+ (h) whether their data should or should not be used in statistical analyses. These items were collected for exploratory purposes and are not discussed further; however, they are available in the open data.*/
+
+ /* [influence_own] On how many trials do you think your ratingsof the paintings were influenced by the pictures that appeared immediately before the paintings?[anchors: None of them, All of them]
+ [influence_third] On how many trials do you think the other participant’s ratingsof the paintings were influenced by the pictures that appeared immediately before the paintings? [anchors: None of them, All of them]
+ [strategy_own] What strategy or strategies did you use to decide whether your own ratingof the painting was influenced by the picture that appeared immediately before it? [Open-ended text response]
+ [strategy_third] What strategy or strategies did you use to decide whether the other participant’s rating of the painting was influenced by the picture that appeared immediately before it?[Open-ended text response]
+ [strategy_diff] Did the strategy that you used for yourself and for the other participant differ from each other, or were they similar? How did they differ, or how were they similar to each other? [Open-ended text response] 
+ [anything_else] Is there anything else that you would like to tell us about your experience during this study? [Open-ended text response]
+ */

@@ -13,7 +13,7 @@ The paper directly relates to my interests in emotional awareness and mental hea
 
 I will recruit participants through Prolific and ask them to complete the alexithymia (TAS-20), depression (BDI-I), and demographics questionnaires. 
 
-The original study recruited 939 participants and conducted various analyses such as: Cronbach’s alpha coefficient, Pearson's correlation coefficient, the “Extended Bayesian Information Criterion” (EBIC), the “Least Absolute Shrinkage and Selection Operator” (LASSO) regularization method, and related network analyses.
+The original study recruited 210 participants who were clinically depressed, and conducted various analyses such as: Cronbach’s alpha coefficient, Pearson's correlation coefficient, the “Extended Bayesian Information Criterion” (EBIC), the “Least Absolute Shrinkage and Selection Operator” (LASSO) regularization method, and related network analyses.
 
 The study should not take too long, but I am concerned that my sample size may be smaller due to the cost involved in participant recruitment. The biggest challenges in replicating this project may arise from the fact that the analyses conducted in the original paper likely required a larger sample size, and the population I recruit may end up being more subclinical. 
 
@@ -24,3 +24,32 @@ The study should not take too long, but I am concerned that my sample size may b
 <a href="https://github.com/milkawaniak/waniak2025/tree/main/original%20paper" target="_blank">Original paper folder</a>
 
 
+### Class excersize.
+1. What is the measure of interest
+-> Likert scale in TAS-20 and BDI-I 
+2. What is the construct it map to?
+-> How does alexithymia relates to depression symptoms.
+3. What its estimatye reported
+-> The Pearson’s correlation coefficient for the TAS-20 and BDI-I scales was 0.41
+4. Any measures of variability?
+->  95% CI: 0.29–0.52
+
+### Procedure
+80 trials. Each trial included the presentation of 
+(a) a fixation cross for 500 ms,
+(b) a prime (valenced image) for 100 ms, 
+(c) a blank screen for 100 ms,
+(d) a target (abstract painting) for 100 ms, 
+(e) a black-and-white pattern mask until the participant entered a response.
+
+Participants used the “E” key on their keyboard to indicate
+that the target was less pleasant than average and the “I” key
+to indicate that the target was more pleasant than average.
+Following 10 practice trials that were removed from analyses,
+positive IAPS images served as primes on 35 trials (posi-
+tive primes condition) and negative IAPS images served as
+primes on 35 trials (negative primes condition). Primes were
+sampled randomly, without replacement. Once the full set of
+primes was exhausted, sampling without replacement began
+anew. Each target stimulus was used on a single trial of the
+AMP. The order of AMP trials was individually randomized
