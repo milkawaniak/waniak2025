@@ -1,4 +1,33 @@
+ 'Targets/Set1/pic3.jpg','Targets/Set1/pic4.jpg','Targets/Set1/pic5.jpg',
+        'Targets/Set1/pic6.jpg','Targets/Set1/pic7.jpg','Targets/Set1/pic8.jpg','Targets/Set1/pic9.jpg','Targets/Set1/pic10.jpg',
+        'Targets/Set1/pic11.jpg','Targets/Set1/pic12.jpg','Targets/Set1/pic13.jpg','Targets/Set1/pic14.jpg','Targets/Set1/pic15.jpg',
+        'Targets/Set1/pic16.jpg','Targets/Set1/pic17.jpg','Targets/Set1/pic18.jpg','Targets/Set1/pic19.jpg','Targets/Set1/pic20.jpg',
+        'Targets/Set1/pic21.jpg','Targets/Set1/pic22.jpg','Targets/Set1/pic23.jpg','Targets/Set1/pic24.jpg','Targets/Set1/pic25.jpg',
+        'Targets/Set1/pic26.jpg','Targets/Set1/pic27.jpg','Targets/Set1/pic28.jpg','Targets/Set1/pic29.jpg','Targets/Set1/pic30.jpg',
+        'Targets/Set1/pic31.jpg','Targets/Set1/pic32.jpg','Targets/Set1/pic33.jpg','Targets/Set1/pic34.jpg','Targets/Set1/pic35.jpg',
+        'Targets/Set1/pic36.jpg','Targets/Set1/pic37.jpg','Targets/Set1/pic38.jpg','Targets/Set1/pic39.jpg','Targets/Set1/pic40.jpg',
+        'Targets/Set2/pic1.jpg','Targets/Set2/pic2.jpg','Targets/Set2/pic3.jpg','Targets/Set2/pic4.jpg','Targets/Set2/pic5.jpg',
+        'Targets/Set2/pic6.jpg','Targets/Set2/pic7.jpg','Targets/Set2/pic8.jpg','Targets/Set2/pic9.jpg','Targets/Set2/pic10.jpg',
+        'Targets/Set2/pic11.jpg','Targets/Set2/pic12.jpg','Targets/Set2/pic13.jpg','Targets/Set2/pic14.jpg','Targets/Set2/pic15.jpg',
+        'Targets/Set2/pic16.jpg','Targets/Set2/pic17.jpg','Targets/Set2/pic18.jpg','Targets/Set2/pic19.jpg','Targets/Set2/pic20.jpg',
+        'Targets/Set2/pic21.jpg','Targets/Set2/pic22.jpg','Targets/Set2/pic23.jpg','Targets/Set2/pic24.jpg','Targets/Set2/pic25.jpg',
+        'Targets/Set2/pic26.jpg','Targets/Set2/pic27.jpg','Targets/Set2/pic28.jpg','Targets/Set2/pic29.jpg','Targets/Set2/pic30.jpg',
+        'Targets/Set2/pic31.jpg','Targets/Set2/pic32.jpg','Targets/Set2/pic33.jpg','Targets/Set2/pic34.jpg','Targets/Set2/pic35.jpg',
+        'Targets/Set2/pic36.jpg','Targets/Set2/pic37.jpg','Targets/Set2/pic38.jpg','Targets/Set2/pic39.jpg','Targets/Set2/pic40.jpg'   
+    
+    
+    const instructions_3 = {
+      type: jsPsychHtmlKeyboardResponse, 
+      choices: [' '],
+      post_trial_gap: 1000,
+      stimulus:<div style="max-width:1000px; margin: 0 auto; text-align:center;"> 
+        <p>Here are some examples of the types of pictures that you will see during the task:</p>       
+        <table style="margin: 10px auto; border-collapse: collapse;">         <tr>           <th colspan="6" style="padding:8px; font-size:16px; text-align:center;">             Real-life images (6 examples)           </th>         </tr>         <tr>           ${makeImageCells(examplePrimes)}         </tr>         <tr>           <th colspan="6" style="padding:12px 8px 8px; font-size:16px; text-align:center;">             Abstract paintings (6 examples)           </th>         </tr>         <tr>           ${makeImageCells(exampleTargets)}         </tr>       </table>       <p>Press the space bar to continue.</p>     </div>  
+    };
 
+
+
+    timeline.push(instructions_3);
 -----------10 TEST TRIALS----------
 
 70 experimental trials. 
@@ -23,6 +52,16 @@ best in trying to resist this biasing influence. .*/
 
  /* asked whetehr the prime influenced their judgment of the target by pressing the space bar if they were influenced and by waiting for the next trial to start if they were not
  -- displayed for a fixed duration of 2300 ms, irrespective of whether the participant pressed the space bar or not. participants were not informed of this fact.*/
+
+
+
+
+
+
+
+
+
+
 
  /* we asked participants to provide judgments of
 influence awareness not only with respect to their own
@@ -53,3 +92,15 @@ performance from Experiment 3. */
       stimulus: `<p>Thank you! Your responses have been saved.</p><p>Press any key to finish.</p>`
     };
     timeline.push(debrief);
+
+
+
+TO SAVE IN PAVLOVIA
+- jsPsych.data.get().localSave('csv', 'data.csv'); // for local debugging only
+
+// for real experiment:
+jsPsych.data.get().addToLast({participant_id: participant_id});
+fetch('save_data.php', {
+  method: 'POST',
+  body: jsPsych.data.get().csv()
+});

@@ -7,7 +7,6 @@
     <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.1.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-preload@2.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-    <script src="https://pipe.jspsych.org/lib/pipe.js"></script>
     <link href="https://unpkg.com/jspsych@8.2.2/css/jspsych.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
@@ -18,11 +17,7 @@
     const jsPsych = initJsPsych({
       on_finish: function() {
         jsPsych.data.get().localSave('csv', 'data_' + participant_id + '.csv');
-        jsPsych.data.pipe('7sBfg6Ud8xi2', {
-        filename: 'data_' + participant_id + '.csv'
-    });
       }
-      
     });
 
     const participant_id = jsPsych.randomization.randomID(8);
@@ -97,10 +92,19 @@
     const test_block = 10;      
     const first_person_trials = 34;  // 17 pleasant + 17 unpleasant
     const third_person_trials = 36;  // 18 pleasant + 18 unpleasant
-    const total_trials = test_block + first_person_trials + third_person_trials;
-    const valences = jsPsych.randomization.shuffle(
-      new Array(40).fill('pleasant').concat(new Array(40).fill('unpleasant'))
-);
+    const total_trials = test_block + first_person_trials; 
+    
+    // Create balanced valences for first-person (17 each) and test (5 each)
+    const first_person_valences = jsPsych.randomization.shuffle(
+        new Array(17).fill('pleasant').concat(new Array(17).fill('unpleasant'))
+    );
+
+    const test_valences = jsPsych.randomization.shuffle(
+        new Array(5).fill('pleasant').concat(new Array(5).fill('unpleasant'))
+    );
+
+    // Combine all valences
+    const all_valences = [...test_valences, ...first_person_valences];
 
 
     const allTargets = sequenceNoReplacementWithReset(
@@ -108,8 +112,8 @@
       total_trials
     );
 
-    const pleasantCount = 40;
-    const unpleasantCount = 40;
+    const pleasantCount = 22;
+    const unpleasantCount = 22;
     const pleasantPrimeSeq = sequenceNoReplacementWithReset(pleasantPrimes, pleasantCount);
     const unpleasantPrimeSeq = sequenceNoReplacementWithReset(unpleasantPrimes, unpleasantCount);
 
@@ -121,11 +125,11 @@
     });
     
     // Shuffle and split
-    const shuffledStimuli = jsPsych.randomization.shuffle(all_stimuli.slice());
+    // DON'T shuffle - keep the balanced structure
+    const test_block_stimuli = all_stimuli.slice(0, test_block);
+    const first_person_block_stimuli = all_stimuli.slice(test_block, test_block + first_person_trials);
 
     // Split into blocks
-    const test_block_stimuli = shuffledStimuli.slice(0, test_block);
-    const first_person_block_stimuli = shuffledStimuli.slice(test_block, test_block + first_person_trials);
     const third_person_block_stimuli_seed = shuffledStimuli.slice(test_block + first_person_trials, test_block + first_person_trials + third_person_trials);
 
     console.log('Test trials:', test_block_stimuli.length);
@@ -211,58 +215,62 @@
       const rows = parsed.data;
 
       // Pick a random session
-      const sessions = Array.from(new Set(rows.map(r => r.session_id).filter(Boolean)));
-      if (sessions.length === 0) throw new Error('No session_id values found in CSV.');
-      const picked = jsPsych.randomization.sampleWithoutReplacement(sessions, 1)[0];
+        const sessions = Array.from(new Set(rows.map(r => r.session_id).filter(Boolean)));
+        if (sessions.length === 0) throw new Error('No session_id values found in CSV.');
+        const picked = jsPsych.randomization.sampleWithoutReplacement(sessions, 1)[0];
 
-      const rowsForSession = rows.filter(r => r.session_id === picked);
-      console.log('Picked session:', picked, 'rows in session:', rowsForSession.length);
+        const rowsForSession = rows.filter(r => r.session_id === picked);
+        console.log('Picked session:', picked, 'rows in session:', rowsForSession.length);
 
-      // Build trials DIRECTLY from CSV rows - use their exact prime/target combinations
-      const trials = rowsForSession.map(r => {
-      const primeFile = baseName(r.prime || '');
-      const targetFile = baseName(r.target || '');
+        // Build trials DIRECTLY from CSV rows
+        const trials = rowsForSession.map(r => {
+            const primeFile = baseName(r.prime || '');
+            const targetFile = baseName(r.target || '');
     
-      // Determine valence from prime filename
-      const valence = primeFile.toLowerCase().includes('unpleasant') 
+            // Determine valence from prime filename
+            const valence = primeFile.toLowerCase().includes('unpleasant') 
                     ? 'unpleasant' 
                     : 'pleasant';
     
-      // Get the response
-      const resp = String(r.trial_response || r.response || '').trim();
-      const label = labelFromKey(resp);
+            // Get the response
+            const resp = String(r.trial_response || r.response || '').trim();
+            const label = labelFromKey(resp);
     
-      console.log('Building trial from CSV:', {
-        prime: primeFile,
-        target: targetFile,
-        response: resp,
-        label: label
-      });
-    
-      return {
-        valence: valence,
-        prime: 'Primes/' + primeFile,
-        target: 'Targets/' + targetFile,
-        past_response_label: label,
-        past_session_id: picked
-      };
+            return {
+                valence: valence,
+                prime: 'Primes/' + primeFile,
+                target: 'Targets/' + targetFile,
+                past_response_label: label,
+                past_session_id: picked
+            };
     });
+    console.log('Built', trials.length, 'trials from CSV');
 
   console.log('Built', trials.length, 'trials from CSV');
   
-  // Shuffle and return requested number
-  const shuffled = jsPsych.randomization.shuffle(trials);
-  const selected = shuffled.slice(0, numTrials);
+  // BALANCE THE SELECTION - get equal numbers of pleasant and unpleasant
+  const pleasantTrials = trials.filter(t => t.valence === 'pleasant');
+  const unpleasantTrials = trials.filter(t => t.valence === 'unpleasant');
   
-  console.log('Returning', selected.length, 'trials');
-  console.log('First trial example:', selected[0]);
+  const numPerValence = Math.floor(numTrials / 2);
   
-  return selected;
+  // Shuffle each valence group
+  const shuffledPleasant = jsPsych.randomization.shuffle(pleasantTrials);
+  const shuffledUnpleasant = jsPsych.randomization.shuffle(unpleasantTrials);
+  
+  // Take equal numbers from each
+  const selectedPleasant = shuffledPleasant.slice(0, numPerValence);
+  const selectedUnpleasant = shuffledUnpleasant.slice(0, numPerValence);
+  
+  // Combine and shuffle
+  const balanced = jsPsych.randomization.shuffle([...selectedPleasant, ...selectedUnpleasant]);
+  
+  console.log('Returning', balanced.length, 'balanced trials');
+  console.log('Pleasant:', selectedPleasant.length, 'Unpleasant:', selectedUnpleasant.length);
+  console.log('First trial example:', balanced[0]);
+  
+  return balanced;
 }
-
-
-  
-  
 
   
   const third_person_influence_question = {
