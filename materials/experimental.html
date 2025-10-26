@@ -17,10 +17,20 @@
     /* initialize jsPsych */
     const jsPsych = initJsPsych({
       on_finish: function() {
-        jsPsych.data.get().localSave('csv', 'data_' + participant_id + '.csv');
+        const allData = jsPsych.data.get().csv();
+        const filename = 'data_' + participant_id + '.csv';
+    
+        // Save to DataPipe and handle the promise
         jsPsych.data.pipe('7sBfg6Ud8xi2', {
-        filename: 'data_' + jsPsych.data.get().values()[0].participant_id + '.csv'
-      });
+          filename: filename,
+          data: allData
+        }).then(function() {
+          console.log('Data successfully sent to DataPipe');
+        }).catch(function(error) {
+          console.error('Error sending data to DataPipe:', error);
+        });
+    // Show a message to the participant
+        document.body.innerHTML = '<div style="text-align:center; padding:50px;"><h2>Thank you! Your data has been saved.</h2></div>';
       }
     });
 
