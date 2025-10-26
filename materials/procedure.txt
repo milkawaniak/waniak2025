@@ -1,5 +1,4 @@
 
-
 -----------10 TEST TRIALS----------
 
 70 experimental trials. 
@@ -48,3 +47,9 @@ performance from Experiment 3. */
  [strategy_diff] Did the strategy that you used for yourself and for the other participant differ from each other, or were they similar? How did they differ, or how were they similar to each other? [Open-ended text response] 
  [anything_else] Is there anything else that you would like to tell us about your experience during this study? [Open-ended text response]
  */
+
+ const debrief = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `<p>Thank you! Your responses have been saved.</p><p>Press any key to finish.</p>`
+    };
+    timeline.push(debrief);
