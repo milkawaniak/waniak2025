@@ -17,6 +17,7 @@
     /* initialize jsPsych */
     const jsPsych = initJsPsych({
       on_finish: function() {
+        jsPsych.data.get().localSave('csv', filename);
         const allData = jsPsych.data.get().csv();
         const filename = 'data_' + participant_id + '.csv';
     
@@ -29,7 +30,6 @@
         }).catch(function(error) {
           console.error('Error sending data to DataPipe:', error);
         });
-        jsPsych.data.get().localSave('csv', filename);
     // Show a message to the participant
         document.body.innerHTML = '<div style="text-align:center; padding:50px;"><h2>Thank you! Your data has been saved.</h2></div>';
       }
