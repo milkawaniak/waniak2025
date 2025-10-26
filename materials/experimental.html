@@ -12,7 +12,13 @@
   <script>
 
     /* initialize jsPsych */
-    var jsPsych = initJsPsych();/*{on_finish: function() { jsPsych.data.get().localSave('csv','AMP_data.csv');}*/
+    const jsPsych = initJsPsych({
+      on_finish: function() {
+        jsPsych.data.get().localSave('csv', 'data_' + participant_id + '.csv');
+      }
+    });
+
+    const participant_id = jsPsych.randomization.randomID(8);
 
     /* create timeline */
     var timeline = [];
@@ -20,19 +26,154 @@
     /* preload images */
     var preload = {
       type: jsPsychPreload,
-      images: ['Mask/ampmask.jpg', 
-      'Primes/pleasant1.jpg', 'Primes/pleasant2.jpg', 'Primes/pleasant3.jpg', 'Primes/pleasant4.jpg', 'Primes/pleasant5.jpg', 
-      'Primes/pleasant6.jpg', 'Primes/pleasant7.jpg', 'Primes/pleasant10.jpg',"Primes/pleasant11.jpg","Primes/pleasant12.jpg",
-      'Targets/pic10.jpg','Targets/pic11.jpg', 'Targets/pic12.jpg','Targets/pic13.jpg','Targets/pic14.jpg','Targets/pic15.jpg',
-      'Targets/pic16.jpg','Targets/pic17.jpg','Targets/pic18.jpg','Targets/pic19.jpg'
-      ]
+      images: [
+        'Mask/ampmask.jpg',
+        'Primes/pleasant1.jpg','Primes/pleasant2.jpg','Primes/pleasant3.jpg','Primes/pleasant4.jpg','Primes/pleasant5.jpg',
+        'Primes/pleasant6.jpg','Primes/pleasant7.jpg','Primes/pleasant10.jpg','Primes/pleasant11.jpg','Primes/pleasant12.jpg',
+        'Primes/NegHI_1.jpg','Primes/NegHI_2.jpg','Primes/NegHI_3.jpg','Primes/NegHI_4.jpg','Primes/NegHI_5.jpg',
+        'Primes/NegHI_6.jpg','Primes/NegHI_7.jpg','Primes/NegHI_8.jpg','Primes/NegHI_9.jpg','Primes/NegHI_10.jpg',
+        'Targets/Set1/pic1.jpg','Targets/Set1/pic2.jpg','Targets/Set1/pic3.jpg','Targets/Set1/pic4.jpg','Targets/Set1/pic5.jpg',
+        'Targets/Set1/pic6.jpg','Targets/Set1/pic7.jpg','Targets/Set1/pic8.jpg','Targets/Set1/pic9.jpg','Targets/Set1/pic10.jpg',
+        'Targets/Set1/pic11.jpg','Targets/Set1/pic12.jpg','Targets/Set1/pic13.jpg','Targets/Set1/pic14.jpg','Targets/Set1/pic15.jpg',
+        'Targets/Set1/pic16.jpg','Targets/Set1/pic17.jpg','Targets/Set1/pic18.jpg','Targets/Set1/pic19.jpg','Targets/Set1/pic20.jpg',
+        'Targets/Set1/pic21.jpg','Targets/Set1/pic22.jpg','Targets/Set1/pic23.jpg','Targets/Set1/pic24.jpg','Targets/Set1/pic25.jpg',
+        'Targets/Set1/pic26.jpg','Targets/Set1/pic27.jpg','Targets/Set1/pic28.jpg','Targets/Set1/pic29.jpg','Targets/Set1/pic30.jpg',
+        'Targets/Set1/pic31.jpg','Targets/Set1/pic32.jpg','Targets/Set1/pic33.jpg','Targets/Set1/pic34.jpg','Targets/Set1/pic35.jpg',
+        'Targets/Set1/pic36.jpg','Targets/Set1/pic37.jpg','Targets/Set1/pic38.jpg','Targets/Set1/pic39.jpg','Targets/Set1/pic40.jpg',
+        'Targets/Set2/pic1.jpg','Targets/Set2/pic2.jpg','Targets/Set2/pic3.jpg','Targets/Set2/pic4.jpg','Targets/Set2/pic5.jpg',
+        'Targets/Set2/pic6.jpg','Targets/Set2/pic7.jpg','Targets/Set2/pic8.jpg','Targets/Set2/pic9.jpg','Targets/Set2/pic10.jpg',
+        'Targets/Set2/pic11.jpg','Targets/Set2/pic12.jpg','Targets/Set2/pic13.jpg','Targets/Set2/pic14.jpg','Targets/Set2/pic15.jpg',
+        'Targets/Set2/pic16.jpg','Targets/Set2/pic17.jpg','Targets/Set2/pic18.jpg','Targets/Set2/pic19.jpg','Targets/Set2/pic20.jpg',
+        'Targets/Set2/pic21.jpg','Targets/Set2/pic22.jpg','Targets/Set2/pic23.jpg','Targets/Set2/pic24.jpg','Targets/Set2/pic25.jpg',
+        'Targets/Set2/pic26.jpg','Targets/Set2/pic27.jpg','Targets/Set2/pic28.jpg','Targets/Set2/pic29.jpg','Targets/Set2/pic30.jpg',
+        'Targets/Set2/pic31.jpg','Targets/Set2/pic32.jpg','Targets/Set2/pic33.jpg','Targets/Set2/pic34.jpg','Targets/Set2/pic35.jpg',
+        'Targets/Set2/pic36.jpg','Targets/Set2/pic37.jpg','Targets/Set2/pic38.jpg','Targets/Set2/pic39.jpg','Targets/Set2/pic40.jpg'
+      ],
     };
     timeline.push(preload);
+
+
+    var fixation = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: '<div style="font-size:60px;">+</div>',
+      choices: "NO_KEYS",
+      trial_duration: 500
+    };
+
+    const IMG_PX = 400;
+    const pleasantPrimes = [
+      'Primes/pleasant1.jpg','Primes/pleasant2.jpg','Primes/pleasant3.jpg','Primes/pleasant4.jpg','Primes/pleasant5.jpg',
+      'Primes/pleasant6.jpg','Primes/pleasant7.jpg','Primes/pleasant10.jpg','Primes/pleasant11.jpg','Primes/pleasant12.jpg'
+    ];
+    const negativePrimes = [
+      'Primes/NegHI_1.jpg','Primes/NegHI_2.jpg','Primes/NegHI_3.jpg','Primes/NegHI_4.jpg','Primes/NegHI_5.jpg',
+      'Primes/NegHI_6.jpg','Primes/NegHI_7.jpg','Primes/NegHI_8.jpg','Primes/NegHI_9.jpg','Primes/NegHI_10.jpg'
+    ];
+    const set1Targets = Array.from({ length: 40 }, (_, i) => `Targets/Set1/pic${i + 1}.jpg`);
+    const set2Targets = Array.from({ length: 40 }, (_, i) => `Targets/Set2/pic${i + 1}.jpg`);
+
+    //Combine primes and targets
+    const allPrimesForExamples = pleasantPrimes.concat(negativePrimes);
+    const allTargetsForExamples = set1Targets.concat(set2Targets);
+
+    // Sequence without replacement and reset as needed
+    function sequenceNoReplacementWithReset(pool, total) {
+      const out = [];
+      let bag = [];
+      while (out.length < total) {
+        if (bag.length === 0) {
+          bag = jsPsych.randomization.shuffle(pool.slice());
+        }
+        out.push(bag.pop());
+      }
+      return out;
+    }
+    const valences = jsPsych.randomization.shuffle(
+      new Array(35).fill('pleasant').concat(new Array(35).fill('negative'))
+    );
+    const allTargets = sequenceNoReplacementWithReset(
+      [...set1Targets, ...set2Targets], 
+      valences.length
+    );
+
+    // Build prime lists without replacement and reset as needed
+    const pleasantCount = valences.filter(v => v === 'pleasant').length;
+    const negativeCount = valences.length - pleasantCount;
+    
+    const pleasantPrimeSeq = sequenceNoReplacementWithReset(pleasantPrimes, pleasantCount);
+    const negativePrimeSeq = sequenceNoReplacementWithReset(negativePrimes, negativeCount);
+
+
+    let pIdx = 0, nIdx = 0, tIdx = 0;
+    const test_stimuli = valences.map(v => {
+      const primeImg = v === 'pleasant' ? pleasantPrimeSeq[pIdx++] : negativePrimeSeq[nIdx++];
+      const targetImg = allTargets[tIdx++];
+      return { valence: v, prime: primeImg, target: targetImg };
+    });
+
+
+    const prime = {
+      type: jsPsychImageKeyboardResponse ,
+      stimulus: jsPsych.timelineVariable('prime'),
+      choices: "NO_KEYS",
+      trial_duration: 100,
+      stimulus_width: IMG_PX,
+      data: {
+        phase: 'prime',
+        valence: jsPsych.timelineVariable('valence'),
+        prime_image: jsPsych.timelineVariable('prime')
+      }
+    };
+
+    const blank = {
+      type: jsPsychImageKeyboardResponse,
+      stimulus: "",
+      choices: "NO_KEYS",
+      trial_duration: 100,
+      stimulus_width: IMG_PX,
+      data: { phase: 'blank' }
+    };
+
+
+    const target = {
+      type: jsPsychImageKeyboardResponse,
+      stimulus: jsPsych.timelineVariable('target'),
+      choices: "NO_KEYS",
+      trial_duration: 200,
+      stimulus_width: IMG_PX,
+      data: { phase: 'target' }
+    };
+
+    const judgement_question = {
+        type: jsPsychHtmlKeyboardResponse,
+        stimulus: '<img src="Mask/ampmask.jpg" style="width:100%; max-width:400px;">',
+        choices: ['e', 'i'],
+        prompt: '<p> Press <b>E</b> if below average, press <b>I</b> if above average'
+    };
+
+    const influence_question = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: 'Did the prime influence your judgment?<br><br>',
+      choices: ['0', '1'],
+      prompt: 'Press <b>1<b/> if yes. If not, press <b>0<b/>.'
+    };
+
+
+    const shuffledStimuli = jsPsych.randomization.shuffle(test_stimuli.slice());
+    const test_block_stimuli = shuffledStimuli.slice(0, 10);
+    const experiment_block_stimuli = shuffledStimuli.slice(10);
 
     /* define welcome message trial */
     var goals = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: `(WELCOME and CONSENT)`,
+      stimulus: `<h1>Welcome to the experiment!</h1><br><br>
+      <h2>Consent to Participate</h2>
+      <p>You are being asked to participate in a psychology experiment.</p>
+      <p>Risks: The main risk is that you might get bored while completing the task.</p>
+      <p>Benefits: There are no direct benefits, but your participation will help us learn about how people judge visual images.</p>
+      <p>By pressing any key, you agree to participate in this study voluntarily.</p>
+      <p>If you do not wish to participate, you may close this browser window now.</p>
+      Press any key to begin.`,
     };
     timeline.push(goals);
 
@@ -49,11 +190,11 @@
     var instructions_1= {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: `
-        Put your index finders on the E and I keys of your keyboard.<br><br>
-        If the abstract painting is <b>less visually pleasant than average<b>, please press the <b>E key on the left<b>.<br><br>
-        If the abstract painting is <b>more visually pleasant than average<b>, please press the <b>I key on the right<b>.<br><br>
-        Note that the first (real-life) image can sometimes bias judgments of the abstract paintings.<br><br>
-        <b>Please try your absolute best not to let the real-life images bias your judgment of the abstract paintings.<b>`,
+      Put your index fingers on the E and I keys of your keyboard.<br><br>
+      If the abstract painting is <b>less visually pleasant than average</b>, please press the <b>E key on the left</b>.<br><br>
+      If the abstract painting is <b>more visually pleasant than average</b>, please press the <b>I key on the right</b>.<br><br>
+      Note that the first (real-life) image can sometimes bias judgments of the abstract paintings.<br><br>
+      <b>Please try your absolute best not to let the real-life images bias your judgment of the abstract paintings.</b>`,
       post_trial_gap: 1000
     };
     timeline.push(instructions_1);
@@ -62,22 +203,29 @@
       type: jsPsychHtmlKeyboardResponse,
       stimulus: `After each trial we will ask you whether your judgment of the abstract painting was influenced by the real-life image.<br><br>
         <b>If your judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.<br><br>
-        If your judgment of the abstract painting was <u>NOT<u> 
-        influenced by the image that came before it, then press the 0 key.<b>`,
+        If your judgment of the abstract painting was <u>NOT</u> influenced by the image that came before it, then press the 0 key.<b>`,
             post_trial_gap: 1000
     };
     timeline.push(instructions_2);
 
-    var instructions_3= {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: `Here are some examples of the types of pictures that you will see during the task:<br><br>
-      <b>Category Items<b>
-      <b>Real-life<b> images (6 examples)
-      <b>Abstract Paintings<b> (6 examples)
-        TABLE OF EXAMPLES`,
-            post_trial_gap: 1000
-    };
+    const examplePrimes = sequenceNoReplacementWithReset(allPrimesForExamples, 6);
+    const exampleTargets = sequenceNoReplacementWithReset(allTargetsForExamples, 6);
+    function makeImageCells(list) {
+      return list.map(function(src) {
+        return '<td style="padding:6px; text-align:center;">' +
+          '<img src="' + src + '" style="width:140px; height:auto; display:block; margin:0 auto;">' +
+          '</td>';
+        }).join('');
+      }
+
+    const instructions_3 = {
+      type: jsPsychHtmlKeyboardResponse, 
+      choices: [' '],
+      post_trial_gap: 1000,
+      stimulus: ` <div style="max-width:1000px; margin: 0 auto; text-align:center;"> <p>Here are some examples of the types of pictures that you will see during the task:</p> <table style="margin: 10px auto; border-collapse: collapse;"> <tr> <th colspan="6" style="padding:8px; font-size:16px; text-align:center;"> Real-life images </th> </tr> <tr>${makeImageCells(examplePrimes)}</tr> <tr> <th colspan="6" style="padding:12px 8px 8px; font-size:16px; text-align:center;"> Abstract paintings </th> </tr> <tr>${makeImageCells(exampleTargets)}</tr> </table> <p>Press the space bar to continue.</p> </div> `
+      };
     timeline.push(instructions_3);
+
     
     var instructions_4= {
       type: jsPsychHtmlKeyboardResponse,
@@ -100,60 +248,29 @@
     };
     timeline.push(instructions_5);
 
-
-    var fixation = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<div style="font-size:60px;">+</div>',
-      choices: "NO_KEYS",
-      trial_duration: 500
+    /* 10 TEST TRIALS */
+    const test_procedure = {
+      timeline: [fixation, prime, blank, target, judgement_question, influence_question],
+      timeline_variables: test_block_stimuli,
+      randomize_order: false
     };
-
-    var mask = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<img src="Mask/ampmask.jpg" style="width:100%; max-width:400px;">',
-      choices: "NO_KEYS",
-      trial_duration: 100
-    };
-
-    var test_stimuli = [
-        { prime: 'Primes/pleasant1.jpg', target: 'Targets/pic10.jpg' },
-        { prime: 'Primes/pleasant2.jpg', target: 'Targets/pic11.jpg' },
-    ];
-
-    var target = {
-        type: jsPsychImageKeyboardResponse,
-        stimulus: jsPsych.timelineVariable('target'),
-        choices: ['e', 'i'],
-        data: { task: 'rating' },
-        on_finish: function(data) {
-            data.response_key = data.response;
-            data.rt_ms = data.rt;
-        }
-    };
-
-    /*var influence_question = {
-        type: jsPsychHtmlKeyboardResponse,
-        stimulus: 'Was your judgment influenced by the first image?',
-        choices: ['0', '1'],
-        prompt: '<p>Press 1 if yes, 0 if no.</p>'
-    };*/
-
-   var test_procedure = {
-    timeline: [fixation, mask, target],
-    timeline_variables: test_stimuli,
-    randomize_order: true
-    };
-
     timeline.push(test_procedure);
-
-    var debrief = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: `<p>Thank you! Your responses have been saved.</p><p>Press any key to finish.</p>`
-    };
-    timeline.push(debrief);
     
+    const instructions_experimental = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "You completed test trials! Experimental trials will start now.<br><br>Press the <b>space bar</b> to begin.",
+      choices: [' '],
+      post_trial_gap: 1000
+    };
+    timeline.push(instructions_experimental);
+    
+    const experiment_procedure = {
+      timeline: [fixation, prime, blank, target, judgement_question, influence_question],
+      timeline_variables: experiment_block_stimuli,
+      randomize_order: false
+    };
+    timeline.push(experiment_procedure);
 
-    /* 10 TEST TRAILS */
 
     var instructions_6= {
       type: jsPsychHtmlKeyboardResponse,
@@ -167,8 +284,8 @@
 
     var instructions_7= {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus:`If the abstract painting was <b>less visually pleasant than average<b>, the participant pressed the <b>E key on the left<b>.<br><br>
-        If the abstract painting was <b>more visually pleasant than average<b>, the participant pressed the <b>I key on the right<b>.<br><br>
+      stimulus:`If the abstract painting was <b>less visually pleasant than average</b>, the participant pressed the <b>E key on the left<b>.<br><br>
+        If the abstract painting was <b>more visually pleasant than average</b>, the participant pressed the <b>I key on the right</b>.<br><br>
         The participant was warned that the first (real-life) image could sometimes bias judgments of the abstract paintings.<br><br>
         <b>Therefore, the participant was asked to try their absolute best not to let the real-life images bias their judgment of the abstract paintings<b>.`,
       post_trial_gap: 1000
@@ -178,7 +295,7 @@
     var instructions_8= {
       type: jsPsychHtmlKeyboardResponse,
       stimulus:`On each trial, we will show you the real-life image and the abstract painting that the previous participant saw.<br><br>
-      Afterwards, we will tell you whether the participant rated the abstract painting as <b>Pleasant<b> or as <b>Unpleasant<b><br><br>
+      Afterwards, we will tell you whether the participant rated the abstract painting as <b>Pleasant</b> or as <b>Unpleasant</b><br><br>
         Similar to the previous task, your job will be to tell us whether you think the other participant’s judgment of the abstract painting was influenced by the real-life image.<br><br>
         If you think that the participant’s judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.<br><br>
         And if you think that the participant’s judgment of the abstract painting was NOTinfluenced by the image that came before it, then press the 0 key.`,
@@ -195,8 +312,18 @@
     };
     timeline.push(instructions_9);
 
-    /* 70 EXPERIMENTAL TRAILS */
     jsPsych.run(timeline);
+
+    const end_screen = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `
+      <h2>Thank you for participating!</h2>
+      <p>Your responses have been recorded.</p>
+      <p>You may now close this window.</p>
+      `,
+      choices: "ALL_KEYS"
+    };
+    timeline.push(end_screen);
 
     </script>
   </body>
