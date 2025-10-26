@@ -19,10 +19,9 @@
       on_finish: function() {
         jsPsych.data.get().localSave('csv', 'data_' + participant_id + '.csv');
         jsPsych.data.pipe('7sBfg6Ud8xi2', {
-        filename: 'data_' + participant_id + '.csv'
-    });
+        filename: 'data_' + jsPsych.data.get().values()[0].participant_id + '.csv'
+      });
       }
-      
     });
 
     const participant_id = jsPsych.randomization.randomID(8);
