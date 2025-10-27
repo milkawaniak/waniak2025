@@ -1,0 +1,150 @@
+---
+title: "AMP_ex5"
+author: "Milka Waniak"
+date: "2025-10-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+#load csv data
+
+```
+Both the first-person AMP, Pdiff(pleasant)
+=
+0.350
+(median
+=
+0.353; SD
+=
+0.358), and the third-party AMP,
+Pdiff(pleasant)
+=
+0.348 (median
+=
+0.389; SD
+=
+0.380), were
+characterized by an overall AMP effect. This finding is theo-
+retically inconsequential but is a precondition for meaningful
+analyses of the awareness items. More importantly, the AMP
+effect was indistinguishable across the two AMP versions,suggesting that any differences in awareness effects cannot
+be accounted for by differences in AMP performance alone.
+The first-person AMP was characterized by somewhat
+lower overall influence awareness rates, P(aware)
+=
+0.477
+(median
+=
+0.471; SD
+=
+0.342) than the third-party AMP,
+P(aware)
+=
+0.566 (median
+=
+0.583; SD
+=
+0.250). On the first-
+person AMP we replicated the congruency effect already
+observed in Experiments 1–4. Specifically, participants were
+more likely to report influence awareness following pleas-
+ant, P(aware)
+=
+0.512, than unpleasant, P(aware)
+=
+0.395,
+responses when primes were positive. Conversely, they were
+more likely to report influence awareness following unpleas-
+ant, P(aware)
+=
+0.594, than pleasant, P(aware)
+=
+0.272,
+responses when primes were negative.
+Crucially from a theoretical perspective, a similar con-
+gruency effect emerged on the third-party AMP. Specifi-
+cally, just as on the first-person AMP, participants were
+more likely to report influence awareness following pleas-
+ant, P(aware)
+=
+0.679, than unpleasant, P(aware)
+=
+0.345,
+responses when primes were positive. Conversely, they were
+more likely to report influence awareness following unpleas-
+ant, P(aware)
+=
+0.676, than pleasant, P(aware)
+=
+0.325,
+responses when primes were negative. Notably, the awareness
+effect was larger and more symmetric across prime valences
+on the third-party AMP than on the first-person AMP.
+Accordingly, the best-fitting model with influence
+awareness (aware vs. unaware) as the dependent variable
+contained random intercepts for participants and primes,
+as well as a Prime Type (positive vs. negative) × Response
+3181
+portion of aware responses, with the dashed line at 0.5 marking
+equiprobability. The solid lines represent condition means
+(pleasant vs. unpleasant) × AMP Type (first-person vs.
+third-party) interaction as the fixed effect, χ2(3)
+=
+139.64,
+p < 0.001. Overall, in line with the descriptive statistics
+reported above, the best-fitting model suggests that the
+congruency effect was present on both the first-person and
+the third-party AMP, but stronger on the latter than on the
+former. In planned comparisons, we found a significant
+congruency effect following both positive primes, b
+=
+0.41,
+z
+=
+5.05, p < 0.001, and negative primes, b
+=
+1.33, z
+=
+16.62,
+p < 0.001, on the first-person AMP. Crucially, similar but
+larger congruency effects were also obtained following
+both positive primes, b
+=
+1.87, z
+=
+23.76, p < 0.001, and
+negative primes, b
+=
+1.63, z
+=
+19.93, p < 0.001, on the third-
+party AMP.
+In a final preregistered analysis, we probed whether
+reported rates of influence awareness on the first-person
+and third-party AMPs were associated with each other. Such
+a relationship would provide initial evidence for the idea
+that influence awareness judgments for the self and third
+parties operate based on a shared mechanism not merely at
+the group level but even at the level of individual raters. In
+line with this idea, we found a robust correlation between
+the proportion of aware judgments for the self and the past
+participant at the individual level, r
+=
+0.487, t(263)
+=
+9.04,
+p < 0.001. In other words, participants who believed that
+they themselves were often influenced by the primes tended
+to believe that the past participant whose performance they
+were asked to judge had also often been influenced by the
+primes and vice versa. This association cannot be explained by any similarities in AMP effects across present and past
+participants given successful random assignment, r
+=
+0.007,
+t(263)
+=
+0.11, p
+=
+0.912, ­ BF01
+=
+6.94.
