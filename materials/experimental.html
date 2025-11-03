@@ -8,18 +8,16 @@
     <script src="https://unpkg.com/@jspsych/plugin-preload@2.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script src="https://pipe.jspsych.org/lib/pipe.js"></script>
+    <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
     <link href="https://unpkg.com/jspsych@8.2.2/css/jspsych.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
   <script>
     
     async function runExperiment() {
-    /* initialize jsPsych */
-    //const jsPsych = initJsPsych({
-    //  on_finish: function() {
-    //    jsPsych.data.get().localSave('csv', 'data_' + participant_id + '.csv');  
-    //  }
-    //});
+    const jsPsych = initJsPsych();
+    const participant_id = jsPsych.randomization.randomID(8);
+    var timeline = [];
     const save_data = {
       type: jsPsychPipe,
       action: "save",
@@ -27,9 +25,6 @@
       filename: `${participant_id}.csv`,
       data_string: ()=>jsPsych.data.get().csv()
     };
-
-    const participant_id = jsPsych.randomization.randomID(8);
-    var timeline = [];
 
     /* NEED TO FIND pleasant8,  pleasant9, unpleasant11, unpleasant12*/
     var preload = {
@@ -460,6 +455,7 @@
 } catch (err) {
   console.error('Error building third-person trials:', err);
   alert('Could not load third-person trials. The experiment will continue without them.');
+  
 
     if (third_person_block_stimuli.length > 0) {
       console.log('Third-person example:', {
@@ -527,8 +523,10 @@
       choices: "ALL_KEYS"
     };
     timeline.push(end_screen);
-    jsPsych.run(timeline);
+    timeline.push(save_data);
+    await jsPsych.run(timeline);
     }
+
     runExperiment();
 
     </script>
