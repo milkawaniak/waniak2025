@@ -294,19 +294,84 @@
 
 
 
-    /* define welcome message trial */
     var goals = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: `<h1>Welcome to the experiment!</h1><br><br>
-      <h2>Consent to Participate</h2>
-      <p>You are being asked to participate in a psychology experiment.</p>
-      <p>Risks: The main risk is that you might get bored while completing the task.</p>
-      <p>Benefits: There are no direct benefits, but your participation will help us learn about how people judge visual images.</p>
-      <p>By pressing any key, you agree to participate in this study voluntarily.</p>
-      <p>If you do not wish to participate, you may close this browser window now.</p>
-      Press any key to begin.`,
-    };
+      stimulus: `
+        <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+        <p><b>Please note:</b> Studies on Project Implicit address different topics.</p>
+
+        <p>In this experiment, we study people's awareness of how their own mind works in making decisions.</p>
+
+        <p>The experiment <b>requires your active participation and focus, and some may find it challenging or boring.</b></p>
+
+        <p>If you are up for the challenge, we would be delighted for you to participate. In this case, please click the Continue button at the bottom of this box.</p>
+
+        <p>However, if you prefer not to participate in this type of study at this time, or are in an environment that does not allow you to fully concentrate, please exit the experiment now by closing your browser window or tab.</p>
+
+        <p>If you wish to participate, please press any key to continue. Thank you.</p>
+        </div>
+        `,
+      };
     timeline.push(goals);
+
+    var consent= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `
+        <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+        <h2>Consent Form</h2>
+
+        <p><b>Study Title:</b> Social Learning and Memory</p>
+
+        <p><b>Researcher:</b> Milka Waniak</p>
+
+        <p><b>Research Study Summary:</b><br>
+        You are invited to take part in a research study. The purpose of this study is to understand how people learn new information and make decisions in social and nonsocial contexts.<br><br>
+        Study activities will include completing implicit (response time-based) and explicit (self-report) measures. Your involvement will take about 15 minutes.<br><br>
+        We do not expect any risks from taking part in this study. The study may not directly benefit you, but it will contribute to understanding how people learn and remember information in social and nonsocial contexts.<br><br>
+        Participation is voluntary. You can stop at any time without any penalty or effect on your relationship with Stanford University.</p>
+
+        <p><b>Why is this study being offered to me?</b><br>
+        You are being asked to take part because you are an adult (18 years or older).</p>
+
+        <p><b>What is the study about?</b><br>
+        The study explores how people learn and remember information in social and nonsocial contexts.</p>
+
+        <p><b>What will I do and how long will it take?</b><br>
+        You will complete a set of tasks, including both response time-based and self-report measures. The session will last approximately 15 minutes.</p>
+
+        <p><b>Are there any risks?</b><br>
+        We do not expect any risks from participating in this study.</p>
+
+        <p><b>Are there any benefits?</b><br>
+        You may not receive direct benefits from participating. However, your responses will help researchers better understand how people learn and make decisions.</p>
+
+        <p><b>Are there any costs?</b><br>
+        There are no costs to participate in this study.</p>
+
+        <p><b>Will I be paid for participation?</b><br>
+        You will receive payment for your participation through the <b>Prolific</b> platform.</p>
+
+        <p><b>How will my data be kept safe and private?</b><br>
+        All responses will be kept anonymous. Only the researchers involved in this study and authorized Stanford University research oversight personnel will have access to identifiable information, if any is provided. Data may be shared only with your permission or when required by law (for example, if there is evidence of harm to a child or elder).<br><br>
+        Project Implicit's standard privacy policy applies to this study. Data exchanged with this site are protected by SSL encryption (HTTPS). Researchers will have access to de-identified responses. IP addresses are recorded by the platform but are not accessible to researchers. Data may be publicly shared in de-identified form for scientific purposes.</p>
+
+        <p><b>What if I want to stop participating?</b><br>
+        Participation is completely voluntary. You may stop at any time without penalty or loss of compensation.</p>
+
+        <p><b>Who can I contact with questions?</b><br>
+        If you have questions about the study, please contact the principal investigator at <a href="mailto:benedek.kurdi@yale.edu">benedek.kurdi@yale.edu</a>.<br><br>
+        If you have questions about your rights as a research participant, you send an email <a href="mailto:mwaniak@stanford.edu">mwaniak@stanford.edu</a>.</p>
+
+        <h3>Documentation of Informed Consent</h3>
+        <p>By pressing any key below, you indicate that you have read and understood this consent form and agree to participate in this study.</p>
+
+        <p>If you wish to keep a copy of this consent form, please print this page now.</p>
+
+        <p><b>Do you agree to participate?</b><br>
+        <em>Press any key to continue.</em></p>
+        </div>`,
+    };
+    timeline.push(consent);
 
     var instructions_0 = {
       type: jsPsychHtmlKeyboardResponse,
