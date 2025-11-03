@@ -1,19 +1,35 @@
- 'Targets/Set1/pic3.jpg','Targets/Set1/pic4.jpg','Targets/Set1/pic5.jpg',
-        'Targets/Set1/pic6.jpg','Targets/Set1/pic7.jpg','Targets/Set1/pic8.jpg','Targets/Set1/pic9.jpg','Targets/Set1/pic10.jpg',
-        'Targets/Set1/pic11.jpg','Targets/Set1/pic12.jpg','Targets/Set1/pic13.jpg','Targets/Set1/pic14.jpg','Targets/Set1/pic15.jpg',
-        'Targets/Set1/pic16.jpg','Targets/Set1/pic17.jpg','Targets/Set1/pic18.jpg','Targets/Set1/pic19.jpg','Targets/Set1/pic20.jpg',
-        'Targets/Set1/pic21.jpg','Targets/Set1/pic22.jpg','Targets/Set1/pic23.jpg','Targets/Set1/pic24.jpg','Targets/Set1/pic25.jpg',
-        'Targets/Set1/pic26.jpg','Targets/Set1/pic27.jpg','Targets/Set1/pic28.jpg','Targets/Set1/pic29.jpg','Targets/Set1/pic30.jpg',
-        'Targets/Set1/pic31.jpg','Targets/Set1/pic32.jpg','Targets/Set1/pic33.jpg','Targets/Set1/pic34.jpg','Targets/Set1/pic35.jpg',
-        'Targets/Set1/pic36.jpg','Targets/Set1/pic37.jpg','Targets/Set1/pic38.jpg','Targets/Set1/pic39.jpg','Targets/Set1/pic40.jpg',
-        'Targets/Set2/pic1.jpg','Targets/Set2/pic2.jpg','Targets/Set2/pic3.jpg','Targets/Set2/pic4.jpg','Targets/Set2/pic5.jpg',
-        'Targets/Set2/pic6.jpg','Targets/Set2/pic7.jpg','Targets/Set2/pic8.jpg','Targets/Set2/pic9.jpg','Targets/Set2/pic10.jpg',
-        'Targets/Set2/pic11.jpg','Targets/Set2/pic12.jpg','Targets/Set2/pic13.jpg','Targets/Set2/pic14.jpg','Targets/Set2/pic15.jpg',
-        'Targets/Set2/pic16.jpg','Targets/Set2/pic17.jpg','Targets/Set2/pic18.jpg','Targets/Set2/pic19.jpg','Targets/Set2/pic20.jpg',
-        'Targets/Set2/pic21.jpg','Targets/Set2/pic22.jpg','Targets/Set2/pic23.jpg','Targets/Set2/pic24.jpg','Targets/Set2/pic25.jpg',
-        'Targets/Set2/pic26.jpg','Targets/Set2/pic27.jpg','Targets/Set2/pic28.jpg','Targets/Set2/pic29.jpg','Targets/Set2/pic30.jpg',
-        'Targets/Set2/pic31.jpg','Targets/Set2/pic32.jpg','Targets/Set2/pic33.jpg','Targets/Set2/pic34.jpg','Targets/Set2/pic35.jpg',
-        'Targets/Set2/pic36.jpg','Targets/Set2/pic37.jpg','Targets/Set2/pic38.jpg','Targets/Set2/pic39.jpg','Targets/Set2/pic40.jpg'   
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Participant Consent Form</title>
+</head>
+<body style="font-family:Arial; font-size:12pt; margin:3%">
+    <p>
+        This study runs in Inquisit web player. You will be required to download a number of images and experiment files (about 2.5mb total size) in order for this experiment to run. IF NECESSARY, YOU CAN EXIT INQUISIT WEB PLAYER BEFORE THE EXPERIMENT IS COMPLETED BY PRESSING CTRL-q SEVERAL TIMES.<br><br></b>
+        <b>Consent form</b><br>
+        The purpose of this study is to examine factors that influence impression and evaluation. During the study you will be asked to complete one task and then answer some subsequent questions. The task involves images of Chinese characters, pleasant images, and unpleasant images. The task will inform you of the specific goals involved when you begin the experiment.       <br><br>
+        <b>Requirements</b><br>
+        In order to participate, this experiment requires you to:
+        <ul>
+            <li>have normal or corrected-to-normal vision (e.g., wear glasses or contact lenses).</li>
+            <li>have full use of both hands.</li>
+
+            <li>Be a fluent English speaker, and to NOT speak any Chinese.</li>
+        </ul>
+        <b>Risk and Benefits</b><br>
+    	This study involves no known risks to your wellbeing. You may benefit from greater insight into psychological research.
+        <br><br>
+        <b>Compensation</b><br>
+        You will receive a sum of money for participating, as detailed on the Prolific website.
+        <br><br>
+        <b>Confidentiality and data usage</b><br>
+        All data will be irrevocably anonymised as soon as data collection is completed. No personal identifying information is collected or stored. Later deletion of your data is not possible due to the anonymous nature of data collection. Your anonymised data may be posted to a public repository. The purpose and scope of subsequent use of your data is not foreseeable.
+        <br><br>
+        <b>Your Rights</b><br>
+        Your decision to participate in this research is entirely voluntary. You can withdraw from the study at any time without penalty. If you have any questions or issues with this study please contact the researcher: jamie.cummins@ugent.be         
+    </p>
+</body>
+</html> 
     
     
     const instructions_3 = {

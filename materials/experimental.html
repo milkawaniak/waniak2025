@@ -15,18 +15,20 @@
     
     async function runExperiment() {
     /* initialize jsPsych */
-    const jsPsych = initJsPsych({
-      on_finish: function() {
-        jsPsych.data.get().localSave('csv', 'data_' + participant_id + '.csv');  // ← DELETE THIS LINE
-        jsPsych.data.pipe('7sBfg6Ud8xi2', {
-          filename: 'data_' + participant_id + '.csv'
-        });
-      }
-    });
+    //const jsPsych = initJsPsych({
+    //  on_finish: function() {
+    //    jsPsych.data.get().localSave('csv', 'data_' + participant_id + '.csv');  
+    //  }
+    //});
+    const save_data = {
+      type: jsPsychPipe,
+      action: "save",
+      experiment_id: '7sBfg6Ud8xi2',
+      filename: `${participant_id}.csv`,
+      data_string: ()=>jsPsych.data.get().csv()
+    };
 
     const participant_id = jsPsych.randomization.randomID(8);
-
-    /* create timeline */
     var timeline = [];
 
     /* NEED TO FIND pleasant8,  pleasant9, unpleasant11, unpleasant12*/

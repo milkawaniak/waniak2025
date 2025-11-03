@@ -1,0 +1,644 @@
+data_wl9f6dm4
+success,timeout,failed_images,failed_audio,failed_video,trial_type,trial_index,plugin_version,time_elapsed,rt,stimulus,response,phase,valence,prime_image,past_response_label,past_session_id
+TRUE,FALSE,[],[],[],preload,0,2.1.0,566,,,,,,,,
+,,,,,html-keyboard-response,1,2.1.0,6605,6038,"<h1>Welcome to the experiment!</h1><br><br>
+      <h2>Consent to Participate</h2>
+      <p>You are being asked to participate in a psychology experiment.</p>
+      <p>Risks: The main risk is that you might get bored while completing the task.</p>
+      <p>Benefits: There are no direct benefits, but your participation will help us learn about how people judge visual images.</p>
+      <p>By pressing any key, you agree to participate in this study voluntarily.</p>
+      <p>If you do not wish to participate, you may close this browser window now.</p>
+      Press any key to begin.",Meta,,,,,
+,,,,,html-keyboard-response,2,2.1.0,34755,28149,"This study examines how people make simple judgments.<br><br>
+      During the first task, you will see pairs of pictures appear one after the other.<br><br>
+      The first picture will be a real-life image and the second picture will be an abstract painting.<br><br>
+      <b>The first image is simply a warning signal for the abstract painting and should be ignored.</b><br><br>
+      Your task is to <b>judge how visually pleasant each abstract painting is.</b>", ,,,,,
+,,,,,html-keyboard-response,3,2.1.0,59590,24834,"
+      Put your index fingers on the E and I keys of your keyboard.<br><br>
+      If the abstract painting is <b>less visually pleasant than average</b>, please press the <b>E key on the left</b>.<br><br>
+      If the abstract painting is <b>more visually pleasant than average</b>, please press the <b>I key on the right</b>.<br><br>
+      Note that the first (real-life) image can sometimes bias judgments of the abstract paintings.<br><br>
+      <b>Please try your absolute best not to let the real-life images bias your judgment of the abstract paintings.</b>", ,,,,,
+,,,,,html-keyboard-response,4,2.1.0,71596,11002,"After each trial we will ask you whether your judgment of the abstract painting was influenced by the real-life image.<br><br>
+        <b>If your judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.<br><br>
+        If your judgment of the abstract painting was <u>NOT</u> influenced by the image that came before it, then press the 0 key.<b>", ,,,,,
+,,,,,html-keyboard-response,5,2.1.0,81312,8712,"<div style=""max-width:1000px; margin: 0 auto; text-align:center;""> <p>Here are some examples of the types of pictures that you will see during the task:</p> <table style=""margin: 10px auto; border-collapse: collapse;""> <tr> <th colspan=""6"" style=""padding:8px; font-size:16px; text-align:center;""> Real-life images </th> </tr> <tr><td style=""padding:6px; text-align:center;""><img src=""Primes/unpleasant_7.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td><td style=""padding:6px; text-align:center;""><img src=""Primes/pleasant3.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td><td style=""padding:6px; text-align:center;""><img src=""Primes/pleasant6.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td><td style=""padding:6px; text-align:center;""><img src=""Primes/pleasant11.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td><td style=""padding:6px; text-align:center;""><img src=""Primes/unpleasant_3.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td><td style=""padding:6px; text-align:center;""><img src=""Primes/unpleasant_10.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td></tr> <tr> <th colspan=""6"" style=""padding:12px 8px 8px; font-size:16px; text-align:center;""> Abstract paintings </th> </tr> <tr><td style=""padding:6px; text-align:center;""><img src=""Targets/pic19.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td><td style=""padding:6px; text-align:center;""><img src=""Targets/pic61.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td><td style=""padding:6px; text-align:center;""><img src=""Targets/pic51.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td><td style=""padding:6px; text-align:center;""><img src=""Targets/pic27.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td><td style=""padding:6px; text-align:center;""><img src=""Targets/pic10.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td><td style=""padding:6px; text-align:center;""><img src=""Targets/pic7.jpg"" style=""width:140px; height:auto; display:block; margin:0 auto;""></td></tr> </table> <p>Press the<b>space bar</b> to continue.</p> </div>", ,,,,,
+,,,,,html-keyboard-response,6,2.1.0,118205,35890,"We will now provide you with an opportunity to practice the task. Remember: You should judge whether each abstract <br><br>
+      painting is more or less visually pleasant than average by pressing the E or the I key. And if you think your <br><br>
+      rating of the abstract paintingwas influenced by the real-life image that appeared just before it, press the 1 key.<br><br>
+      And if it was not influenced by the real-life image, press the 0 key. When you are ready to try a few practice <br><br>
+      responses, hit the <b>space bar</b>.<br><br>
+      Ready? Press the <b>space bar</b> to begin.", ,,,,,
+,,,,,html-keyboard-response,7,2.1.0,129450,10241,"Good! The test phase will now begin. Keep going as before.<br><br>
+      As a reminder: If the abstract painting is less visually pleasant than average, press the E key. And if it is more visually pleasant than average, press the I key.<br><br>
+      Ready? Press the <b>space bar</b> to begin.", ,,,,,
+,,,,,html-keyboard-response,8,2.1.0,130952,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,9,2.1.0,131056,null,Primes/unpleasant_5.jpg,null,prime,unpleasant,Primes/unpleasant_5.jpg,,
+,,,,,html-keyboard-response,10,2.1.0,131157,null,,null,blank,,,,
+,,,,,image-keyboard-response,11,2.1.0,131359,null,Targets/pic22.jpg,null,target,,,,
+,,,,,html-keyboard-response,12,2.1.0,140783,9423,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",e,,,,,
+,,,,,html-keyboard-response,13,2.1.0,146334,5551,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,14,2.1.0,146836,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,15,2.1.0,146938,null,Primes/pleasant11.jpg,null,prime,pleasant,Primes/pleasant11.jpg,,
+,,,,,html-keyboard-response,16,2.1.0,147040,null,,null,blank,,,,
+,,,,,image-keyboard-response,17,2.1.0,147243,null,Targets/pic39.jpg,null,target,,,,
+,,,,,html-keyboard-response,18,2.1.0,154105,6861,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,19,2.1.0,157367,3261,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,20,2.1.0,157868,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,21,2.1.0,157970,null,Primes/unpleasant_10.jpg,null,prime,unpleasant,Primes/unpleasant_10.jpg,,
+,,,,,html-keyboard-response,22,2.1.0,158072,null,,null,blank,,,,
+,,,,,image-keyboard-response,23,2.1.0,158275,null,Targets/pic18.jpg,null,target,,,,
+,,,,,html-keyboard-response,24,2.1.0,168703,10427,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",e,,,,,
+,,,,,html-keyboard-response,25,2.1.0,170521,1818,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,26,2.1.0,171023,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,27,2.1.0,171125,null,Primes/pleasant7.jpg,null,prime,pleasant,Primes/pleasant7.jpg,,
+,,,,,html-keyboard-response,28,2.1.0,171227,null,,null,blank,,,,
+,,,,,image-keyboard-response,29,2.1.0,171429,null,Targets/pic10.jpg,null,target,,,,
+,,,,,html-keyboard-response,30,2.1.0,175128,3698,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,31,2.1.0,177571,2442,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,32,2.1.0,178072,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,33,2.1.0,178174,null,Primes/pleasant3.jpg,null,prime,pleasant,Primes/pleasant3.jpg,,
+,,,,,html-keyboard-response,34,2.1.0,178276,null,,null,blank,,,,
+,,,,,image-keyboard-response,35,2.1.0,178478,null,Targets/pic66.jpg,null,target,,,,
+,,,,,html-keyboard-response,36,2.1.0,180089,1610,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,37,2.1.0,181970,1880,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,38,2.1.0,182471,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,39,2.1.0,182574,null,Primes/unpleasant_2.jpg,null,prime,unpleasant,Primes/unpleasant_2.jpg,,
+,,,,,html-keyboard-response,40,2.1.0,182675,null,,null,blank,,,,
+,,,,,image-keyboard-response,41,2.1.0,182877,null,Targets/pic26.jpg,null,target,,,,
+,,,,,html-keyboard-response,42,2.1.0,184680,1802,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,43,2.1.0,186564,1884,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,44,2.1.0,187066,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,45,2.1.0,187169,null,Primes/unpleasant_2.jpg,null,prime,unpleasant,Primes/unpleasant_2.jpg,,
+,,,,,html-keyboard-response,46,2.1.0,187271,null,,null,blank,,,,
+,,,,,image-keyboard-response,47,2.1.0,187472,null,Targets/pic55.jpg,null,target,,,,
+,,,,,html-keyboard-response,48,2.1.0,190197,2723,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",e,,,,,
+,,,,,html-keyboard-response,49,2.1.0,191534,1337,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,50,2.1.0,192035,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,51,2.1.0,192137,null,Primes/pleasant3.jpg,null,prime,pleasant,Primes/pleasant3.jpg,,
+,,,,,html-keyboard-response,52,2.1.0,192239,null,,null,blank,,,,
+,,,,,image-keyboard-response,53,2.1.0,192442,null,Targets/pic24.jpg,null,target,,,,
+,,,,,html-keyboard-response,54,2.1.0,193595,1152,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,55,2.1.0,194170,575,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,56,2.1.0,194671,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,57,2.1.0,194774,null,Primes/unpleasant_4.jpg,null,prime,unpleasant,Primes/unpleasant_4.jpg,,
+,,,,,html-keyboard-response,58,2.1.0,194876,null,,null,blank,,,,
+,,,,,image-keyboard-response,59,2.1.0,195078,null,Targets/pic9.jpg,null,target,,,,
+,,,,,html-keyboard-response,60,2.1.0,196625,1546,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,61,2.1.0,197475,849,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,62,2.1.0,197976,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,63,2.1.0,198078,null,Primes/pleasant10.jpg,null,prime,pleasant,Primes/pleasant10.jpg,,
+,,,,,html-keyboard-response,64,2.1.0,198180,null,,null,blank,,,,
+,,,,,image-keyboard-response,65,2.1.0,198382,null,Targets/pic20.jpg,null,target,,,,
+,,,,,html-keyboard-response,66,2.1.0,202613,4229,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",e,,,,,
+,,,,,html-keyboard-response,67,2.1.0,203782,1168,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,68,2.1.0,206503,2720,You completed test trials! Experimental trials will start now.<br><br>Press the <b>space bar</b> to begin., ,,,,,
+,,,,,html-keyboard-response,69,2.1.0,208006,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,70,2.1.0,208108,null,Primes/pleasant6.jpg,null,prime,pleasant,Primes/pleasant6.jpg,,
+,,,,,html-keyboard-response,71,2.1.0,208210,null,,null,blank,,,,
+,,,,,image-keyboard-response,72,2.1.0,208412,null,Targets/pic8.jpg,null,target,,,,
+,,,,,html-keyboard-response,73,2.1.0,209516,1104,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,74,2.1.0,210369,852,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,75,2.1.0,210870,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,76,2.1.0,210972,null,Primes/unpleasant_4.jpg,null,prime,unpleasant,Primes/unpleasant_4.jpg,,
+,,,,,html-keyboard-response,77,2.1.0,211075,null,,null,blank,,,,
+,,,,,image-keyboard-response,78,2.1.0,211276,null,Targets/pic1.jpg,null,target,,,,
+,,,,,html-keyboard-response,79,2.1.0,213282,2005,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,80,2.1.0,213784,501,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,81,2.1.0,214286,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,82,2.1.0,214387,null,Primes/unpleasant_6.jpg,null,prime,unpleasant,Primes/unpleasant_6.jpg,,
+,,,,,html-keyboard-response,83,2.1.0,214489,null,,null,blank,,,,
+,,,,,image-keyboard-response,84,2.1.0,214691,null,Targets/pic35.jpg,null,target,,,,
+,,,,,html-keyboard-response,85,2.1.0,215893,1200,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,86,2.1.0,216870,977,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,87,2.1.0,217372,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,88,2.1.0,217475,null,Primes/unpleasant_9.jpg,null,prime,unpleasant,Primes/unpleasant_9.jpg,,
+,,,,,html-keyboard-response,89,2.1.0,217576,null,,null,blank,,,,
+,,,,,image-keyboard-response,90,2.1.0,217778,null,Targets/pic4.jpg,null,target,,,,
+,,,,,html-keyboard-response,91,2.1.0,218982,1203,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,92,2.1.0,219567,585,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,93,2.1.0,220069,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,94,2.1.0,220171,null,Primes/unpleasant_9.jpg,null,prime,unpleasant,Primes/unpleasant_9.jpg,,
+,,,,,html-keyboard-response,95,2.1.0,220274,null,,null,blank,,,,
+,,,,,image-keyboard-response,96,2.1.0,220476,null,Targets/pic3.jpg,null,target,,,,
+,,,,,html-keyboard-response,97,2.1.0,223282,2805,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,98,2.1.0,223665,382,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,99,2.1.0,224166,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,100,2.1.0,224268,null,Primes/unpleasant_9.jpg,null,prime,unpleasant,Primes/unpleasant_9.jpg,,
+,,,,,html-keyboard-response,101,2.1.0,224369,null,,null,blank,,,,
+,,,,,image-keyboard-response,102,2.1.0,224571,null,Targets/pic16.jpg,null,target,,,,
+,,,,,html-keyboard-response,103,2.1.0,225693,1121,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,104,2.1.0,226051,357,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,105,2.1.0,226552,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,106,2.1.0,226654,null,Primes/pleasant1.jpg,null,prime,pleasant,Primes/pleasant1.jpg,,
+,,,,,html-keyboard-response,107,2.1.0,226755,null,,null,blank,,,,
+,,,,,image-keyboard-response,108,2.1.0,226957,null,Targets/pic52.jpg,null,target,,,,
+,,,,,html-keyboard-response,109,2.1.0,227829,872,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,110,2.1.0,228227,397,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,111,2.1.0,228728,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,112,2.1.0,228831,null,Primes/unpleasant_5.jpg,null,prime,unpleasant,Primes/unpleasant_5.jpg,,
+,,,,,html-keyboard-response,113,2.1.0,228933,null,,null,blank,,,,
+,,,,,image-keyboard-response,114,2.1.0,229135,null,Targets/pic31.jpg,null,target,,,,
+,,,,,html-keyboard-response,115,2.1.0,229872,737,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,116,2.1.0,230282,409,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,117,2.1.0,230783,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,118,2.1.0,230885,null,Primes/unpleasant_8.jpg,null,prime,unpleasant,Primes/unpleasant_8.jpg,,
+,,,,,html-keyboard-response,119,2.1.0,230986,null,,null,blank,,,,
+,,,,,image-keyboard-response,120,2.1.0,231188,null,Targets/pic65.jpg,null,target,,,,
+,,,,,html-keyboard-response,121,2.1.0,232157,968,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,122,2.1.0,232498,341,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,123,2.1.0,233000,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,124,2.1.0,233101,null,Primes/unpleasant_5.jpg,null,prime,unpleasant,Primes/unpleasant_5.jpg,,
+,,,,,html-keyboard-response,125,2.1.0,233203,null,,null,blank,,,,
+,,,,,image-keyboard-response,126,2.1.0,233404,null,Targets/pic32.jpg,null,target,,,,
+,,,,,html-keyboard-response,127,2.1.0,234803,1398,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,128,2.1.0,235211,407,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,129,2.1.0,235712,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,130,2.1.0,235814,null,Primes/pleasant1.jpg,null,prime,pleasant,Primes/pleasant1.jpg,,
+,,,,,html-keyboard-response,131,2.1.0,235917,null,,null,blank,,,,
+,,,,,image-keyboard-response,132,2.1.0,236118,null,Targets/pic63.jpg,null,target,,,,
+,,,,,html-keyboard-response,133,2.1.0,236758,639,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,134,2.1.0,237082,324,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,135,2.1.0,237584,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,136,2.1.0,237686,null,Primes/pleasant2.jpg,null,prime,pleasant,Primes/pleasant2.jpg,,
+,,,,,html-keyboard-response,137,2.1.0,237787,null,,null,blank,,,,
+,,,,,image-keyboard-response,138,2.1.0,237990,null,Targets/pic57.jpg,null,target,,,,
+,,,,,html-keyboard-response,139,2.1.0,239665,1674,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,140,2.1.0,241093,1427,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,141,2.1.0,241594,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,142,2.1.0,241695,null,Primes/unpleasant_6.jpg,null,prime,unpleasant,Primes/unpleasant_6.jpg,,
+,,,,,html-keyboard-response,143,2.1.0,241797,null,,null,blank,,,,
+,,,,,image-keyboard-response,144,2.1.0,242001,null,Targets/pic19.jpg,null,target,,,,
+,,,,,html-keyboard-response,145,2.1.0,243556,1554,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,146,2.1.0,243919,363,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,147,2.1.0,244420,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,148,2.1.0,244521,null,Primes/unpleasant_8.jpg,null,prime,unpleasant,Primes/unpleasant_8.jpg,,
+,,,,,html-keyboard-response,149,2.1.0,244622,null,,null,blank,,,,
+,,,,,image-keyboard-response,150,2.1.0,244824,null,Targets/pic56.jpg,null,target,,,,
+,,,,,html-keyboard-response,151,2.1.0,248596,3771,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",e,,,,,
+,,,,,html-keyboard-response,152,2.1.0,252323,3726,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,153,2.1.0,252825,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,154,2.1.0,252927,null,Primes/unpleasant_10.jpg,null,prime,unpleasant,Primes/unpleasant_10.jpg,,
+,,,,,html-keyboard-response,155,2.1.0,253029,null,,null,blank,,,,
+,,,,,image-keyboard-response,156,2.1.0,253230,null,Targets/pic72.jpg,null,target,,,,
+,,,,,html-keyboard-response,157,2.1.0,254562,1331,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,158,2.1.0,255139,576,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,159,2.1.0,255640,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,160,2.1.0,255742,null,Primes/unpleasant_7.jpg,null,prime,unpleasant,Primes/unpleasant_7.jpg,,
+,,,,,html-keyboard-response,161,2.1.0,255843,null,,null,blank,,,,
+,,,,,image-keyboard-response,162,2.1.0,256044,null,Targets/pic17.jpg,null,target,,,,
+,,,,,html-keyboard-response,163,2.1.0,257482,1437,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,164,2.1.0,259411,1929,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,165,2.1.0,259912,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,166,2.1.0,260015,null,Primes/pleasant12.jpg,null,prime,pleasant,Primes/pleasant12.jpg,,
+,,,,,html-keyboard-response,167,2.1.0,260116,null,,null,blank,,,,
+,,,,,image-keyboard-response,168,2.1.0,260318,null,Targets/pic76.jpg,null,target,,,,
+,,,,,html-keyboard-response,169,2.1.0,261536,1217,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,170,2.1.0,263808,2271,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,171,2.1.0,264309,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,172,2.1.0,264412,null,Primes/unpleasant_3.jpg,null,prime,unpleasant,Primes/unpleasant_3.jpg,,
+,,,,,html-keyboard-response,173,2.1.0,264513,null,,null,blank,,,,
+,,,,,image-keyboard-response,174,2.1.0,264715,null,Targets/pic58.jpg,null,target,,,,
+,,,,,html-keyboard-response,175,2.1.0,265878,1162,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,176,2.1.0,266223,345,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,177,2.1.0,266724,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,178,2.1.0,266826,null,Primes/pleasant11.jpg,null,prime,pleasant,Primes/pleasant11.jpg,,
+,,,,,html-keyboard-response,179,2.1.0,266929,null,,null,blank,,,,
+,,,,,image-keyboard-response,180,2.1.0,267130,null,Targets/pic67.jpg,null,target,,,,
+,,,,,html-keyboard-response,181,2.1.0,268578,1447,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,182,2.1.0,268938,359,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,183,2.1.0,269439,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,184,2.1.0,269541,null,Primes/pleasant6.jpg,null,prime,pleasant,Primes/pleasant6.jpg,,
+,,,,,html-keyboard-response,185,2.1.0,269642,null,,null,blank,,,,
+,,,,,image-keyboard-response,186,2.1.0,269844,null,Targets/pic7.jpg,null,target,,,,
+,,,,,html-keyboard-response,187,2.1.0,270619,774,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,188,2.1.0,271303,684,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,189,2.1.0,271804,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,190,2.1.0,271906,null,Primes/unpleasant_6.jpg,null,prime,unpleasant,Primes/unpleasant_6.jpg,,
+,,,,,html-keyboard-response,191,2.1.0,272008,null,,null,blank,,,,
+,,,,,image-keyboard-response,192,2.1.0,272209,null,Targets/pic41.jpg,null,target,,,,
+,,,,,html-keyboard-response,193,2.1.0,273017,806,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,194,2.1.0,273747,729,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,195,2.1.0,274248,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,196,2.1.0,274349,null,Primes/unpleasant_4.jpg,null,prime,unpleasant,Primes/unpleasant_4.jpg,,
+,,,,,html-keyboard-response,197,2.1.0,274451,null,,null,blank,,,,
+,,,,,image-keyboard-response,198,2.1.0,274654,null,Targets/pic46.jpg,null,target,,,,
+,,,,,html-keyboard-response,199,2.1.0,275278,624,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,200,2.1.0,276098,819,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,201,2.1.0,276600,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,202,2.1.0,276702,null,Primes/pleasant7.jpg,null,prime,pleasant,Primes/pleasant7.jpg,,
+,,,,,html-keyboard-response,203,2.1.0,276805,null,,null,blank,,,,
+,,,,,image-keyboard-response,204,2.1.0,277007,null,Targets/pic11.jpg,null,target,,,,
+,,,,,html-keyboard-response,205,2.1.0,277950,942,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,206,2.1.0,278438,488,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,207,2.1.0,278939,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,208,2.1.0,279041,null,Primes/pleasant3.jpg,null,prime,pleasant,Primes/pleasant3.jpg,,
+,,,,,html-keyboard-response,209,2.1.0,279143,null,,null,blank,,,,
+,,,,,image-keyboard-response,210,2.1.0,279345,null,Targets/pic77.jpg,null,target,,,,
+,,,,,html-keyboard-response,211,2.1.0,279886,540,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,212,2.1.0,280284,398,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,213,2.1.0,280786,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,214,2.1.0,280888,null,Primes/pleasant4.jpg,null,prime,pleasant,Primes/pleasant4.jpg,,
+,,,,,html-keyboard-response,215,2.1.0,280990,null,,null,blank,,,,
+,,,,,image-keyboard-response,216,2.1.0,281192,null,Targets/pic21.jpg,null,target,,,,
+,,,,,html-keyboard-response,217,2.1.0,282397,1205,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,218,2.1.0,282756,358,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,219,2.1.0,283257,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,220,2.1.0,283359,null,Primes/pleasant5.jpg,null,prime,pleasant,Primes/pleasant5.jpg,,
+,,,,,html-keyboard-response,221,2.1.0,283461,null,,null,blank,,,,
+,,,,,image-keyboard-response,222,2.1.0,283663,null,Targets/pic78.jpg,null,target,,,,
+,,,,,html-keyboard-response,223,2.1.0,284574,910,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,224,2.1.0,284856,282,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,225,2.1.0,285357,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,226,2.1.0,285460,null,Primes/pleasant2.jpg,null,prime,pleasant,Primes/pleasant2.jpg,,
+,,,,,html-keyboard-response,227,2.1.0,285562,null,,null,blank,,,,
+,,,,,image-keyboard-response,228,2.1.0,285763,null,Targets/pic74.jpg,null,target,,,,
+,,,,,html-keyboard-response,229,2.1.0,286152,388,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,230,2.1.0,286366,213,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,231,2.1.0,286867,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,232,2.1.0,286969,null,Primes/unpleasant_7.jpg,null,prime,unpleasant,Primes/unpleasant_7.jpg,,
+,,,,,html-keyboard-response,233,2.1.0,287071,null,,null,blank,,,,
+,,,,,image-keyboard-response,234,2.1.0,287272,null,Targets/pic43.jpg,null,target,,,,
+,,,,,html-keyboard-response,235,2.1.0,288053,779,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,236,2.1.0,288531,477,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,237,2.1.0,289032,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,238,2.1.0,289135,null,Primes/unpleasant_10.jpg,null,prime,unpleasant,Primes/unpleasant_10.jpg,,
+,,,,,html-keyboard-response,239,2.1.0,289237,null,,null,blank,,,,
+,,,,,image-keyboard-response,240,2.1.0,289439,null,Targets/pic69.jpg,null,target,,,,
+,,,,,html-keyboard-response,241,2.1.0,290989,1550,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,242,2.1.0,291311,321,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,243,2.1.0,291812,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,244,2.1.0,291915,null,Primes/pleasant6.jpg,null,prime,pleasant,Primes/pleasant6.jpg,,
+,,,,,html-keyboard-response,245,2.1.0,292017,null,,null,blank,,,,
+,,,,,image-keyboard-response,246,2.1.0,292217,null,Targets/pic5.jpg,null,target,,,,
+,,,,,html-keyboard-response,247,2.1.0,293694,1475,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,248,2.1.0,293956,262,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,249,2.1.0,294457,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,250,2.1.0,294560,null,Primes/unpleasant_1.jpg,null,prime,unpleasant,Primes/unpleasant_1.jpg,,
+,,,,,html-keyboard-response,251,2.1.0,294662,null,,null,blank,,,,
+,,,,,image-keyboard-response,252,2.1.0,294863,null,Targets/pic13.jpg,null,target,,,,
+,,,,,html-keyboard-response,253,2.1.0,296931,2067,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",e,,,,,
+,,,,,html-keyboard-response,254,2.1.0,297623,691,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,255,2.1.0,298124,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,256,2.1.0,298226,null,Primes/unpleasant_1.jpg,null,prime,unpleasant,Primes/unpleasant_1.jpg,,
+,,,,,html-keyboard-response,257,2.1.0,298328,null,,null,blank,,,,
+,,,,,image-keyboard-response,258,2.1.0,298530,null,Targets/pic59.jpg,null,target,,,,
+,,,,,html-keyboard-response,259,2.1.0,302252,3721,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,260,2.1.0,303307,1054,Did the prime influence your judgment?<br><br>,1,,,,,
+,,,,,html-keyboard-response,261,2.1.0,303808,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,262,2.1.0,303909,null,Primes/pleasant2.jpg,null,prime,pleasant,Primes/pleasant2.jpg,,
+,,,,,html-keyboard-response,263,2.1.0,304010,null,,null,blank,,,,
+,,,,,image-keyboard-response,264,2.1.0,304212,null,Targets/pic44.jpg,null,target,,,,
+,,,,,html-keyboard-response,265,2.1.0,305289,1076,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,266,2.1.0,306173,883,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,267,2.1.0,306674,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,268,2.1.0,306775,null,Primes/pleasant5.jpg,null,prime,pleasant,Primes/pleasant5.jpg,,
+,,,,,html-keyboard-response,269,2.1.0,306877,null,,null,blank,,,,
+,,,,,image-keyboard-response,270,2.1.0,307079,null,Targets/pic49.jpg,null,target,,,,
+,,,,,html-keyboard-response,271,2.1.0,307994,914,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">",i,,,,,
+,,,,,html-keyboard-response,272,2.1.0,308625,630,Did the prime influence your judgment?<br><br>,0,,,,,
+,,,,,html-keyboard-response,273,2.1.0,326106,17478,"During the second and final task, you will see how a past participant in a study just like this one responded to the abstract paintings.<br><br>
+      Just like you, this participant saw two pictures back to back: first a real-life image and then an abstract painting.<br><br>
+      <b>Just like you, this participant was told that the first image is simply a warning signal for the abstract painting and should be ignored.<b><br><br>
+        The participant’s task, just like yours, was to <b>judge how visually pleasant each abstract painting is. <b>", ,,,,,
+,,,,,html-keyboard-response,274,2.1.0,342794,15685,"If the abstract painting was <b>less visually pleasant than average</b>, 
+      the participant pressed the <b>E key on the left</b>.<br><br>  
+      If the abstract painting was <b>more visually pleasant than average</b>, the participant pressed the <b>I key on the right</b>.<br><br>     
+      The participant was warned that the first (real-life) image could sometimes bias judgments of the abstract paintings.<br><br> 
+      <b>Therefore, the participant was asked to try their absolute best not to let the real-life images bias their judgment of the abstract paintings.</b>", ,,,,,
+,,,,,html-keyboard-response,275,2.1.0,360891,17094,"On each trial, we will show you the real-life image and the abstract painting that the previous participant saw.<br><br>
+      Afterwards, we will tell you whether the participant rated the abstract painting as <b>Pleasant</b> or as <b>Unpleasant</b><br><br>
+        Similar to the previous task, your job will be to tell us whether you think the other participant’s judgment of the abstract painting was influenced by the real-life image.<br><br>
+        If you think that the participant’s judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.<br><br>
+        And if you think that the participant’s judgment of the abstract painting was NOTinfluenced by the image that came before it, then press the 0 key.",0,,,,,
+,,,,,html-keyboard-response,276,2.1.0,372752,10858,"Remember: On each trial, we will show you the real-life image and the abstract painting that a previous participant saw. Afterwards, you will be shown if they rated the abstract painting as pleasant or as unpleasant.<br><br>
+      If you think that the participant’s rating of the abstract painting was influenced by the real-life image that appeared just before it, press the 1 key. And if you think it was notinfluenced by the real-life image, press the 0 key.<br><br>
+      Ready? Press the space barto begin.", ,,,,,
+,,,,,html-keyboard-response,277,2.1.0,374256,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,278,2.1.0,374358,null,Primes/unpleasant9.jpg,null,prime,unpleasant,Primes/unpleasant9.jpg,,
+,,,,,html-keyboard-response,279,2.1.0,374460,null,,null,blank,,,,
+,,,,,image-keyboard-response,280,2.1.0,374662,null,Targets/pic9.jpg,null,target,,,,
+,,,,,html-keyboard-response,281,2.1.0,376847,2184,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,282,2.1.0,386298,9450,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,283,2.1.0,386799,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,284,2.1.0,386901,null,Primes/unpleasant2.jpg,null,prime,unpleasant,Primes/unpleasant2.jpg,,
+,,,,,html-keyboard-response,285,2.1.0,387002,null,,null,blank,,,,
+,,,,,image-keyboard-response,286,2.1.0,387205,null,Targets/pic72.jpg,null,target,,,,
+,,,,,html-keyboard-response,287,2.1.0,388235,1029,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,288,2.1.0,396890,8654,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",1,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,289,2.1.0,397391,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,290,2.1.0,397493,null,Primes/pleasant5.jpg,null,prime,pleasant,Primes/pleasant5.jpg,,
+,,,,,html-keyboard-response,291,2.1.0,397595,null,,null,blank,,,,
+,,,,,image-keyboard-response,292,2.1.0,397797,null,Targets/pic16.jpg,null,target,,,,
+,,,,,html-keyboard-response,293,2.1.0,398800,1003,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,294,2.1.0,405305,6504,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",1,,,,Pleasant,14582202
+,,,,,html-keyboard-response,295,2.1.0,405807,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,296,2.1.0,405909,null,Primes/pleasant6.jpg,null,prime,pleasant,Primes/pleasant6.jpg,,
+,,,,,html-keyboard-response,297,2.1.0,406011,null,,null,blank,,,,
+,,,,,image-keyboard-response,298,2.1.0,406213,null,Targets/pic62.jpg,null,target,,,,
+,,,,,html-keyboard-response,299,2.1.0,406840,626,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,300,2.1.0,407940,1099,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",1,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,301,2.1.0,408442,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,302,2.1.0,408544,null,Primes/unpleasant4.jpg,null,prime,unpleasant,Primes/unpleasant4.jpg,,
+,,,,,html-keyboard-response,303,2.1.0,408646,null,,null,blank,,,,
+,,,,,image-keyboard-response,304,2.1.0,408847,null,Targets/pic73.jpg,null,target,,,,
+,,,,,html-keyboard-response,305,2.1.0,409672,824,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,306,2.1.0,417429,7756,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,307,2.1.0,417930,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,308,2.1.0,418033,null,Primes/unpleasant10.jpg,null,prime,unpleasant,Primes/unpleasant10.jpg,,
+,,,,,html-keyboard-response,309,2.1.0,418135,null,,null,blank,,,,
+,,,,,image-keyboard-response,310,2.1.0,418337,null,Targets/pic15.jpg,null,target,,,,
+,,,,,html-keyboard-response,311,2.1.0,419497,1159,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,312,2.1.0,420209,711,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,313,2.1.0,420710,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,314,2.1.0,420812,null,Primes/unpleasant5.jpg,null,prime,unpleasant,Primes/unpleasant5.jpg,,
+,,,,,html-keyboard-response,315,2.1.0,420914,null,,null,blank,,,,
+,,,,,image-keyboard-response,316,2.1.0,421116,null,Targets/pic61.jpg,null,target,,,,
+,,,,,html-keyboard-response,317,2.1.0,422051,932,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,318,2.1.0,425781,3730,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,319,2.1.0,426283,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,320,2.1.0,426384,null,Primes/unpleasant8.jpg,null,prime,unpleasant,Primes/unpleasant8.jpg,,
+,,,,,html-keyboard-response,321,2.1.0,426485,null,,null,blank,,,,
+,,,,,image-keyboard-response,322,2.1.0,426687,null,Targets/pic56.jpg,null,target,,,,
+,,,,,html-keyboard-response,323,2.1.0,427505,817,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,324,2.1.0,428459,953,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,325,2.1.0,428960,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,326,2.1.0,429063,null,Primes/unpleasant11.jpg,null,prime,unpleasant,Primes/unpleasant11.jpg,,
+,,,,,html-keyboard-response,327,2.1.0,429165,null,,null,blank,,,,
+,,,,,image-keyboard-response,328,2.1.0,429366,null,Targets/pic1.jpg,null,target,,,,
+,,,,,html-keyboard-response,329,2.1.0,430432,1064,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,330,2.1.0,431023,590,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,331,2.1.0,431524,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,332,2.1.0,431626,null,Primes/pleasant7.jpg,null,prime,pleasant,Primes/pleasant7.jpg,,
+,,,,,html-keyboard-response,333,2.1.0,431727,null,,null,blank,,,,
+,,,,,image-keyboard-response,334,2.1.0,431929,null,Targets/pic35.jpg,null,target,,,,
+,,,,,html-keyboard-response,335,2.1.0,432631,701,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,336,2.1.0,433492,860,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",1,,,,Pleasant,14582202
+,,,,,html-keyboard-response,337,2.1.0,433993,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,338,2.1.0,434094,null,Primes/pleasant12.jpg,null,prime,pleasant,Primes/pleasant12.jpg,,
+,,,,,html-keyboard-response,339,2.1.0,434196,null,,null,blank,,,,
+,,,,,image-keyboard-response,340,2.1.0,434398,null,Targets/pic52.jpg,null,target,,,,
+,,,,,html-keyboard-response,341,2.1.0,435140,739,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,342,2.1.0,435609,468,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,343,2.1.0,436110,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,344,2.1.0,436212,null,Primes/pleasant7.jpg,null,prime,pleasant,Primes/pleasant7.jpg,,
+,,,,,html-keyboard-response,345,2.1.0,436314,null,,null,blank,,,,
+,,,,,image-keyboard-response,346,2.1.0,436516,null,Targets/pic49.jpg,null,target,,,,
+,,,,,html-keyboard-response,347,2.1.0,437388,871,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,348,2.1.0,438050,661,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,349,2.1.0,438552,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,350,2.1.0,438654,null,Primes/unpleasant6.jpg,null,prime,unpleasant,Primes/unpleasant6.jpg,,
+,,,,,html-keyboard-response,351,2.1.0,438757,null,,null,blank,,,,
+,,,,,image-keyboard-response,352,2.1.0,438958,null,Targets/pic54.jpg,null,target,,,,
+,,,,,html-keyboard-response,353,2.1.0,440567,1608,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,354,2.1.0,441338,769,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,355,2.1.0,441839,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,356,2.1.0,441941,null,Primes/pleasant2.jpg,null,prime,pleasant,Primes/pleasant2.jpg,,
+,,,,,html-keyboard-response,357,2.1.0,442042,null,,null,blank,,,,
+,,,,,image-keyboard-response,358,2.1.0,442244,null,Targets/pic17.jpg,null,target,,,,
+,,,,,html-keyboard-response,359,2.1.0,442891,646,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,360,2.1.0,443393,501,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,361,2.1.0,443894,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,362,2.1.0,443996,null,Primes/unpleasant5.jpg,null,prime,unpleasant,Primes/unpleasant5.jpg,,
+,,,,,html-keyboard-response,363,2.1.0,444098,null,,null,blank,,,,
+,,,,,image-keyboard-response,364,2.1.0,444299,null,Targets/pic43.jpg,null,target,,,,
+,,,,,html-keyboard-response,365,2.1.0,445311,1011,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,366,2.1.0,446703,1391,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,367,2.1.0,447204,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,368,2.1.0,447307,null,Primes/unpleasant10.jpg,null,prime,unpleasant,Primes/unpleasant10.jpg,,
+,,,,,html-keyboard-response,369,2.1.0,447408,null,,null,blank,,,,
+,,,,,image-keyboard-response,370,2.1.0,447609,null,Targets/pic76.jpg,null,target,,,,
+,,,,,html-keyboard-response,371,2.1.0,448699,1088,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,372,2.1.0,449138,439,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,373,2.1.0,449641,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,374,2.1.0,449743,null,Primes/pleasant10.jpg,null,prime,pleasant,Primes/pleasant10.jpg,,
+,,,,,html-keyboard-response,375,2.1.0,449844,null,,null,blank,,,,
+,,,,,image-keyboard-response,376,2.1.0,450046,null,Targets/pic8.jpg,null,target,,,,
+,,,,,html-keyboard-response,377,2.1.0,450473,426,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,378,2.1.0,450901,427,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,379,2.1.0,451402,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,380,2.1.0,451503,null,Primes/unpleasant2.jpg,null,prime,unpleasant,Primes/unpleasant2.jpg,,
+,,,,,html-keyboard-response,381,2.1.0,451604,null,,null,blank,,,,
+,,,,,image-keyboard-response,382,2.1.0,451807,null,Targets/pic71.jpg,null,target,,,,
+,,,,,html-keyboard-response,383,2.1.0,451968,161,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,384,2.1.0,452472,503,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,385,2.1.0,452974,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,386,2.1.0,453075,null,Primes/unpleasant12.jpg,null,prime,unpleasant,Primes/unpleasant12.jpg,,
+,,,,,html-keyboard-response,387,2.1.0,453176,null,,null,blank,,,,
+,,,,,image-keyboard-response,388,2.1.0,453378,null,Targets/pic79.jpg,null,target,,,,
+,,,,,html-keyboard-response,389,2.1.0,454335,956,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,390,2.1.0,454964,628,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,391,2.1.0,455465,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,392,2.1.0,455568,null,Primes/pleasant6.jpg,null,prime,pleasant,Primes/pleasant6.jpg,,
+,,,,,html-keyboard-response,393,2.1.0,455670,null,,null,blank,,,,
+,,,,,image-keyboard-response,394,2.1.0,455871,null,Targets/pic77.jpg,null,target,,,,
+,,,,,html-keyboard-response,395,2.1.0,456376,503,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,396,2.1.0,457020,643,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",1,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,397,2.1.0,457521,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,398,2.1.0,457624,null,Primes/pleasant6.jpg,null,prime,pleasant,Primes/pleasant6.jpg,,
+,,,,,html-keyboard-response,399,2.1.0,457725,null,,null,blank,,,,
+,,,,,image-keyboard-response,400,2.1.0,457927,null,Targets/pic38.jpg,null,target,,,,
+,,,,,html-keyboard-response,401,2.1.0,458048,120,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,402,2.1.0,458595,546,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",1,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,403,2.1.0,459096,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,404,2.1.0,459199,null,Primes/pleasant12.jpg,null,prime,pleasant,Primes/pleasant12.jpg,,
+,,,,,html-keyboard-response,405,2.1.0,459300,null,,null,blank,,,,
+,,,,,image-keyboard-response,406,2.1.0,459502,null,Targets/pic28.jpg,null,target,,,,
+,,,,,html-keyboard-response,407,2.1.0,460177,674,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,408,2.1.0,460668,490,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,409,2.1.0,461170,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,410,2.1.0,461272,null,Primes/unpleasant1.jpg,null,prime,unpleasant,Primes/unpleasant1.jpg,,
+,,,,,html-keyboard-response,411,2.1.0,461373,null,,null,blank,,,,
+,,,,,image-keyboard-response,412,2.1.0,461576,null,Targets/pic33.jpg,null,target,,,,
+,,,,,html-keyboard-response,413,2.1.0,462213,637,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,414,2.1.0,462659,445,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,415,2.1.0,463161,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,416,2.1.0,463262,null,Primes/unpleasant2.jpg,null,prime,unpleasant,Primes/unpleasant2.jpg,,
+,,,,,html-keyboard-response,417,2.1.0,463363,null,,null,blank,,,,
+,,,,,image-keyboard-response,418,2.1.0,463565,null,Targets/pic10.jpg,null,target,,,,
+,,,,,html-keyboard-response,419,2.1.0,464369,803,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,420,2.1.0,464833,463,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,421,2.1.0,465334,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,422,2.1.0,465437,null,Primes/pleasant2.jpg,null,prime,pleasant,Primes/pleasant2.jpg,,
+,,,,,html-keyboard-response,423,2.1.0,465538,null,,null,blank,,,,
+,,,,,image-keyboard-response,424,2.1.0,465740,null,Targets/pic36.jpg,null,target,,,,
+,,,,,html-keyboard-response,425,2.1.0,466362,620,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,426,2.1.0,467368,1006,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,427,2.1.0,467870,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,428,2.1.0,467972,null,Primes/unpleasant4.jpg,null,prime,unpleasant,Primes/unpleasant4.jpg,,
+,,,,,html-keyboard-response,429,2.1.0,468074,null,,null,blank,,,,
+,,,,,image-keyboard-response,430,2.1.0,468276,null,Targets/pic45.jpg,null,target,,,,
+,,,,,html-keyboard-response,431,2.1.0,468956,679,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,432,2.1.0,469571,615,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,433,2.1.0,470073,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,434,2.1.0,470175,null,Primes/unpleasant8.jpg,null,prime,unpleasant,Primes/unpleasant8.jpg,,
+,,,,,html-keyboard-response,435,2.1.0,470277,null,,null,blank,,,,
+,,,,,image-keyboard-response,436,2.1.0,470479,null,Targets/pic59.jpg,null,target,,,,
+,,,,,html-keyboard-response,437,2.1.0,471595,1115,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,438,2.1.0,472073,478,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,439,2.1.0,472574,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,440,2.1.0,472675,null,Primes/pleasant1.jpg,null,prime,pleasant,Primes/pleasant1.jpg,,
+,,,,,html-keyboard-response,441,2.1.0,472777,null,,null,blank,,,,
+,,,,,image-keyboard-response,442,2.1.0,472979,null,Targets/pic75.jpg,null,target,,,,
+,,,,,html-keyboard-response,443,2.1.0,473730,750,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,444,2.1.0,474207,477,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,445,2.1.0,474708,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,446,2.1.0,474810,null,Primes/pleasant11.jpg,null,prime,pleasant,Primes/pleasant11.jpg,,
+,,,,,html-keyboard-response,447,2.1.0,474912,null,,null,blank,,,,
+,,,,,image-keyboard-response,448,2.1.0,475113,null,Targets/pic31.jpg,null,target,,,,
+,,,,,html-keyboard-response,449,2.1.0,476090,975,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,450,2.1.0,476413,323,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,451,2.1.0,476914,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,452,2.1.0,477016,null,Primes/unpleasant1.jpg,null,prime,unpleasant,Primes/unpleasant1.jpg,,
+,,,,,html-keyboard-response,453,2.1.0,477118,null,,null,blank,,,,
+,,,,,image-keyboard-response,454,2.1.0,477320,null,Targets/pic4.jpg,null,target,,,,
+,,,,,html-keyboard-response,455,2.1.0,477970,649,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,456,2.1.0,478412,441,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,457,2.1.0,478913,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,458,2.1.0,479015,null,Primes/pleasant9.jpg,null,prime,pleasant,Primes/pleasant9.jpg,,
+,,,,,html-keyboard-response,459,2.1.0,479118,null,,null,blank,,,,
+,,,,,image-keyboard-response,460,2.1.0,479320,null,Targets/pic12.jpg,null,target,,,,
+,,,,,html-keyboard-response,461,2.1.0,479479,158,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,462,2.1.0,480006,526,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,463,2.1.0,480508,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,464,2.1.0,480610,null,Primes/pleasant8.jpg,null,prime,pleasant,Primes/pleasant8.jpg,,
+,,,,,html-keyboard-response,465,2.1.0,480712,null,,null,blank,,,,
+,,,,,image-keyboard-response,466,2.1.0,480913,null,Targets/pic64.jpg,null,target,,,,
+,,,,,html-keyboard-response,467,2.1.0,481080,166,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,468,2.1.0,481576,495,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,469,2.1.0,482077,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,470,2.1.0,482179,null,Primes/pleasant7.jpg,null,prime,pleasant,Primes/pleasant7.jpg,,
+,,,,,html-keyboard-response,471,2.1.0,482281,null,,null,blank,,,,
+,,,,,image-keyboard-response,472,2.1.0,482483,null,Targets/pic68.jpg,null,target,,,,
+,,,,,html-keyboard-response,473,2.1.0,482938,455,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,474,2.1.0,483288,349,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Unpleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Unpleasant,14582202
+,,,,,html-keyboard-response,475,2.1.0,483789,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,476,2.1.0,483891,null,Primes/unpleasant10.jpg,null,prime,unpleasant,Primes/unpleasant10.jpg,,
+,,,,,html-keyboard-response,477,2.1.0,483992,null,,null,blank,,,,
+,,,,,image-keyboard-response,478,2.1.0,484194,null,Targets/pic2.jpg,null,target,,,,
+,,,,,html-keyboard-response,479,2.1.0,485063,868,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,480,2.1.0,485572,508,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,481,2.1.0,486074,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,482,2.1.0,486176,null,Primes/pleasant1.jpg,null,prime,pleasant,Primes/pleasant1.jpg,,
+,,,,,html-keyboard-response,483,2.1.0,486277,null,,null,blank,,,,
+,,,,,image-keyboard-response,484,2.1.0,486479,null,Targets/pic46.jpg,null,target,,,,
+,,,,,html-keyboard-response,485,2.1.0,486640,161,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,486,2.1.0,487181,540,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,487,2.1.0,487682,null,"<div style=""font-size:60px;"">+</div>",null,,,,,
+,,,,,image-keyboard-response,488,2.1.0,487784,null,Primes/pleasant3.jpg,null,prime,pleasant,Primes/pleasant3.jpg,,
+,,,,,html-keyboard-response,489,2.1.0,487885,null,,null,blank,,,,
+,,,,,image-keyboard-response,490,2.1.0,488087,null,Targets/pic34.jpg,null,target,,,,
+,,,,,html-keyboard-response,491,2.1.0,488635,547,"<img src=""Mask/ampmask.jpg"" style=""width:100%; max-width:400px;"">", ,,,,,
+,,,,,html-keyboard-response,492,2.1.0,488988,352,"Did the prime influence the past participant's judgment?<br><br>
+          The past participant's response on this trial was: <b>Pleasant</b>.<br><br>
+          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+          and press 0 if not.",0,,,,Pleasant,14582202
+,,,,,html-keyboard-response,493,2.1.0,489343,354,"<h2>Thank you for participating!</h2>
+      <p>Your responses have been recorded.</p>
+      <p>You may now close this window.</p>", ,,,,,

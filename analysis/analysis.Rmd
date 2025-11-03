@@ -7,8 +7,93 @@ output: html_document
 
 ```{r setup, include=FALSE}
 #load csv data
-
+path <- "/Users/milka/Documents/GitHub/psyc 251/waniak2025/data/processed/pilot"
+data <- read_csv(file.path(path, "data.csv"))
 ```
+
+#create a graph, on the left firt person trails and on the right 3rdx person trails,futher, in each on the lft there should be positive prime and unpleasant prime on the irght. furtheer, left shuold give proportion of pleasant responses, whil right should guve proportion or unpleasant responses. On y axis P(aware) and should give the proportion. in other owrds: Influence awareness responses by AMP type (first-person vs.
+third-party), prime type (positive vs. negative), and trial response
+(pleasant vs. unpleasant; Experiment 5). The y-axis shows the proportion of aware responses, with the dashed line at 0.5 marking
+equiprobability. The solid lines represent condition means
+
+```{r graph, include=FALSE}
+
+# Reshape data from wide to long format
+data_long <- data %>%
+  pivot_longer(
+    cols = -participant_id,
+    names_to = "variable",
+    values_to = "value"
+  ) %>%
+  # Extract perspective, measure type, and trial number
+  extract(variable, 
+          into = c("perspective", "measure", "trial_num"), 
+          regex = "(first_person|third_person)_(prime|choice|influenced)_(\\d+)",
+          remove = FALSE) %>%
+  # Pivot wider to get prime, choice, and influenced as separate columns
+  pivot_wider(
+    names_from = measure,
+    values_from = value,
+    id_cols = c(participant_id, perspective, trial_num)
+  )
+
+# Calculate proportions
+summary_data <- data_long %>%
+  mutate(
+    perspective_label = ifelse(perspective == "first_person", "First-person AMP", "Third-party AMP"),
+    prime_type = ifelse(prime == "pleasant", "Positive prime", "Negative prime"),
+    response_type = case_when(
+      choice == "pleasant" ~ "Pleasant",
+      choice == "unpleasant" ~ "Unpleasant",
+      TRUE ~ NA_character_
+    ),
+    aware = ifelse(influenced == "influenced", 1, 0)  # 1 = aware, 0 = not aware
+  ) %>%
+  group_by(perspective_label, prime_type, response_type) %>%
+  summarise(
+    prop_aware = mean(aware, na.rm = TRUE),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  filter(!is.na(response_type))
+
+# Create the plot
+plot <- ggplot(summary_data, aes(x = response_type, y = prop_aware, fill = response_type)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.9), width = 0.7) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
+  facet_grid(perspective_label ~ factor(prime_type, levels = c("Positive prime", "Negative prime"))) +
+  labs(
+    x = "Response",
+    y = "P(aware)",
+    title = "Awareness response by prime, response, and AMP type",
+    subtitle = "Exp. 5"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "none",
+    strip.text = element_text(size = 12, face = "bold"),
+    axis.text.x = element_text(angle = 0, hjust = 0.5),
+    panel.grid.major.x = element_blank(),
+    panel.border = element_rect(color = "black", fill = NA, size = 1)
+  ) +
+  scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.2)) +
+  scale_fill_manual(values = c("Pleasant" = "pink", "Unpleasant" = "purple"))
+
+print(plot)
+
+# Save the plot
+#ggsave(file.path('/Users/milka/Documents/GitHub/psyc 251/waniak2025/data/processed/pilot', "awareness_plot.png"), plot = plot, width = 10, height = 6, dpi = 300)
+
+# Print summary data for verification
+print(summary_data)
+```
+
+
+
+
+
+
+
 Both the first-person AMP, Pdiff(pleasant)
 =
 0.350
