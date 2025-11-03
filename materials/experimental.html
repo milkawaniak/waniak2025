@@ -9,6 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script src="https://pipe.jspsych.org/lib/pipe.js"></script>
     <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe@0.4.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.1.0"></script>
     <link href="https://unpkg.com/jspsych@8.2.2/css/jspsych.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
@@ -359,8 +361,7 @@
         Participation is completely voluntary. You may stop at any time without penalty or loss of compensation.</p>
 
         <p><b>Who can I contact with questions?</b><br>
-        If you have questions about the study, please contact the principal investigator at <a href="mailto:benedek.kurdi@yale.edu">benedek.kurdi@yale.edu</a>.<br><br>
-        If you have questions about your rights as a research participant, you send an email <a href="mailto:mwaniak@stanford.edu">mwaniak@stanford.edu</a>.</p>
+        If you have questions about the study, please contact the researcher at <a href="mailto:mwaniak@stanford.edu">mwaniak@stanford.edu</a>.<br><br>
 
         <h3>Documentation of Informed Consent</h3>
         <p>By pressing any key below, you indicate that you have read and understood this consent form and agree to participate in this study.</p>
@@ -368,10 +369,28 @@
         <p>If you wish to keep a copy of this consent form, please print this page now.</p>
 
         <p><b>Do you agree to participate?</b><br>
-        <em>Press any key to continue.</em></p>
+        <em>If you agree to participate, press any key to continue.</em></p>
         </div>`,
     };
     timeline.push(consent);
+
+    var attention= {
+      type: jsPsychSurveyText,
+      preamble: `This entire session will take no more than 15 minutes to complete. In the study you will be asked to complete an Affect Misattribution Procedure (AMP) and respond to some questions.
+      You may be tempted to visit other web pages. However, if you do this, your data will be unusable. So, before you start, please make sure that you have 15 minutes to devote entirely to this study. We appreciate your participation.
+      If you are certain would like to participate, please type this exact sentence into the box below: "I will complete this study with my full attention." and press "Submit".`,
+      questions: [
+      {
+        prompt: '', 
+        rows: 1,
+        columns: 50,
+        required: true,
+        name: 'attention_check'
+      }
+    ],
+    button_label: 'Submit'
+  };
+  timeline.push(attention);
 
     var instructions_0 = {
       type: jsPsychHtmlKeyboardResponse,
@@ -380,6 +399,7 @@
       The first picture will be a real-life image and the second picture will be an abstract painting.<br><br>
       <b>The first image is simply a warning signal for the abstract painting and should be ignored.</b><br><br>
       Your task is to <b>judge how visually pleasant each abstract painting is.</b>`,
+      choices: ['Continue']
     };
     timeline.push(instructions_0);
 
