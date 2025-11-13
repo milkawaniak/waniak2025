@@ -96,47 +96,68 @@
     const first_person_trials = 34;  // 17 pleasant + 17 unpleasant
     const third_person_trials = 36;  // 18 pleasant + 18 unpleasant
     const total_trials = test_block + first_person_trials + third_person_trials;
-    // BALANCED generation for test + first-person (44 trials total)
-    const test_first_total = test_block + first_person_trials; // 10 + 34 = 44
-    const test_first_pleasant = Math.ceil(test_first_total / 2); // 22
-    const test_first_unpleasant = Math.floor(test_first_total / 2); // 22
+    
+    // Generate targets for all trials
+    const allTargets = sequenceNoReplacementWithReset([...setTargets], total_trials);
 
-    const pleasantPrimeSeq_test_first = sequenceNoReplacementWithReset(pleasantPrimes, test_first_pleasant);
-    const unpleasantPrimeSeq_test_first = sequenceNoReplacementWithReset(unpleasantPrimes, test_first_unpleasant);
+    // Build TEST BLOCK (10 trials: 5 pleasant + 5 unpleasant)
+    const test_pleasant_primes = sequenceNoReplacementWithReset(pleasantPrimes, 5);
+    const test_unpleasant_primes = sequenceNoReplacementWithReset(unpleasantPrimes, 5);
 
-    // Build test + first-person stimuli
-    const test_first_stimuli = [];
-    for (let i = 0; i < test_first_pleasant; i++) {
-      test_first_stimuli.push({
+    const test_block_stimuli = [];
+    for (let i = 0; i < 5; i++) {
+      test_block_stimuli.push({
         valence: 'pleasant',
-        prime: pleasantPrimeSeq_test_first[i],
-        target: allTargets[test_first_stimuli.length]
+        prime: test_pleasant_primes[i],
+        target: allTargets[i]
       });
     }
-    for (let i = 0; i < test_first_unpleasant; i++) {
-      test_first_stimuli.push({
+    for (let i = 0; i < 5; i++) {
+      test_block_stimuli.push({
         valence: 'unpleasant',
-        prime: unpleasantPrimeSeq_test_first[i],
-        target: allTargets[test_first_stimuli.length]
+        prime: test_unpleasant_primes[i],
+        target: allTargets[5 + i]
       });
     }
+    // Shuffle test trials
+    const shuffled_test = jsPsych.randomization.shuffle(test_block_stimuli);
 
-    // Shuffle all test + first-person trials together
-    const shuffled_test_first = jsPsych.randomization.shuffle(test_first_stimuli);
+    // Build FIRST-PERSON BLOCK (34 trials: 17 pleasant + 17 unpleasant)
+    const first_pleasant_primes = sequenceNoReplacementWithReset(pleasantPrimes, 17);
+    const first_unpleasant_primes = sequenceNoReplacementWithReset(unpleasantPrimes, 17);
 
-    // Split into test (10) and first-person (34)
-    const test_block_stimuli = shuffled_test_first.slice(0, test_block);
-    const first_person_block_stimuli = shuffled_test_first.slice(test_block, test_block + first_person_trials);
+    const first_person_block_stimuli = [];
+    for (let i = 0; i < 17; i++) {
+      first_person_block_stimuli.push({
+        valence: 'pleasant',
+        prime: first_pleasant_primes[i],
+        target: allTargets[10 + i]
+      });
+    }
+    for (let i = 0; i < 17; i++) {
+      first_person_block_stimuli.push({
+        valence: 'unpleasant',
+        prime: first_unpleasant_primes[i],
+        target: allTargets[10 + 17 + i]
+      });
+    }
+    // Shuffle first-person trials
+    const shuffled_first = jsPsych.randomization.shuffle(first_person_block_stimuli);
 
-    console.log('Test trials:', test_block_stimuli.length);
-    console.log('First-person trials:', first_person_block_stimuli.length);
+    console.log('Test trials:', shuffled_test.length);
+    console.log('First-person trials:', shuffled_first.length);
 
     const countValence = (arr) => ({
-    pleasant: arr.filter(t => t.valence === 'pleasant').length,
-    unpleasant: arr.filter(t => t.valence === 'unpleasant').length
+      pleasant: arr.filter(t => t.valence === 'pleasant').length,
+      unpleasant: arr.filter(t => t.valence === 'unpleasant').length
     });
-    console.log('First-person balance:', countValence(first_person_block_stimuli));
-    console.log('Third-person balance:', countValence(third_person_block_stimuli_seed));
+
+    console.log('Test balance:', countValence(shuffled_test));
+    console.log('First-person balance:', countValence(shuffled_first));
+
+    // Use the shuffled versions
+    const test_block_stimuli_final = shuffled_test;
+    const first_person_block_stimuli_final = shuffled_first;
 
 
     const prime = {
