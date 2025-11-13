@@ -96,35 +96,37 @@
     const first_person_trials = 34;  // 17 pleasant + 17 unpleasant
     const third_person_trials = 36;  // 18 pleasant + 18 unpleasant
     const total_trials = test_block + first_person_trials + third_person_trials;
-    const valences = jsPsych.randomization.shuffle(
-      new Array(40).fill('pleasant').concat(new Array(40).fill('unpleasant'))
-);
+    // BALANCED generation for test + first-person (44 trials total)
+    const test_first_total = test_block + first_person_trials; // 10 + 34 = 44
+    const test_first_pleasant = Math.ceil(test_first_total / 2); // 22
+    const test_first_unpleasant = Math.floor(test_first_total / 2); // 22
 
+    const pleasantPrimeSeq_test_first = sequenceNoReplacementWithReset(pleasantPrimes, test_first_pleasant);
+    const unpleasantPrimeSeq_test_first = sequenceNoReplacementWithReset(unpleasantPrimes, test_first_unpleasant);
 
-    const allTargets = sequenceNoReplacementWithReset(
-      [...setTargets], 
-      total_trials
-    );
+    // Build test + first-person stimuli
+    const test_first_stimuli = [];
+    for (let i = 0; i < test_first_pleasant; i++) {
+      test_first_stimuli.push({
+        valence: 'pleasant',
+        prime: pleasantPrimeSeq_test_first[i],
+        target: allTargets[test_first_stimuli.length]
+      });
+    }
+    for (let i = 0; i < test_first_unpleasant; i++) {
+      test_first_stimuli.push({
+        valence: 'unpleasant',
+        prime: unpleasantPrimeSeq_test_first[i],
+        target: allTargets[test_first_stimuli.length]
+      });
+    }
 
-    const pleasantCount = 40;
-    const unpleasantCount = 40;
-    const pleasantPrimeSeq = sequenceNoReplacementWithReset(pleasantPrimes, pleasantCount);
-    const unpleasantPrimeSeq = sequenceNoReplacementWithReset(unpleasantPrimes, unpleasantCount);
+    // Shuffle all test + first-person trials together
+    const shuffled_test_first = jsPsych.randomization.shuffle(test_first_stimuli);
 
-    let pIdx = 0, nIdx = 0;
-    const all_stimuli = valences.map((v, i) => {
-      const primeImg = v === 'pleasant' ? pleasantPrimeSeq[pIdx++] : unpleasantPrimeSeq[nIdx++];
-      const targetImg = allTargets[i];
-      return { valence: v, prime: primeImg, target: targetImg };
-    });
-    
-    // Shuffle and split
-    const shuffledStimuli = jsPsych.randomization.shuffle(all_stimuli.slice());
-
-    // Split into blocks
-    const test_block_stimuli = shuffledStimuli.slice(0, test_block);
-    const first_person_block_stimuli = shuffledStimuli.slice(test_block, test_block + first_person_trials);
-    const third_person_block_stimuli_seed = shuffledStimuli.slice(test_block + first_person_trials, test_block + first_person_trials + third_person_trials);
+    // Split into test (10) and first-person (34)
+    const test_block_stimuli = shuffled_test_first.slice(0, test_block);
+    const first_person_block_stimuli = shuffled_test_first.slice(test_block, test_block + first_person_trials);
 
     console.log('Test trials:', test_block_stimuli.length);
     console.log('First-person trials:', first_person_block_stimuli.length);
@@ -248,15 +250,26 @@
 
   console.log('Built', trials.length, 'trials from CSV');
   
-  // Shuffle and return requested number
-  const shuffled = jsPsych.randomization.shuffle(trials);
-  const selected = shuffled.slice(0, numTrials);
-  
-  console.log('Returning', selected.length, 'trials');
-  console.log('First trial example:', selected[0]);
-  
-  return selected;
-}
+  // Separate by valence
+    const pleasantTrials = trials.filter(t => t.valence === 'pleasant');
+    const unpleasantTrials = trials.filter(t => t.valence === 'unpleasant');
+
+    // Calculate how many of each we need (18 and 18 for 36 total)
+    const halfTrials = numTrials / 2; // 18
+
+    // Shuffle and take equal amounts
+    const selectedPleasant = jsPsych.randomization.shuffle(pleasantTrials).slice(0, halfTrials);
+    const selectedUnpleasant = jsPsych.randomization.shuffle(unpleasantTrials).slice(0, halfTrials);
+
+    // Combine and shuffle again
+    const selected = jsPsych.randomization.shuffle([...selectedPleasant, ...selectedUnpleasant]);
+
+    console.log('Returning', selected.length, 'trials');
+    console.log('Pleasant:', selectedPleasant.length, 'Unpleasant:', selectedUnpleasant.length);
+    console.log('First trial example:', selected[0]);
+
+    return selected;
+  }
 
 
   
