@@ -166,6 +166,7 @@
       choices: "NO_KEYS",
       trial_duration: 100,
       stimulus_width: IMG_PX,
+      stimulus_height: IMG_PX,
       data: {
         phase: 'prime',
         valence: jsPsych.timelineVariable('valence'),
@@ -188,21 +189,55 @@
       choices: "NO_KEYS",
       trial_duration: 200,
       stimulus_width: IMG_PX,
+      stimulus_height: IMG_PX,
       data: { phase: 'target' }
     };
 
     const judgement_question = {
         type: jsPsychHtmlKeyboardResponse,
-        stimulus: '<img src="Mask/ampmask.jpg" style="width:100%; max-width:400px;">',
+        stimulus: `
+        <div style="width: 400px; margin: 0 auto;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div style="text-align: left;">
+              <div style="font-size: 18px;">Key: <b>E</b></div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 18px;">Key: <b>I</b></div>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="color: #0066cc; font-weight: bold; font-size: 20px;">UNPLEASANT</div>
+            <div style="color: #0066cc; font-weight: bold; font-size: 20px;">PLEASANT</div>
+          </div>
+          <img src="Mask/ampmask.jpg" style="width:400px; height:400px; object-fit:cover; display:block;">
+        </div>
+      `,
+        
         choices: ['e', 'i'],
-        prompt:  '<p>Press <b>E</b> if unpleasant, press <b>I</b> if pleasant.</p>'
     };
 
     const influence_question = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: 'Did the prime influence your judgment?<br><br>',
+      stimulus: `
+        <div style="width: 400px; margin: 0 auto;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <div style="text-align: left;">
+          <div style="font-size: 18px;">Key: <b>1</b></div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 18px;">Key: <b>0</b></div>
+        </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 60px;">
+        <div style="color: #0066cc; font-weight: bold; font-size: 20px;">INFLUENCED</div>
+        <div style="color: #0066cc; font-weight: bold; font-size: 20px;">NOT INFLUENCED</div>
+        </div>
+        <div style="width:400px; height:400px; display:flex; align-items:center; justify-content:center; text-align:center; padding: 20px; box-sizing: border-box;">
+        <p style="font-size: 18px; line-height: 1.6;">Press <b>1</b> if the picture influenced your response to the abstract painting and <b>0</b> if it didn't</p>
+        </div>
+      </div>
+    `,
       choices: ['0', '1'],
-      prompt: 'Press <b>1</b> if yes. If not, press <b>0</b>.'
     };
 
     
@@ -293,48 +328,72 @@
   }
 
 
-  
-  
 
-  
-  const third_person_influence_question = {
-    type: jsPsychHtmlKeyboardResponse,
-    choices: ['0', '1'],
-    on_start: function(trial) {
-      // Access the evaluatedTimelineVariable directly
-      const currentVars = jsPsych.evaluateTimelineVariable('past_response_label');
-      const label = currentVars || 'Unknown';
-    
-      console.log('on_start - Retrieved label:', label, 'type:', typeof label);
-    
-      // Set the stimulus with the actual label value
-      trial.stimulus = `Did the prime influence the past participant's judgment?<br><br>
-      The past participant's response on this trial was: <b>${String(label)}</b>.<br><br>
-      Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
-      and press 0 if not.`;
-    
-      // Also store it in data for later analysis
-      trial.data = {
-        past_response_label: label,
-        past_session_id: jsPsych.evaluateTimelineVariable('past_session_id')
-      };
-    }
-  };
   
     const third_person_judgement_question = { 
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<img src="Mask/ampmask.jpg" style="width:100%; max-width:400px;">',
+      stimulus: `
+        <div style="text-align: center;">
+          <p style="margin-bottom: 20px;">Press <b>space bar</b> to proceed</p>
+          <div style="display:flex; justify-content:center; align-items:center;">
+            <img src="Mask/ampmask.jpg" style="width:400px; height:400px; object-fit:cover;">
+          </div>
+        </div>
+        `,
       choices: [' '],
-      prompt: 'Press <b>space bar</b> to continue'
+    };
+    const third_person_influence_question = {
+      type: jsPsychHtmlKeyboardResponse,
+      choices: ['0', '1'],
+        on_start: function(trial) {
+      // Access the evaluatedTimelineVariable directly
+        const currentVars = jsPsych.evaluateTimelineVariable('past_response_label');
+        const label = currentVars || 'Unknown';
+    
+        console.log('on_start - Retrieved label:', label, 'type:', typeof label);
+    
+      // Set the stimulus with the actual label value
+        trial.stimulus = `
+        <div style="width: 600px; margin: 0 auto;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <div style="text-align: left;">
+            <div style="font-size: 18px;">Key: <b>1</b></div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 18px;">Key: <b>0</b></div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 60px;">
+          <div style="color: #0066cc; font-weight: bold; font-size: 20px;">INFLUENCED</div>
+          <div style="color: #0066cc; font-weight: bold; font-size: 20px;">NOT INFLUENCED</div>
+        </div>
+        <div style="width:600px; height:400px; display:flex; align-items:center; justify-content:center; text-align:center; padding: 20px; box-sizing: border-box;">
+          <p style="font-size: 18px; line-height: 1.6;">
+            The past participant's response on this trial was: <b>${String(label)}</b>.<br><br>
+            Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
+            and press 0 if not.
+            </p>
+        </div>
+      </div>
+            `;
+    
+      // Also store it in data for later analysis
+        trial.data = {
+          past_response_label: label,
+          past_session_id: jsPsych.evaluateTimelineVariable('past_session_id')
+        };
+      }
     };
 
 
 
     var goals = {
-      type: jsPsychHtmlKeyboardResponse,
+      type:  jsPsychHtmlButtonResponse,
       stimulus: `
         <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
-        <p><b>Please note:</b> Studies on Project Implicit address different topics.</p>
+        <p><b>Please note:</b> </p>
+
+        <p>Studies on Project Implicit address different topics.</p>
 
         <p>In this experiment, we study people's awareness of how their own mind works in making decisions.</p>
 
@@ -342,77 +401,97 @@
 
         <p>If you are up for the challenge, we would be delighted for you to participate. In this case, please click the Continue button at the bottom of this box.</p>
 
-        <p>However, if you prefer not to participate in this type of study at this time, or are in an environment that does not allow you to fully concentrate, please exit the experiment now by closing your browser window or tab.</p>
+        <p><b>However, if you prefer not to participate in this type of study at this time, or are in an environment that does not allow you to fully concentrate, 
+          please exit the experiment now by closing your browser window or tab.</b></p>
 
-        <p>If you wish to participate, please press any key to continue. Thank you.</p>
+        <p>If you wish to participate, please press Continue to start the study. Thank you.</p>
         </div>
         `,
+        choices: ['Continue']
       };
     timeline.push(goals);
 
     var consent= {
-      type: jsPsychHtmlKeyboardResponse,
+      type: jsPsychHtmlButtonResponse,
       stimulus: `
         <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
         <h2>Consent Form</h2>
 
         <p><b>Study Title:</b> Social Learning and Memory</p>
 
-        <p><b>Researcher:</b> Milka Waniak</p>
+        <p><b>Researcher:</b> Miłka Waniak</p>
 
-        <p><b>Research Study Summary:</b><br>
-        You are invited to take part in a research study. The purpose of this study is to understand how people learn new information and make decisions in social and nonsocial contexts.<br><br>
-        Study activities will include completing implicit (response time-based) and explicit (self-report) measures. Your involvement will take about 15 minutes.<br><br>
-        We do not expect any risks from taking part in this study. The study may not directly benefit you, but it will contribute to understanding how people learn and remember information in social and nonsocial contexts.<br><br>
-        Participation is voluntary. You can stop at any time without any penalty or effect on your relationship with Stanford University.</p>
+        <p><b>Research Study Summary:</b></p>
+        <ul style="line-height: 1.8;">
+          <li>We are asking you to join a research study.</li>
+          <li>The purpose of this research study is to understand how people learn new information and make decisions in social and nonsocial contexts.</li>
+          <li>Study activities will include completing implicit (response time-based) and explicit (self-report) measures.</li>
+          <li>Your involvement will require 15 minutes.</li>
+          <li>We do not expect any risks from taking part in this study.</li>
+          <li>The study may have no benefits to you. However, we expect to derive new insights from the study about how people learn and remember social and nonsocial information.</li>
+          <li>Taking part in this study is your choice. You can choose to take part, or you can choose not to take part in this study. You also can change your mind at any time. Whatever choice you make will not have any effect on your relationship with Stanford University.</li>
+          <li>If you are interested in learning more about the study, please continue reading, or have someone read to you, the rest of this document. Ask the study staff questions about anything you do not understand. Once you understand the study, we will ask you if you wish to participate; if so, you will have to click "Continue" to proceed to the study.</li>
+        </ul>
 
         <p><b>Why is this study being offered to me?</b><br>
-        You are being asked to take part because you are an adult (18 years or older).</p>
+        We are asking you to take part in a research study because you are an adult over the age of 18.</p>
 
         <p><b>What is the study about?</b><br>
-        The study explores how people learn and remember information in social and nonsocial contexts.</p>
+        The purpose of this study is to understand how people learn and remember information in social and nonsocial contexts.</p>
 
-        <p><b>What will I do and how long will it take?</b><br>
-        You will complete a set of tasks, including both response time-based and self-report measures. The session will last approximately 15 minutes.</p>
+        <p><b>What are you asking me to do and how long will it take?</b><br>
+        If you agree to take part, your participation in this study will involve completing some implicit (response time-based) and explicit (self-report) measures. We think that the study will take about 15 minutes of your time.</p>
 
-        <p><b>Are there any risks?</b><br>
+        <p><b>Are there any risks from participating in this research?</b><br>
         We do not expect any risks from participating in this study.</p>
 
-        <p><b>Are there any benefits?</b><br>
-        You may not receive direct benefits from participating. However, your responses will help researchers better understand how people learn and make decisions.</p>
+        <p><b>How can the study possibly benefit me or others?</b><br>
+        You may not benefit from taking part in this study. We hope that our results will add to the knowledge about how people learn and remember information in social and nonsocial contexts and how they make decisions on the basis of such information.</p>
 
-        <p><b>Are there any costs?</b><br>
+        <p><b>Are there any costs to participation?</b><br>
         There are no costs to participate in this study.</p>
 
         <p><b>Will I be paid for participation?</b><br>
         You will receive payment for your participation through the <b>Prolific</b> platform.</p>
 
         <p><b>How will my data be kept safe and private?</b><br>
-        All responses will be kept anonymous. Only the researchers involved in this study and authorized Stanford University research oversight personnel will have access to identifiable information, if any is provided. Data may be shared only with your permission or when required by law (for example, if there is evidence of harm to a child or elder).<br><br>
+        All responses will be kept anonymous. Only the researchers involved in this study and authorized Stanford University research oversight personnel will have access to identifiable information, if any is provided.  We will share it with others if you agree to it or when we have to do it because U.S. or State law requires it. For example, we will tell somebody if we learn that you are hurting a child or an older person.<br><br>
         Project Implicit's standard privacy policy applies to this study. Data exchanged with this site are protected by SSL encryption (HTTPS). Researchers will have access to de-identified responses. IP addresses are recorded by the platform but are not accessible to researchers. Data may be publicly shared in de-identified form for scientific purposes.</p>
 
-        <p><b>What if I want to stop participating?</b><br>
-        Participation is completely voluntary. You may stop at any time without penalty or loss of compensation.</p>
+        <p><b>What if I want to refuse or end participation before the study is over?</b><br>
+        Taking part in this study is your choice. You can choose to take part, or you can choose not to take part in this study. You also can change your mind at any time. Whatever choice you make will not have any effect on your relationship with Stanford University</p>
 
         <p><b>Who can I contact with questions?</b><br>
         If you have questions about the study, please contact the researcher at <a href="mailto:mwaniak@stanford.edu">mwaniak@stanford.edu</a>.<br><br>
 
         <h3>Documentation of Informed Consent</h3>
-        <p>By pressing any key below, you indicate that you have read and understood this consent form and agree to participate in this study.</p>
+        <p>By clicking the button below, you indicate that you read and understand this consent form and the information presented and that you agree to be in this study.</p>
 
         <p>If you wish to keep a copy of this consent form, please print this page now.</p>
 
         <p><b>Do you agree to participate?</b><br>
         <em>If you agree to participate, press any key to continue.</em></p>
         </div>`,
+        choices: ['Yes, I agree to participate.', 'No, I do not agree to participate.'],
+        on_finish: function(data) {
+        if (data.response === 1) { // They clicked "No"
+          jsPsych.endExperiment('<div style="text-align:center; margin-top:100px;"><h2>Thank you for your time.</h2><p>You have chosen not to participate in this study.</p><p>You may now close this window.</p></div>');
+        }
+      }
     };
     timeline.push(consent);
 
     var attention= {
       type: jsPsychSurveyText,
-      preamble: `This entire session will take no more than 15 minutes to complete. In the study you will be asked to complete an Affect Misattribution Procedure (AMP) and respond to some questions.
-      You may be tempted to visit other web pages. However, if you do this, your data will be unusable. So, before you start, please make sure that you have 15 minutes to devote entirely to this study. We appreciate your participation.
-      If you are certain would like to participate, please type this exact sentence into the box below: "I will complete this study with my full attention." and press "Submit".`,
+      preamble: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif; line-height: 1.6;">
+          <p>This entire session will take <b>no more than 15 minutes</b> to complete.
+            In the study you will be asked to complete an <u>Affect Misattribution Procedure</u> (AMP) and <u>respond to some questions.</u></p>
+            
+          <p>You may be tempted to visit other web pages. <b> However, if you do this, your data will be unusable.</b>
+          So, before you start, please make sure that you have 15 minutes to devote entirely to this study. We appreciate your participation.</p>
+          <p>If you are certain you would like to participate, please type this exact sentence into the box below: <b>"I will complete this study with my full attention."</b>and press "Submit."</p>
+        </div>
+        `,
       questions: [
       {
         prompt: '', 
@@ -428,23 +507,24 @@
 
     var instructions_0 = {
       type: jsPsychHtmlButtonResponse,
-      stimulus: `This study examines how people make simple judgments.<br><br>
-      During the first task, you will see pairs of pictures appear one after the other.<br><br>
-      The first picture will be a real-life image and the second picture will be an abstract painting.<br><br>
-      <b>The first image is simply a warning signal for the abstract painting and should be ignored.</b><br><br>
-      Your task is to <b>judge how visually pleasant each abstract painting is.</b>`,
+      stimulus: `<div style="max-width: 800px; margin: auto; text-align: left;">
+      <p>This study examines how people make simple judgments.</p>
+      <p>During the first task, you will see pairs of pictures appear one after the other.</p>
+      <p>The first picture will be a real-life image and the second picture will be an abstract painting.</p>
+      <p><b>The first image is simply a warning signal for the abstract painting and should be ignored.</b></p>
+      <p>Your task is to <b>judge how visually pleasant each abstract painting is.</b>`,
       choices: ['Continue']
     };
     timeline.push(instructions_0);
 
     var instructions_1= {
       type:  jsPsychHtmlButtonResponse,
-      stimulus: `
-      Put your index fingers on the E and I keys of your keyboard.<br><br>
-      If the abstract painting is <b>less visually pleasant than average</b>, please press the <b>E key on the left</b>.<br><br>
-      If the abstract painting is <b>more visually pleasant than average</b>, please press the <b>I key on the right</b>.<br><br>
-      Note that the first (real-life) image can sometimes bias judgments of the abstract paintings.<br><br>
-      <b>Please try your absolute best not to let the real-life images bias your judgment of the abstract paintings.</b>`,
+      stimulus: `<div style="max-width: 800px; margin: auto;text-align: left;">
+      <p>Put your index fingers on the E and I keys of your keyboard.</p>
+      <p>If the abstract painting is <b>less visually pleasant than average</b>, please press the <b>E key on the left</b>.</p>
+      <p>If the abstract painting is <b>more visually pleasant than average</b>, please press the <b>I key on the right</b>.</p>
+      <p>Note that the first (real-life) image can sometimes bias judgments of the abstract paintings.</p>
+      <p><b>Please try your absolute best not to let the real-life images bias your judgment of the abstract paintings.</b>`,
       choices: ['Continue'],
       post_trial_gap: 1000
     };
@@ -452,9 +532,10 @@
 
     var instructions_2= {
       type:  jsPsychHtmlButtonResponse,
-      stimulus: `After each trial we will ask you whether your judgment of the abstract painting was influenced by the real-life image.<br><br>
-        <b>If your judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.<br><br>
-        If your judgment of the abstract painting was <u>NOT</u> influenced by the image that came before it, then press the 0 key.<b>`,
+      stimulus: `<div style="max-width: 800px; margin: auto;text-align: left;">
+        <p>After each trial we will ask you whether your judgment of the abstract painting was influenced by the real-life image.</p>
+        <p><b>If your judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.</p>
+        <p>If your judgment of the abstract painting was <u>NOT</u> influenced by the image that came before it, then press the 0 key.<b></p>`,
         choices: ['Continue'],
         post_trial_gap: 1000
     };
@@ -474,33 +555,33 @@
       type: jsPsychHtmlKeyboardResponse, 
       choices: [' '],
       post_trial_gap: 1000,
-      stimulus: ` <div style="max-width:1000px; margin: 0 auto; text-align:center;"> <p>Here are some examples of the types of pictures that you will see during the task:</p> <table style="margin: 10px auto; border-collapse: collapse;"> <tr> <th colspan="6" style="padding:8px; font-size:16px; text-align:center;"> Real-life images </th> </tr> <tr>${makeImageCells(examplePrimes)}</tr> <tr> <th colspan="6" style="padding:12px 8px 8px; font-size:16px; text-align:center;"> Abstract paintings </th> </tr> <tr>${makeImageCells(exampleTargets)}</tr> </table> <p>Press the<b>space bar</b> to continue.</p> </div> `
+      stimulus: ` 
+      <div style="max-width:800px; margin: 0 auto; text-align:center;"> 
+        <p>Here are some examples of the types of pictures that you will see during the task:</p>
+         <table style="margin: 10px auto; border-collapse: collapse;"> 
+          <tr> <th colspan="6" style="padding:8px; font-size:16px; text-align:center;"> Real-life images </th> </tr> <tr>${makeImageCells(examplePrimes)}</tr> <tr> <th colspan="6" style="padding:12px 8px 8px; font-size:16px; text-align:center;"> Abstract paintings </th> </tr> <tr>${makeImageCells(exampleTargets)}</tr> </table>
+           <p>Press the <b>space bar</b> to continue.</p> </div> `
       };
     timeline.push(instructions_3);
 
     
     var instructions_4= {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus:`We will now provide you with an opportunity to practice the task. Remember: You should judge whether each abstract <br><br>
-      painting is more or less visually pleasant than average by pressing the E or the I key. And if you think your <br><br>
-      rating of the abstract paintingwas influenced by the real-life image that appeared just before it, press the 1 key.<br><br>
-      And if it was not influenced by the real-life image, press the 0 key. When you are ready to try a few practice <br><br>
-      responses, hit the <b>space bar</b>.<br><br>
-      Ready? Press the <b>space bar</b> to begin.`,
-            post_trial_gap: 1000
+      type: jsPsychHtmlKeyboardResponse, 
+      stimulus:`<div style="max-width: 800px; margin: auto;text-align: left;">
+      <p>We will now provide you with an opportunity to practice the task. 
+      Remember: You should judge whether each abstract painting is more or less visually pleasant than average by pressing the E or the I key.
+      And if you think your rating of the abstract painting was influenced by the real-life image that appeared just before it, press the 1 key.
+      And if it was not influenced by the real-life image, press the 0 key. When you are ready to try a few practice responses, hit the <b>space bar</b>.
+      <p>Ready? Press the <b>space bar</b> to begin.</p>
+        </div>
+      `,
+      post_trial_gap: 1000
     };
     timeline.push(instructions_4);
     
-    var instructions_5= {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus:`Good! The test phase will now begin. Keep going as before.<br><br>
-      As a reminder: If the abstract painting is less visually pleasant than average, press the E key. And if it is more visually pleasant than average, press the I key.<br><br>
-      Ready? Press the <b>space bar</b> to begin.`,
-      post_trial_gap: 1000
-    };
-    timeline.push(instructions_5);
+    
 
-    /* 10 TEST TRIALS */
+    /* 10 PRACTICE TRIALS */
     const test_procedure = {
       timeline: [fixation, prime, blank, target, judgement_question, influence_question],
       timeline_variables: shuffled_test,
@@ -508,13 +589,23 @@
     };
     timeline.push(test_procedure);
     
-    const instructions_experimental = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: "You completed test trials! Experimental trials will start now.<br><br>Press the <b>space bar</b> to begin.",
-      choices: [' '],
+    var instructions_5= {
+      type: jsPsychHtmlButtonResponse,
+      stimulus:`<div style="max-width: 800px; margin: auto;text-align: left;">
+          <p> Good! The test phase will now begin. Keep going as before.</b></p>
+      
+          <p>As a reminder: If the abstract painting is <b>less visually pleasant than average</b>, press the <b>E</b> key. 
+            And if it is <b>more visually pleasant than average</b>, press the <b>I</b> key.</p>
+      
+          <p style="text-align: center; margin-top: 30px; font-size: 18px;">
+          <p>Ready? Press the "Continue" to begin.</p>
+          </p>
+        </div>
+      `,
+      choices: ['Continue'],
       post_trial_gap: 1000
     };
-    timeline.push(instructions_experimental);
+    timeline.push(instructions_5);
     
     const first_person_procedure = {
       timeline: [fixation, prime, blank, target, judgement_question, influence_question],
@@ -523,45 +614,62 @@
     };
     timeline.push(first_person_procedure);
 
+    var instructions_5_1= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus:`Press the space bar to continue.
+      `,
+      post_trial_gap: 1000
+    };
+    timeline.push(instructions_5_1);
+
+
 
     var instructions_6= {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus:`During the second and final task, you will see how a past participant in a study just like this one responded to the abstract paintings.<br><br>
-      Just like you, this participant saw two pictures back to back: first a real-life image and then an abstract painting.<br><br>
-      <b>Just like you, this participant was told that the first image is simply a warning signal for the abstract painting and should be ignored.<b><br><br>
-        The participant’s task, just like yours, was to <b>judge how visually pleasant each abstract painting is. <b>`,
+      type: jsPsychHtmlButtonResponse,
+      stimulus:`<div style="max-width: 800px; margin: auto;text-align: left;">
+        <p>During the second and final task, you will see how a past participant in a study just like this one responded to the abstract paintings.</p>
+        <p>Just like you, this participant saw two pictures back to back: first a real-life image and then an abstract painting.</p>
+        <p><b>Just like you, this participant was told that the first image is simply a warning signal for the abstract painting and should be ignored.</b></p>
+        <p>The participant’s task, just like yours, was to <b>judge how visually pleasant each abstract painting is. </b></p>`,
+          choices: ['Continue'],
       post_trial_gap: 1000
     };
     timeline.push(instructions_6);
-
+    
+        
     var instructions_7= {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: `If the abstract painting was <b>less visually pleasant than average</b>, 
-      the participant pressed the <b>E key on the left</b>.<br><br>  
-      If the abstract painting was <b>more visually pleasant than average</b>, the participant pressed the <b>I key on the right</b>.<br><br>     
-      The participant was warned that the first (real-life) image could sometimes bias judgments of the abstract paintings.<br><br> 
-      <b>Therefore, the participant was asked to try their absolute best not to let the real-life images bias their judgment of the abstract paintings.</b>`,
+      type:  jsPsychHtmlButtonResponse,
+      stimulus: `<div style="max-width: 800px; margin: auto;text-align: left;">
+        <p>If the abstract painting was <b>less visually pleasant than average</b>, the participant pressed the <b>E key on the left</b>.</p>
+        <p> If the abstract painting was <b>more visually pleasant than average</b>, the participant pressed the <b>I key on the right</b>.</p>
+        <p>The participant was warned that the first (real-life) image could sometimes bias judgments of the abstract paintings.</p>
+      <p><b>Therefore, the participant was asked to try their absolute best not to let the real-life images bias their judgment of the abstract paintings.</b></p>`,
+      choices: ['Continue'],
       post_trial_gap: 1000
     };
     timeline.push(instructions_7);
 
     var instructions_8= {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus:`On each trial, we will show you the real-life image and the abstract painting that the previous participant saw.<br><br>
-      Afterwards, we will tell you whether the participant rated the abstract painting as <b>Pleasant</b> or as <b>Unpleasant</b><br><br>
-        Similar to the previous task, your job will be to tell us whether you think the other participant’s judgment of the abstract painting was influenced by the real-life image.<br><br>
-        If you think that the participant’s judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.<br><br>
-        And if you think that the participant’s judgment of the abstract painting was NOTinfluenced by the image that came before it, then press the 0 key.`,
-      post_trial_gap: 1000
+      type:  jsPsychHtmlButtonResponse,
+      stimulus:`<div style="max-width: 800px; margin: auto;text-align: left;">
+        <p>On each trial, we will show you the real-life image and the abstract painting that the previous participant saw.</p>
+        <p>Afterwards, we will tell you whether the participant rated the abstract painting as <b>Pleasant</b> or as <b>Unpleasant</b></p>
+        <p>Similar to the previous task, your job will be to tell us <b>whether you think the other participant’s judgment of the abstract painting was influenced by the real-life image.</p>
+        <p>If you think that the participant’s judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.</p>
+        <p>And if you think that the participant’s judgment of the abstract painting was <u>NOT</u> influenced by the image that came before it, then press the 0 key.</u></p>`,
+        choices: ['Continue'],
+        post_trial_gap: 1000
     };
     timeline.push(instructions_8);
 
     var instructions_9= {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus:`Remember: On each trial, we will show you the real-life image and the abstract painting that a previous participant saw. Afterwards, you will be shown if they rated the abstract painting as pleasant or as unpleasant.<br><br>
-      If you think that the participant’s rating of the abstract painting was influenced by the real-life image that appeared just before it, press the 1 key. And if you think it was notinfluenced by the real-life image, press the 0 key.<br><br>
-      Ready? Press the space barto begin.`,
-      post_trial_gap: 1000
+      type:  jsPsychHtmlButtonResponse,
+      stimulus:`<div style="max-width: 800px; margin: auto;text-align: left;">
+        <p>Remember: On each trial, we will show you the real-life image and the abstract painting that a previous participant saw. Afterwards, you will be shown if they rated the abstract painting as pleasant or as unpleasant.</p>
+        <p>If you think that the participant’s rating of the abstract painting was influenced by the real-life image that appeared just before it, press the 1 key. And if you think it was  <u>not</u> influenced by the real-life image, press the 0 key.</p>
+        <p>Ready? Press the <b>space bar</b> to begin.`,
+          choices: ['Continue'],
+          post_trial_gap: 1000
     };
     timeline.push(instructions_9);
 
@@ -599,6 +707,7 @@
           choices: "NO_KEYS",
           trial_duration: 100,
           stimulus_width: IMG_PX,
+          stimulus_height: IMG_PX,
           data: {
             phase: 'prime',
             valence: item.valence,
@@ -612,6 +721,7 @@
           choices: "NO_KEYS",
           trial_duration: 200,
           stimulus_width: IMG_PX,
+          stimulus_height: IMG_PX,
           data: { phase: 'target' }
         },
         third_person_judgement_question,
@@ -630,6 +740,13 @@
       ]
     };
   });
+  var instructions_10= {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus:`Press the space bar to continue.
+      `,
+      post_trial_gap: 1000
+    };
+    timeline.push(instructions_10);
 
 // Push all trials to timeline
   third_person_timeline.forEach(trial => timeline.push(trial));
