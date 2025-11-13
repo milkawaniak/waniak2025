@@ -120,7 +120,7 @@
       });
     }
     // Shuffle test trials
-    const shuffled_test = jsPsych.randomization.shuffle(test_block_stimuli);
+    const shuffled_test = jsPsychRandomization.shuffle(test_block_stimuli);
 
     // Build FIRST-PERSON BLOCK (34 trials: 17 pleasant + 17 unpleasant)
     const first_pleasant_primes = sequenceNoReplacementWithReset(pleasantPrimes, 17);
@@ -503,7 +503,7 @@
     /* 10 TEST TRIALS */
     const test_procedure = {
       timeline: [fixation, prime, blank, target, judgement_question, influence_question],
-      timeline_variables: test_block_stimuli_final,
+      timeline_variables: shuffled_test,
       randomize_order: false
     };
     timeline.push(test_procedure);
@@ -518,7 +518,7 @@
     
     const first_person_procedure = {
       timeline: [fixation, prime, blank, target, judgement_question, influence_question],
-      timeline_variables:  first_person_block_stimuli_final,
+      timeline_variables:  shuffled_test,
       randomize_order: false
     };
     timeline.push(first_person_procedure);
