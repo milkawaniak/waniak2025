@@ -393,7 +393,7 @@
   timeline.push(attention);
 
     var instructions_0 = {
-      type: jsPsychHtmlKeyboardResponse,
+      type: jsPsychHtmlButtonResponse,
       stimulus: `This study examines how people make simple judgments.<br><br>
       During the first task, you will see pairs of pictures appear one after the other.<br><br>
       The first picture will be a real-life image and the second picture will be an abstract painting.<br><br>
@@ -404,23 +404,25 @@
     timeline.push(instructions_0);
 
     var instructions_1= {
-      type: jsPsychHtmlKeyboardResponse,
+      type:  jsPsychHtmlButtonResponse,
       stimulus: `
       Put your index fingers on the E and I keys of your keyboard.<br><br>
       If the abstract painting is <b>less visually pleasant than average</b>, please press the <b>E key on the left</b>.<br><br>
       If the abstract painting is <b>more visually pleasant than average</b>, please press the <b>I key on the right</b>.<br><br>
       Note that the first (real-life) image can sometimes bias judgments of the abstract paintings.<br><br>
       <b>Please try your absolute best not to let the real-life images bias your judgment of the abstract paintings.</b>`,
+      choices: ['Continue'],
       post_trial_gap: 1000
     };
     timeline.push(instructions_1);
 
     var instructions_2= {
-      type: jsPsychHtmlKeyboardResponse,
+      type:  jsPsychHtmlButtonResponse,
       stimulus: `After each trial we will ask you whether your judgment of the abstract painting was influenced by the real-life image.<br><br>
         <b>If your judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.<br><br>
         If your judgment of the abstract painting was <u>NOT</u> influenced by the image that came before it, then press the 0 key.<b>`,
-            post_trial_gap: 1000
+        choices: ['Continue'],
+        post_trial_gap: 1000
     };
     timeline.push(instructions_2);
 
@@ -533,14 +535,16 @@
     try {
       third_person_block_stimuli = await buildThirdPersonTrials(third_person_trials);
       console.log('Third-person trials loaded:', third_person_block_stimuli.length);
-  if (third_person_block_stimuli.length > 0) {
-    console.log('Third-person example:', third_person_block_stimuli[0]);
-    console.log('Balance:', countValence(third_person_block_stimuli));
-  }
-} catch (err) {
-  console.error('Error building third-person trials:', err);
-  alert('Could not load third-person trials. The experiment will continue without them.');
   
+      if (third_person_block_stimuli.length > 0) {
+        console.log('Third-person example:', third_person_block_stimuli[0]);
+        console.log('Balance:', countValence(third_person_block_stimuli));
+      }
+    } catch (err) {
+      console.error('Error building third-person trials:', err);
+      alert('Could not load third-person trials. The experiment will continue without them.');
+    } 
+
 
     if (third_person_block_stimuli.length > 0) {
       console.log('Third-person example:', {
@@ -550,7 +554,6 @@
     } else {
       console.warn('No third-person trials returned.');
     }
-  }
 
   const third_person_timeline = third_person_block_stimuli.map(item => {
     return {
