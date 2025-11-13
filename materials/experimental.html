@@ -667,7 +667,7 @@
       stimulus:`<div style="max-width: 800px; margin: auto;text-align: left;">
         <p>Remember: On each trial, we will show you the real-life image and the abstract painting that a previous participant saw. Afterwards, you will be shown if they rated the abstract painting as pleasant or as unpleasant.</p>
         <p>If you think that the participant’s rating of the abstract painting was influenced by the real-life image that appeared just before it, press the 1 key. And if you think it was  <u>not</u> influenced by the real-life image, press the 0 key.</p>
-        <p>Ready? Press the <b>space bar</b> to begin.`,
+        <p>Ready? Press the "Continue" to begin.`,
           choices: ['Continue'],
           post_trial_gap: 1000
     };
@@ -740,17 +740,17 @@
       ]
     };
   });
-  var instructions_10= {
+  
+
+// Push all trials to timeline
+  third_person_timeline.forEach(trial => timeline.push(trial));
+    var instructions_10= {
       type: jsPsychHtmlKeyboardResponse,
       stimulus:`Press the space bar to continue.
       `,
       post_trial_gap: 1000
     };
     timeline.push(instructions_10);
-
-// Push all trials to timeline
-  third_person_timeline.forEach(trial => timeline.push(trial));
-
 
     const end_screen = {
       type: jsPsychHtmlKeyboardResponse,
@@ -761,10 +761,12 @@
       `,
       choices: "ALL_KEYS"
     };
+    
     timeline.push(end_screen);
     timeline.push(save_data);
     await jsPsych.run(timeline);
     }
+    
 
     runExperiment();
 
