@@ -503,7 +503,7 @@
     /* 10 TEST TRIALS */
     const test_procedure = {
       timeline: [fixation, prime, blank, target, judgement_question, influence_question],
-      timeline_variables: test_block_stimuli,
+      timeline_variables: test_block_stimuli_final,
       randomize_order: false
     };
     timeline.push(test_procedure);
@@ -518,7 +518,7 @@
     
     const first_person_procedure = {
       timeline: [fixation, prime, blank, target, judgement_question, influence_question],
-      timeline_variables: first_person_block_stimuli,
+      timeline_variables:  first_person_block_stimuli_final,
       randomize_order: false
     };
     timeline.push(first_person_procedure);
