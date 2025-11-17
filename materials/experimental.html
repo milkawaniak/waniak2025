@@ -11,6 +11,8 @@
     <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe@0.4.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.1.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-slider-response@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.2"></script>
     <link href="https://unpkg.com/jspsych@8.2.2/css/jspsych.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
@@ -346,37 +348,33 @@
       type: jsPsychHtmlKeyboardResponse,
       choices: ['0', '1'],
         on_start: function(trial) {
-      // Access the evaluatedTimelineVariable directly
         const currentVars = jsPsych.evaluateTimelineVariable('past_response_label');
         const label = currentVars || 'Unknown';
     
         console.log('on_start - Retrieved label:', label, 'type:', typeof label);
-    
-      // Set the stimulus with the actual label value
         trial.stimulus = `
-        <div style="width: 600px; margin: 0 auto;">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-          <div style="text-align: left;">
-            <div style="font-size: 18px;">Key: <b>1</b></div>
+        <div style="width: 400px; margin: 0 auto;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div style="text-align: left;">
+              <div style="font-size: 18px;">Key: <b>1</b></div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 18px;">Key: <b>0</b></div>
+            </div>
           </div>
-          <div style="text-align: right;">
-            <div style="font-size: 18px;">Key: <b>0</b></div>
-          </div>
-        </div>
         <div style="display: flex; justify-content: space-between; margin-bottom: 60px;">
           <div style="color: #0066cc; font-weight: bold; font-size: 20px;">INFLUENCED</div>
           <div style="color: #0066cc; font-weight: bold; font-size: 20px;">NOT INFLUENCED</div>
         </div>
-        <div style="width:600px; height:400px; display:flex; align-items:center; justify-content:center; text-align:center; padding: 20px; box-sizing: border-box;">
+        <div style="width:400px; height:400px; display:flex; align-items:center; justify-content:center; text-align:center; padding: 20px; box-sizing: border-box;">
           <p style="font-size: 18px; line-height: 1.6;">
-            The past participant's response on this trial was: <b>${String(label)}</b>.<br><br>
-            Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
-            and press 0 if not.
-            </p>
-        </div>
+          The past participant's response on this trial was: <b>${String(label)}</b>.<br><br>
+          Press the <b>1</b> key if you think that the past participant's response to the target was influenced by the prime,
+          and <b>0</b> if not.
+        </p>
       </div>
-            `;
-    
+    </div>
+    `;
       // Also store it in data for later analysis
         trial.data = {
           past_response_label: label,
@@ -470,7 +468,7 @@
         <p>If you wish to keep a copy of this consent form, please print this page now.</p>
 
         <p><b>Do you agree to participate?</b><br>
-        <em>If you agree to participate, press any key to continue.</em></p>
+        <em>Please click the appropriate box below.</em></p>
         </div>`,
         choices: ['Yes, I agree to participate.', 'No, I do not agree to participate.'],
         on_finish: function(data) {
@@ -483,7 +481,7 @@
 
     var attention= {
       type: jsPsychSurveyText,
-      preamble: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif; line-height: 1.6;">
+      preamble: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
           <p>This entire session will take <b>no more than 15 minutes</b> to complete.
             In the study you will be asked to complete an <u>Affect Misattribution Procedure</u> (AMP) and <u>respond to some questions.</u></p>
             
@@ -494,7 +492,7 @@
         `,
       questions: [
       {
-        prompt: '', 
+        prompt: '<div class="center-content">', 
         rows: 1,
         columns: 50,
         required: true,
@@ -507,7 +505,7 @@
 
     var instructions_0 = {
       type: jsPsychHtmlButtonResponse,
-      stimulus: `<div style="max-width: 800px; margin: auto; text-align: left;">
+      stimulus: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
       <p>This study examines how people make simple judgments.</p>
       <p>During the first task, you will see pairs of pictures appear one after the other.</p>
       <p>The first picture will be a real-life image and the second picture will be an abstract painting.</p>
@@ -519,7 +517,7 @@
 
     var instructions_1= {
       type:  jsPsychHtmlButtonResponse,
-      stimulus: `<div style="max-width: 800px; margin: auto;text-align: left;">
+      stimulus: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
       <p>Put your index fingers on the E and I keys of your keyboard.</p>
       <p>If the abstract painting is <b>less visually pleasant than average</b>, please press the <b>E key on the left</b>.</p>
       <p>If the abstract painting is <b>more visually pleasant than average</b>, please press the <b>I key on the right</b>.</p>
@@ -532,7 +530,7 @@
 
     var instructions_2= {
       type:  jsPsychHtmlButtonResponse,
-      stimulus: `<div style="max-width: 800px; margin: auto;text-align: left;">
+      stimulus: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
         <p>After each trial we will ask you whether your judgment of the abstract painting was influenced by the real-life image.</p>
         <p><b>If your judgment of the abstract painting was influenced by the image that came before it, then press the 1 key.</p>
         <p>If your judgment of the abstract painting was <u>NOT</u> influenced by the image that came before it, then press the 0 key.<b></p>`,
@@ -543,6 +541,7 @@
 
     const examplePrimes = sequenceNoReplacementWithReset(allPrimesForExamples, 6);
     const exampleTargets = sequenceNoReplacementWithReset(allTargetsForExamples, 6);
+
     function makeImageCells(list) {
       return list.map(function(src) {
         return '<td style="padding:6px; text-align:center;">' +
@@ -551,23 +550,35 @@
         }).join('');
       }
 
+
     const instructions_3 = {
       type: jsPsychHtmlKeyboardResponse, 
       choices: [' '],
       post_trial_gap: 1000,
       stimulus: ` 
-      <div style="max-width:800px; margin: 0 auto; text-align:center;"> 
+      <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
         <p>Here are some examples of the types of pictures that you will see during the task:</p>
-         <table style="margin: 10px auto; border-collapse: collapse;"> 
-          <tr> <th colspan="6" style="padding:8px; font-size:16px; text-align:center;"> Real-life images </th> </tr> <tr>${makeImageCells(examplePrimes)}</tr> <tr> <th colspan="6" style="padding:12px 8px 8px; font-size:16px; text-align:center;"> Abstract paintings </th> </tr> <tr>${makeImageCells(exampleTargets)}</tr> </table>
-           <p>Press the <b>space bar</b> to continue.</p> </div> `
+          <div class="example-images">
+          <table style="margin: 10px auto; border-collapse: collapse;">
+            <tr>
+          <th colspan="6" style="padding:8px; font-size:16px; text-align:center;">Real-life images</th>
+            </tr>
+            <tr>${makeImageCells(examplePrimes)}</tr>
+            <tr>
+          <th colspan="6" style="padding:12px 8px 8px; font-size:16px; text-align:center;">Abstract paintings</th>
+            </tr>
+            <tr>${makeImageCells(exampleTargets)}</tr>
+          </table>
+        </div>
+        <p style="text-align: center;">Press the <b>space bar</b> to continue.</p>
+      </div>`
       };
     timeline.push(instructions_3);
 
     
     var instructions_4= {
       type: jsPsychHtmlKeyboardResponse, 
-      stimulus:`<div style="max-width: 800px; margin: auto;text-align: left;">
+      stimulus:`<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
       <p>We will now provide you with an opportunity to practice the task. 
       Remember: You should judge whether each abstract painting is more or less visually pleasant than average by pressing the E or the I key.
       And if you think your rating of the abstract painting was influenced by the real-life image that appeared just before it, press the 1 key.
@@ -591,7 +602,7 @@
     
     var instructions_5= {
       type: jsPsychHtmlButtonResponse,
-      stimulus:`<div style="max-width: 800px; margin: auto;text-align: left;">
+      stimulus:`<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
           <p> Good! The test phase will now begin. Keep going as before.</b></p>
       
           <p>As a reminder: If the abstract painting is <b>less visually pleasant than average</b>, press the <b>E</b> key. 
@@ -626,7 +637,7 @@
 
     var instructions_6= {
       type: jsPsychHtmlButtonResponse,
-      stimulus:`<div style="max-width: 800px; margin: auto;text-align: left;">
+      stimulus:`<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
         <p>During the second and final task, you will see how a past participant in a study just like this one responded to the abstract paintings.</p>
         <p>Just like you, this participant saw two pictures back to back: first a real-life image and then an abstract painting.</p>
         <p><b>Just like you, this participant was told that the first image is simply a warning signal for the abstract painting and should be ignored.</b></p>
@@ -639,7 +650,7 @@
         
     var instructions_7= {
       type:  jsPsychHtmlButtonResponse,
-      stimulus: `<div style="max-width: 800px; margin: auto;text-align: left;">
+      stimulus: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
         <p>If the abstract painting was <b>less visually pleasant than average</b>, the participant pressed the <b>E key on the left</b>.</p>
         <p> If the abstract painting was <b>more visually pleasant than average</b>, the participant pressed the <b>I key on the right</b>.</p>
         <p>The participant was warned that the first (real-life) image could sometimes bias judgments of the abstract paintings.</p>
@@ -651,7 +662,7 @@
 
     var instructions_8= {
       type:  jsPsychHtmlButtonResponse,
-      stimulus:`<div style="max-width: 800px; margin: auto;text-align: left;">
+      stimulus:`<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
         <p>On each trial, we will show you the real-life image and the abstract painting that the previous participant saw.</p>
         <p>Afterwards, we will tell you whether the participant rated the abstract painting as <b>Pleasant</b> or as <b>Unpleasant</b></p>
         <p>Similar to the previous task, your job will be to tell us <b>whether you think the other participant’s judgment of the abstract painting was influenced by the real-life image.</p>
@@ -664,7 +675,7 @@
 
     var instructions_9= {
       type:  jsPsychHtmlButtonResponse,
-      stimulus:`<div style="max-width: 800px; margin: auto;text-align: left;">
+      stimulus:`<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
         <p>Remember: On each trial, we will show you the real-life image and the abstract painting that a previous participant saw. Afterwards, you will be shown if they rated the abstract painting as pleasant or as unpleasant.</p>
         <p>If you think that the participant’s rating of the abstract painting was influenced by the real-life image that appeared just before it, press the 1 key. And if you think it was  <u>not</u> influenced by the real-life image, press the 0 key.</p>
         <p>Ready? Press the "Continue" to begin.`,
@@ -728,10 +739,29 @@
         {
           type: jsPsychHtmlKeyboardResponse,
           choices: ['0', '1'],
-          stimulus: `Did the prime influence the past participant's judgment?<br><br>
-          The past participant's response on this trial was: <b>${item.past_response_label}</b>.<br><br>
-          Press the 1 key if you think that the past participant's response to the target was influenced by the prime,
-          and press 0 if not.`,
+          stimulus: `
+          <div style="width: 400px; margin: 0 auto;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+              <div style="text-align: left;">
+                <div style="font-size: 18px;">Key: <b>1</b></div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-size: 18px;">Key: <b>0</b></div>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 60px;">
+              <div style="color: #0066cc; font-weight: bold; font-size: 20px;">INFLUENCED</div>
+              <div style="color: #0066cc; font-weight: bold; font-size: 20px;">NOT INFLUENCED</div>
+            </div>
+            <div style="width:400px; height:400px; display:flex; align-items:center; justify-content:center; text-align:center; padding: 20px; box-sizing: border-box;">
+              <p style="font-size: 18px; line-height: 1.6;">
+                The past participant's response on this trial was: <b>${item.past_response_label}</b>.<br><br>
+                Press the <b>1</b> key if you think that the past participant's response to the target was influenced by the prime,
+                and <b>0</b> if not.
+              </p>
+            </div>
+          </div>
+        `,
           data: {
             past_response_label: item.past_response_label,
             past_session_id: item.past_session_id
@@ -744,7 +774,8 @@
 
 // Push all trials to timeline
   third_person_timeline.forEach(trial => timeline.push(trial));
-    var instructions_10= {
+
+  var instructions_10= {
       type: jsPsychHtmlKeyboardResponse,
       stimulus:`Press the space bar to continue.
       `,
@@ -752,15 +783,214 @@
     };
     timeline.push(instructions_10);
 
+  function preferNotAnswer(button) {
+  button.closest('.jspsych-content').querySelector('button[type="submit"]').click();
+  }
+
+  const slider_question_1 = {
+  type: jsPsychHtmlSliderResponse,
+  stimulus: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+    <p>On how many trials do you think <b>our rating</b> of the paintings were influenced by the pictures that appeared immediately before the paintings?</p>
+    `,
+  labels: ['None of them', 'All of them'],
+  slider_width: 500,
+  require_movement: true,
+  button_label: 'Submit',
+  data: {
+    question: 'self_influence',
+    task: 'slider_response'
+  },
+  min: 0,
+  max: 100,
+  step: 1,
+  prompt: `
+  <div id="button-container-1" style="display: flex; justify-content: flex-end; margin-top: 20px;">
+    <button id="prefer-not-answer-1" style="margin-right: 10px;">I prefer not to answer</button>
+  </div>
+  `,
+  on_load: function() {
+    document.getElementById('prefer-not-answer-1').addEventListener('click', function(e) {
+      e.preventDefault();
+      jsPsych.finishTrial({
+        response: 'NA',
+        rt: performance.now() - jsPsych.getStartTime(),
+        question: 'self_influence'
+      });
+    });
+    
+    const submitButton = document.querySelector('.jspsych-html-slider-response-submit');
+    const container = document.getElementById('button-container-1');
+    if (submitButton && container) {
+      container.appendChild(submitButton);
+    }
+  },
+  on_finish: function(data) {
+    if (data.response !== 'NA') {
+      data.response = data.response || 'no response';
+    }
+  }
+};
+
+const slider_question_2 = {
+  type: jsPsychHtmlSliderResponse,
+  stimulus: `
+  <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+    <p>On how many trials do you think <b>the other participant's ratings</b> of the paintings were influenced by the pictures that appeared immediately before the paintings?</p>
+  </div>
+  `,
+  labels: ['None of them', 'All of them'],
+  slider_width: 500,
+  require_movement: true,
+  button_label: 'Submit',
+  data: {
+    question: 'other_influence',
+    task: 'slider_response'
+  },
+  min: 0,
+  max: 100,
+  step: 1,
+  prompt: `
+   <div id="button-container-2" style="display: flex; justify-content: flex-end; margin-top: 20px;">
+      <button id="prefer-not-answer-2" style="margin-right: 10px;">I prefer not to answer</button>
+    </div>
+  `,
+  on_load: function() {
+    document.getElementById('prefer-not-answer-2').addEventListener('click', function(e) {
+      e.preventDefault();
+      jsPsych.finishTrial({
+        response: 'NA',
+        rt: performance.now() - jsPsych.getStartTime(),
+        question: 'other_influence'
+      });
+    });
+  // Move the "Submit" button next to "I prefer not to answer"
+    const submitButton = document.querySelector('.jspsych-html-slider-response-submit');
+    const container = document.getElementById('button-container-2');
+    if (submitButton && container) {
+      container.appendChild(submitButton);
+  }
+  },
+  on_finish: function(data) {
+    if (data.response !== 'NA') {
+      data.response = data.response || 'no response';
+    }
+  }
+};
+  timeline.push(slider_question_1);
+  timeline.push(slider_question_2);
+  
+  const question1 = {
+    type: jsPsychSurveyText,
+    questions: [
+      {
+        prompt: `
+        <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+          <p>What strategy or strategies did you use to decide whether <b>your own rating</b> of the painting was influenced by the picture that appeared immediately before it?</p>
+        </div>
+      `,
+        rows: 5,
+        columns: 50,
+        required: false
+      }
+    ],
+    button_label: "Next"
+  };
+
+  const question2 = {
+    type: jsPsychSurveyText,
+    questions: [
+      {
+        prompt: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+          What strategy or strategies did you use to decide whether <b>the other participant's rating</b> of the painting was influenced by the picture that appeared immediately before it?
+           </div>`,
+        rows: 5,
+        columns: 50,
+        required: false
+      }
+    ],
+    button_label: "Next"
+  };
+
+  const question3 = {
+    type: jsPsychSurveyText,
+    questions: [
+      {
+        prompt: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+          Did the strategy that you used for yourself and for the other participant differ from each other, or were they similar? How did they differ, or how were they similar to each other?
+           </div>`,
+        rows: 5,
+        columns: 50,
+        required: false
+      }
+    ],
+    button_label: "Next"
+  };
+
+  const question4 = {
+    type: jsPsychSurveyText,
+    questions: [
+      {
+        prompt: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+          Is there anything else that you would like to tell us about your experience during this study?
+           </div>`,
+        rows: 5,
+        columns: 50,
+        required: false
+      }
+    ],
+    button_label: "Submit"
+  };
+
+  timeline.push(question1);
+  timeline.push(question2);
+  timeline.push(question3);
+  timeline.push(question4);
+
     const end_screen = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: `
-      <h2>Thank you for participating!</h2>
-      <p>Your responses have been recorded.</p>
-      <p>You may now close this window.</p>
-      `,
+      <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+      <p>You have completed the study!</p>
+      <p>When you click 'Continue', you will be debriefed on what the study was about.</p>
+    </div>
+    `,
       choices: "ALL_KEYS"
     };
+    const debrief_screen = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: `
+    <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif; line-height: 1.6;">
+      <h2>Thank you for your participation. We appreciate you spending time and effort on this experiment.</h2>
+
+      <h3>Disclaimer</h3>
+      <p>These results are not a definitive assessment of your implicit preference. The results may be influenced by variables related to the test (e.g., items used on the AMP) or the person (e.g., how tired you are). The results are provided for educational purposes only. Any single AMP is unlikely to predict behavior well for a specific individual. In the aggregate, the AMP can predict behavior such as discrimination in hiring and promotion, medical treatment, and decisions related to criminal justice.</p>
+
+      <h3>1. What was this study about?</h3>
+      <p>This study was concerned with how the implicit measure that you took, the Affect Misattribution Procedure (AMP), works. Specifically, we wanted to know whether people can become aware of the influence of the prime (the first, real-life image) on evaluations of the targets (the abstract paintings).</p>
+
+      <h3>2. How was the study conducted?</h3>
+      <p>In today's study, you were asked to complete a modified Affect Misattribution Procedure (AMP). On the AMP, you judged computer-generated paintings while trying to ignore the items (clearly positive and clearly negative real-life images) that appeared before each painting. Research in the laboratory finds that it is difficult to ignore the distracting items and that they may influence judgments of the paintings. Specifically, if a person has a positive implicit attitude toward an object (e.g., a smiling baby or a pile of maggots), that person would rate the painting as pleasant more often than after an object that the person does not have positive implicit attitudes toward.</p>
+      <p>If you rated the paintings as pleasant more often after positive images than after negative images, then you would be said to have an implicit preference for positive over negative images. However, please keep in mind that this method for measuring implicit attitudes is still being actively researched. Therefore, your result is provided for educational purposes only.</p>
+
+      <h3>3. What was the hypothesis?</h3>
+      <p>Based on previous research we expected that participants would rate the abstract paintings as pleasant more often after positive than after negative primes. Moreover, we also expected that they would indicate that they were influenced by the primes more often when the prime and the response were congruent (e.g., a pleasant rating after a positive prime image) than when they were incongruent (e.g., an unpleasant rating after a positive prime image).</p>
+      <p>To be able to see what strategy participants use to make these decisions, you were also asked to make the same judgment for a past participant. We hypothesized that participants would follow a similar strategy here as for themselves: namely, they would compare the response (pleasant vs. unpleasant) and the type of prime (positive vs. negative). If participants are able to make these judgments in the same way for someone else as they are for themselves, this would indicate that the judgments are not based on so-called introspective awareness (i.e., knowing what's going on in our own minds) but rather on a mental state inference (i.e., trying to use observations in the world to figure out what's going on in other people's minds).</p>
+
+      <h3>4. Why is this study important?</h3>
+      <p>This project is important because it explores the way in which one of the most widely used implicit measures works. It is important for us to understand these processes because without valid measures, we cannot arrive at valid conclusions about implicit bias.</p>
+
+      <h3>5. References:</h3>
+      <p>Mann, T. C., Cone, J., Heggeseth, B. & Ferguson, M. J. (2019). Updating implicit impressions: New evidence on intentionality and the affect misattribution procedure. <em>Journal of Personality and Social Psychology, 116</em>(3), 349–374. <a href="https://doi.org/10.1037/pspa0000146" target="_blank">https://doi.org/10.1037/pspa0000146</a></p>
+      <p>Payne, B. K., Cheng, C. M., Govorun, O. & Stewart, B. D. (2005). An inkblot for attitudes: Affect misattribution as implicit measurement. <em>Journal of Personality and Social Psychology, 89</em>(3), 277–293. <a href="https://doi.org/10.1037/0022-3514.89.3.277" target="_blank">https://doi.org/10.1037/0022-3514.89.3.277</a></p>
+
+      <h3>6. How to contact the researcher:</h3>
+      <p>If you have unanswered questions about the task, please review background information on the IAT. If you have questions or concerns about your participation or payment, or want to request a summary of research findings, please contact the researcher: Miłka Waniak <a href="mailto:mwaniak@stanford.edu">mwaniak@stanford.edu</a>.</p>
+
+      <p style="text-align: center; margin-top: 40px;"><strong>You may now close this window.</strong></p>
+    </div>
+  `,
+  choices: "NO_KEYS"
+  };
     
     timeline.push(end_screen);
     timeline.push(save_data);
