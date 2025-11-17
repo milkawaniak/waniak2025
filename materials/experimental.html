@@ -951,11 +951,12 @@ const slider_question_2 = {
       stimulus: `
       <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
       <p>You have completed the study!</p>
-      <p>When you click 'Continue', you will be debriefed on what the study was about.</p>
+      <p>Press any key, and you will be debriefed on what the study was about.</p>
     </div>
     `,
       choices: "ALL_KEYS"
     };
+
     const debrief_screen = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: `
@@ -993,6 +994,7 @@ const slider_question_2 = {
   };
     
     timeline.push(end_screen);
+    timeline.push(debrief_screen);
     timeline.push(save_data);
     await jsPsych.run(timeline);
     }
