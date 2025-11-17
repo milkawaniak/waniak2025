@@ -29,6 +29,16 @@
       filename: `${participant_id}.csv`,
       data_string: ()=>jsPsych.data.get().csv()
     };
+    // capture info from Prolific
+    var subject_id = jsPsych.data.getURLVariable('PROLIFIC_PID');
+    var study_id = jsPsych.data.getURLVariable('STUDY_ID');
+    var session_id = jsPsych.data.getURLVariable('SESSION_ID');
+
+    jsPsych.data.addProperties({
+      subject_id: subject_id,
+      study_id: study_id,
+      session_id: session_id
+    });
 
     /* NEED TO FIND pleasant8,  pleasant9, unpleasant11, unpleasant12*/
     var preload = {
@@ -464,6 +474,9 @@
 
         <h3>Documentation of Informed Consent</h3>
         <p>By clicking the button below, you indicate that you read and understand this consent form and the information presented and that you agree to be in this study.</p>
+
+        
+        By answering the following questions, you are participating in a study being performed by cognitive scientists in the Stanford Department of Psychology. If you have questions about this research, please contact us at stanfordpsych251@gmail.com. You must be at least 18 years old to participate. Your participation in this research is voluntary. You may decline to answer any or all of the following questions. You may decline further participation, at any time, without adverse consequences. Your anonymity is assured; the researchers who have requested your participation will not receive any personal information about you.
 
         <p>If you wish to keep a copy of this consent form, please print this page now.</p>
 
@@ -951,7 +964,7 @@ const slider_question_2 = {
       stimulus: `
       <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
       <p>You have completed the study!</p>
-      <p>Press any key, and you will be debriefed on what the study was about.</p>
+      <p>Press any key to view the debrief and receive your Prolific credit.</p>
     </div>
     `,
       choices: "ALL_KEYS"
@@ -962,6 +975,7 @@ const slider_question_2 = {
     stimulus: `
     <div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif; line-height: 1.6;">
       <h2>Thank you for your participation. We appreciate you spending time and effort on this experiment.</h2>
+      <h3>Press any key to receive your Prolific credit or continue reading the debrief below.</h3>
 
       <h3>Disclaimer</h3>
       <p>These results are not a definitive assessment of your implicit preference. The results may be influenced by variables related to the test (e.g., items used on the AMP) or the person (e.g., how tired you are). The results are provided for educational purposes only. Any single AMP is unlikely to predict behavior well for a specific individual. In the aggregate, the AMP can predict behavior such as discrimination in hiring and promotion, medical treatment, and decisions related to criminal justice.</p>
@@ -986,19 +1000,23 @@ const slider_question_2 = {
 
       <h3>6. How to contact the researcher:</h3>
       <p>If you have unanswered questions about the task, please review background information on the IAT. If you have questions or concerns about your participation or payment, or want to request a summary of research findings, please contact the researcher: Miłka Waniak <a href="mailto:mwaniak@stanford.edu">mwaniak@stanford.edu</a>.</p>
+      <h3>Press any key to receive your Prolific credit. </h3>
 
       <p style="text-align: center; margin-top: 40px;"><strong>You may now close this window.</strong></p>
     </div>
   `,
-  choices: "NO_KEYS"
+  choices: "ALL_KEYS"
   };
     timeline.push(save_data);
     timeline.push(end_screen);
     timeline.push(debrief_screen);
     await jsPsych.run(timeline);
     }
-    
-
+    var jsPsych = initJsPsych({
+  on_finish: function(){
+    window.location = "https://app.prolific.co/submissions/complete?cc=XXXXXXX"
+  }
+});
     runExperiment();
 
     </script>
