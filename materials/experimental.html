@@ -19,7 +19,7 @@
   <script>
     
     async function runExperiment() {
-    //const jsPsych = initJsPsych();
+      const jsPsych = initJsPsych();
       const participant_id = jsPsych.randomization.randomID(8);
       var timeline = [];
       const save_data = {
@@ -1000,23 +1000,20 @@ const slider_question_2 = {
 
       <h3>6. How to contact the researcher:</h3>
       <p>If you have unanswered questions about the task, please review background information on the IAT. If you have questions or concerns about your participation or payment, or want to request a summary of research findings, please contact the researcher: Miłka Waniak <a href="mailto:mwaniak@stanford.edu">mwaniak@stanford.edu</a>.</p>
-      <h3>Press any key to receive your Prolific credit. </h3>
 
-      <p style="text-align: center; margin-top: 40px;"><strong>You may now close this window.</strong></p>
+      <p style="text-align: center; margin-top: 40px;"><strong>Press any key to receive your Prolific credit</strong></p>
     </div>
   `,
-  choices: "ALL_KEYS"
+  choices: "ALL_KEYS",
+  on_finish: function() {
+    window.location = "https://app.prolific.co/submissions/complete?cc=XXXXXXX";
+  }
   };
     timeline.push(save_data);
     timeline.push(end_screen);
     timeline.push(debrief_screen);
     await jsPsych.run(timeline);
     }
-    var jsPsych = initJsPsych({
-      on_finish: function(){
-        window.location = "https://app.prolific.co/submissions/complete?cc=XXXXXXX"
-  }
-});
     runExperiment();
 
     </script>
