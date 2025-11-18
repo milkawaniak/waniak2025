@@ -19,16 +19,16 @@
   <script>
     
     async function runExperiment() {
-    const jsPsych = initJsPsych();
-    const participant_id = jsPsych.randomization.randomID(8);
-    var timeline = [];
-    const save_data = {
-      type: jsPsychPipe,
-      action: "save",
-      experiment_id: '7sBfg6Ud8xi2',
-      filename: `${participant_id}.csv`,
-      data_string: ()=>jsPsych.data.get().csv()
-    };
+    //const jsPsych = initJsPsych();
+      const participant_id = jsPsych.randomization.randomID(8);
+      var timeline = [];
+      const save_data = {
+        type: jsPsychPipe,
+        action: "save",
+        experiment_id: '7sBfg6Ud8xi2',
+        filename: `${participant_id}.csv`,
+        data_string: ()=>jsPsych.data.get().csv()
+      };
     // capture info from Prolific
     var subject_id = jsPsych.data.getURLVariable('PROLIFIC_PID');
     var study_id = jsPsych.data.getURLVariable('STUDY_ID');
@@ -1013,8 +1013,8 @@ const slider_question_2 = {
     await jsPsych.run(timeline);
     }
     var jsPsych = initJsPsych({
-  on_finish: function(){
-    window.location = "https://app.prolific.co/submissions/complete?cc=XXXXXXX"
+      on_finish: function(){
+        window.location = "https://app.prolific.co/submissions/complete?cc=XXXXXXX"
   }
 });
     runExperiment();
