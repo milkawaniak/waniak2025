@@ -402,6 +402,7 @@
         <p><b>Please note:</b> </p>
 
         <p>Studies on Project Implicit address different topics.</p>
+        
 
         <p>In this experiment, we study people's awareness of how their own mind works in making decisions.</p>
 
@@ -426,6 +427,10 @@
         <h2>Consent Form</h2>
 
         <p><b>Study Title:</b> Social Learning and Memory</p>
+        You are participating in a study being performed by cognitive scientists in the Stanford Department of Psychology.
+        If you have questions about this research, please contact us at stanfordpsych251@gmail.com. You must be at least 18 years old to participate.
+        Your participation in this research is voluntary. You may decline to answer any or all of the following questions. You may decline further participation, at any time, without adverse consequences. Your anonymity is assured; the researchers who have requested your participation will not receive any personal information about you.
+
 
         <p><b>Researcher:</b> Miłka Waniak</p>
 
@@ -476,8 +481,8 @@
         <p>By clicking the button below, you indicate that you read and understand this consent form and the information presented and that you agree to be in this study.</p>
 
         
-        By answering the following questions, you are participating in a study being performed by cognitive scientists in the Stanford Department of Psychology. If you have questions about this research, please contact us at stanfordpsych251@gmail.com. You must be at least 18 years old to participate. Your participation in this research is voluntary. You may decline to answer any or all of the following questions. You may decline further participation, at any time, without adverse consequences. Your anonymity is assured; the researchers who have requested your participation will not receive any personal information about you.
-
+        
+        
         <p>If you wish to keep a copy of this consent form, please print this page now.</p>
 
         <p><b>Do you agree to participate?</b><br>
@@ -953,11 +958,46 @@ const slider_question_2 = {
     ],
     button_label: "Submit"
   };
+  const question5 = {
+  type: jsPsychSurveyText,
+  questions: [
+    {
+      prompt: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+        Country/Countries of Citizenship:
+        </div>`,
+      rows: 2,
+      columns: 50,
+      required: true,
+      name: 'citizenship'
+    },
+    {
+      prompt: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+        Gender:
+        </div>`,
+      rows: 1,
+      columns: 50,
+      required: true,
+      name: 'gender'
+    },
+    {
+      prompt: `<div style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+        Age:
+        </div>`,
+      rows: 1,
+      columns: 10,
+      required: true,
+      name: 'age'
+    }
+  ],
+  button_label: "Next"
+};
+
 
   timeline.push(question1);
   timeline.push(question2);
   timeline.push(question3);
   timeline.push(question4);
+  timeline.push(question5);
 
     const end_screen = {
       type: jsPsychHtmlKeyboardResponse,
