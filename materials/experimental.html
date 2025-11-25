@@ -19,17 +19,7 @@
   <script>
     
     async function runExperiment() {
-      const jsPsych = initJsPsych({
-        on_finish: function(data) {
-          const totalTime = jsPsych.getTotalTime();
-          console.log(`Experiment completed in ${Math.round(totalTime/1000)} seconds`);
-        jsPsych.data.addProperties({
-          total_experiment_time_ms: totalTime,
-          total_experiment_time_seconds: Math.round(totalTime/1000),
-          total_experiment_time_minutes: Math.round(totalTime/60000 * 10) / 10
-        });
-    }    
-  });
+      const jsPsych = initJsPsych();
       const participant_id = jsPsych.randomization.randomID(8);
       var timeline = [];
       const save_data = {
@@ -37,8 +27,16 @@
         action: "save",
         experiment_id: '7sBfg6Ud8xi2',
         filename: `${participant_id}.csv`,
-        data_string: ()=>jsPsych.data.get().csv()
-      };
+        data_string: function() {
+          const totalTime = jsPsych.getTotalTime();
+          jsPsych.data.addProperties({
+            total_experiment_time_ms: totalTime,
+            total_experiment_time_seconds: Math.round(totalTime/1000),
+            total_experiment_time_minutes: Math.round(totalTime/60000 * 10) / 10
+      });
+    return jsPsych.data.get().csv();
+  }
+};
     // capture info from Prolific
     var subject_id = jsPsych.data.getURLVariable('PROLIFIC_PID');
     var study_id = jsPsych.data.getURLVariable('STUDY_ID');
