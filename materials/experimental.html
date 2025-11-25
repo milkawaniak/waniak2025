@@ -643,6 +643,7 @@
     };
     timeline.push(first_person_procedure);
 
+
     var instructions_5_1= {
       type: jsPsychHtmlKeyboardResponse,
       stimulus:`Press the space bar to continue.
@@ -650,6 +651,23 @@
       post_trial_gap: 1000
     };
     timeline.push(instructions_5_1);
+
+    const attention1 = {
+    type: jsPsychSurveyText,
+    questions: [
+      {
+        prompt: `<dviv style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+          Please write down the keys you pressed (e.g., E, I, 1, 0) when an image felt pleasant and when you thought your rating was influenced by the real-life image.
+           </dviv>`,
+        rows: 5,
+        columns: 50,
+        required: false
+      }
+    ],
+    button_label: "Submit"
+  };
+
+  timeline.push(attention1);
 
 
 
@@ -800,6 +818,22 @@
       post_trial_gap: 1000
     };
     timeline.push(instructions_10);
+  const attention2 = {
+    type: jsPsychSurveyText,
+    questions: [
+      {
+        prompt: `<dviv style="text-align: left; max-width: 800px; margin: auto; font-family: sans-serif;">
+          Please write down the keys you pressed (e.g., E, I, 1, 0) when an image felt unpleasant and when you thought your rating was NOT influenced by the real-life image.
+           </dviv>`,
+        rows: 5,
+        columns: 50,
+        required: false
+      }
+    ],
+    button_label: "Submit"
+  };
+
+  timeline.push(attention2);
 
   function preferNotAnswer(button) {
   button.closest('.jspsych-content').querySelector('button[type="submit"]').click();
