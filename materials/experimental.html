@@ -645,12 +645,57 @@
     };
     timeline.push(instructions_5);
     
+
+    //FIRST PERSON TRAILS (34 trials)
     const first_person_procedure = {
       timeline: [fixation, prime, blank, target, judgement_question, influence_question],
       timeline_variables:  shuffled_first, 
       randomize_order: false
     };
-    timeline.push(first_person_procedure);
+
+  const first_person_part1 = {
+    timeline: [fixation, prime, blank, target, judgement_question, influence_question],
+    timeline_variables: shuffled_first.slice(0, 10),
+    randomize_order: false
+  };
+
+  const progress_25 = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: `<div style="text-align: center; max-width: 800px; margin: auto; font-family: sans-serif;">
+    <p style="font-size: 24px; font-weight: bold;">You are 25% done, keep going!</p>
+    <p>Press the space bar to continue.</p>
+  </div>`,
+    choices: [' '],
+    post_trial_gap: 1000
+  };
+
+  const first_person_part2 = {
+    timeline: [fixation, prime, blank, target, judgement_question, influence_question],
+    timeline_variables: shuffled_first.slice(10, 30),
+    randomize_order: false
+  };
+
+  const progress_50 = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: `<div style="text-align: center; max-width: 800px; margin: auto; font-family: sans-serif;">
+    <p style="font-size: 24px; font-weight: bold;">You've completed 50% of the study, please continue</p>
+    <p>Press the space bar to continue.</p>
+  </div>`,
+    choices: [' '],
+    post_trial_gap: 1000
+  };
+
+  const first_person_part3 = {
+    timeline: [fixation, prime, blank, target, judgement_question, influence_question],
+    timeline_variables: shuffled_first.slice(30, 34),
+    randomize_order: false  
+  };
+
+  timeline.push(first_person_part1);
+  timeline.push(progress_25);
+  timeline.push(first_person_part2);
+  timeline.push(progress_50);
+  timeline.push(first_person_part3);
 
 
     var instructions_5_1= {
@@ -817,8 +862,27 @@
   });
   
 
-// Push all trials to timeline
-  third_person_timeline.forEach(trial => timeline.push(trial));
+// THIRD PERSON TRIALS
+  // Push first 16 third-person trials
+for (let i = 0; i < 16; i++) {
+  timeline.push(third_person_timeline[i]);
+}
+// Add 75% progress message
+const progress_75 = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: `<div style="text-align: center; max-width: 800px; margin: auto; font-family: sans-serif;">
+    <p style="font-size: 24px; font-weight: bold;">Almost there! You've reached 75%</p>
+    <p>Press the space bar to continue.</p>
+  </div>`,
+  choices: [' '],
+  post_trial_gap: 1000
+};
+timeline.push(progress_75);
+
+// Push remaining 20 third-person trials
+for (let i = 16; i < third_person_timeline.length; i++) {
+  timeline.push(third_person_timeline[i]);
+}
 
   var instructions_10= {
       type: jsPsychHtmlKeyboardResponse,
