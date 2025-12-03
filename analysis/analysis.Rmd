@@ -6,39 +6,397 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+if (!require(beanplot)) {install.packages("beanplot"); require(beanplot)}
+if (!require(emmeans)) {install.packages("emmeans"); require(emmeans)}
+if (!require(lme4)) {install.packages("lme4"); require(lme4)}
+if (!require(lmerTest)) {install.packages("lmerTest"); require(lmerTest)}
+if (!require(lsr)) {install.packages("lsr"); require(lsr)}
+if (!require(mgcv)) {install.packages("mgcv"); require(mgcv)}
+if (!require(reshape2)) {install.packages("reshape2"); require(reshape2)}
+if (!require(tidyverse)) {install.packages("tidyverse"); require(tidyverse)}
 #load csv data
-path <- "/Users/milka/Documents/GitHub/psyc 251/waniak2025/data/processed/pilot"
+path <- "/Users/milka/Documents/GitHub/psyc 251/waniak2025/data/processed/pilot B"
 data <- read_csv(file.path(path, "data.csv"))
 ```
 
-#create a graph, on the left firt person trails and on the right 3rdx person trails,futher, in each on the lft there should be positive prime and unpleasant prime on the irght. furtheer, left shuold give proportion of pleasant responses, whil right should guve proportion or unpleasant responses. On y axis P(aware) and should give the proportion. in other owrds: Influence awareness responses by AMP type (first-person vs.
-third-party), prime type (positive vs. negative), and trial response
-(pleasant vs. unpleasant; Experiment 5). The y-axis shows the proportion of aware responses, with the dashed line at 0.5 marking
-equiprobability. The solid lines represent condition means
 
-```{r graph, include=FALSE}
+
+
+```{r exlude, include=FALSE}
+
+# Participant exclusions
+# 
+# nrow(exp5All)
+# table(exp5All$all_sameSelf, useNA = "always")
+# table(exp5All$complete_ampSelf, useNA = "always")
+# table(exp5All$all_sameThird, useNA = "always")
+# table(exp5All$complete_ampThird, useNA = "always")
+
+```
+ Demographics
+```{r demo, include=FALSE}
+# 
+# 
+# orderedTable(exp5$citizenship)
+# prop.table(orderedTable(exp5$citizenship))
+# prop.table(table(exp5$citizenship %in% c("United States", "Canada",
+#                                          "United Kingdom", "Australia",
+#                                          "South Africa", "New Zealand", "Ireland")))
+# 
+# 
+# orderedTable(exp5$gender)
+# prop.table(orderedTable(exp5$gender))
+# 
+# mean(exp5$age, na.rm = TRUE)
+# sd(exp5$age, na.rm = TRUE)
+# 
+# # Descriptive statistics
+# mean(exp5$ampDiffSelf, na.rm = TRUE)
+# median(exp5$ampDiffSelf, na.rm = TRUE)
+# sd(exp5$ampDiffSelf, na.rm = TRUE)
+# table(exp5$ampDiffSelf > 0)
+# prop.table(table(exp5$ampDiffSelf > 0))
+# hist(exp5$ampDiffSelf, col = "white", main = "Distribution of AMP scores", 
+#      xlab = "First-person AMP score")
+# 
+# mean(exp5$shareAwareSelf, na.rm = TRUE)
+# median(exp5$shareAwareSelf, na.rm = TRUE)
+# sd(exp5$shareAwareSelf, na.rm = TRUE)
+# hist(exp5$shareAwareSelf, col = "white", main = "Distribution of awareness responses",
+#      xlab = "First-person awareness response")
+# 
+# mean(exp5$ampDiffThird, na.rm = TRUE)
+# median(exp5$ampDiffThird, na.rm = TRUE)
+# sd(exp5$ampDiffThird, na.rm = TRUE)
+# table(exp5$ampDiffThird > 0)
+# prop.table(table(exp5$ampDiffThird > 0))
+# hist(exp5$ampDiffThird, col = "white", main = "Distribution of AMP scores", 
+#      xlab = "Third-party AMP score")
+# 
+# mean(exp5$shareAwareThird, na.rm = TRUE)
+# median(exp5$shareAwareThird, na.rm = TRUE)
+# sd(exp5$shareAwareThird, na.rm = TRUE)
+# hist(exp5$shareAwareThird, col = "white", main = "Distribution of awareness responses",
+#      xlab = "Third-party awareness response")
+# 
+# 
+# tapply(exp5long$aware_response[exp5long$amp_target == "First person"],
+#        list(exp5long$block_name[exp5long$amp_target == "First person"],
+#             exp5long$trial_response[exp5long$amp_target == "First person"]), mean)
+# tapply(exp5long$aware_response[exp5long$amp_target == "Third party"],
+#        list(exp5long$block_name[exp5long$amp_target == "Third party"],
+#             exp5long$trial_response[exp5long$amp_target == "Third party"]), mean)
+# 
+# plot(exp5$shareAwareSelf, exp5$ampDiffSelf)
+# abline(lm(exp5$ampDiffSelf ~ exp5$shareAwareSelf), col = "red")
+# cor(exp5$shareAwareSelf, exp5$ampDiffSelf, use = "pairwise.complete.obs")
+# 
+# plot(exp5$shareAwareThird, exp5$ampDiffThird)
+# abline(lm(exp5$ampDiffThird ~ exp5$shareAwareThird), col = "red")
+# cor(exp5$shareAwareThird, exp5$ampDiffThird, use = "pairwise.complete.obs")
+# 
+# #create a graph, on the left firt person trails and on the right 3rdx person trails,futher, in each on the lft there should be positive prime and unpleasant prime on the irght. furtheer, left shuold give proportion of pleasant responses, whil right should guve proportion or unpleasant responses. On y axis P(aware) and should give the proportion. in other owrds: Influence awareness responses by AMP type (first-person vs.
+# third-party), prime type (positive vs. negative), and trial response
+# (pleasant vs. unpleasant; Experiment 5). The y-axis shows the proportion of aware responses, with the dashed line at 0.5 marking
+# equiprobability. The solid lines represent condition means
+```
+
+
+In this experiment,we probed whether 
+(a) the awareness effect emerges on the third-party AMP 
+-- First-person AMP: Pdiff(pleasant) = 0.350 (median = 0.353; SD = 0.358). Third-party AMP: Pdiff(pleasant) = 0.348 (median = 0.389; SD = 0.380)
+-- how much more likely participants are to say "pleasant" after a pleasant prime vs. an unpleasant prime
+-- Pdiff = 0.35 means pleasant primes increased "pleasant" responses by 35 percentage points compared to unpleasant primes
+--First-person AMP: P(aware) = 0.477 (median = 0.471; SD = 0.342). Third-party AMP: P(aware) = 0.566 (median = 0.583; SD = 0.250)
+---This is the proportion of trials where participants said they were "influenced" (vs "not_influenced")
+(b) awareness effects on the first-person and third-party AMPs are related to each other. 
+```{r A, echo=FALSE}
+# - ampDiffSelf/ampDiffThird: P(pleasant|positive prime) - P(pleasant|negative prime)
+# - shareAwareSelf/shareAwareThird: proportion of trials where they said "influenced"
+participant_scores <- data %>%
+  rowwise() %>%
+  mutate(
+    # First person - pleasant primes (positive)
+    fp_pleasant_trials = list(which(c_across(paste0("first_person_prime_", 1:34)) == "pleasant")),
+    fp_pleasant_pleasant = sum(c_across(paste0("first_person_choice_", 1:34))[fp_pleasant_trials[[1]]] == "pleasant", na.rm = TRUE),
+    fp_pleasant_total = length(fp_pleasant_trials[[1]]),
+    
+    # First person - unpleasant primes (negative)
+    fp_unpleasant_trials = list(which(c_across(paste0("first_person_prime_", 1:34)) == "unpleasant")),
+    fp_unpleasant_pleasant = sum(c_across(paste0("first_person_choice_", 1:34))[fp_unpleasant_trials[[1]]] == "pleasant", na.rm = TRUE),
+    fp_unpleasant_total = length(fp_unpleasant_trials[[1]]),
+    
+    # First person AMP score
+    ampDiffSelf = ifelse(fp_pleasant_total > 0 & fp_unpleasant_total > 0,
+                         (fp_pleasant_pleasant / fp_pleasant_total) - (fp_unpleasant_pleasant / fp_unpleasant_total),
+                         NA_real_),
+    
+    # First person awareness
+    fp_aware = sum(c_across(paste0("first_person_influenced_", 1:34)) == "influenced", na.rm = TRUE),
+    fp_total = sum(!is.na(c_across(paste0("first_person_influenced_", 1:34)))),
+    shareAwareSelf = ifelse(fp_total > 0, fp_aware / fp_total, NA_real_),
+    
+    # Third person - pleasant primes (positive)
+    tp_pleasant_trials = list(which(c_across(paste0("third_person_prime_", 1:36)) == "pleasant")),
+    tp_pleasant_pleasant = sum(c_across(paste0("third_person_choice_", 1:36))[tp_pleasant_trials[[1]]] == "pleasant", na.rm = TRUE),
+    tp_pleasant_total = length(tp_pleasant_trials[[1]]),
+    
+    # Third person - unpleasant primes (negative)
+    tp_unpleasant_trials = list(which(c_across(paste0("third_person_prime_", 1:36)) == "unpleasant")),
+    tp_unpleasant_pleasant = sum(c_across(paste0("third_person_choice_", 1:36))[tp_unpleasant_trials[[1]]] == "pleasant", na.rm = TRUE),
+    tp_unpleasant_total = length(tp_unpleasant_trials[[1]]),
+    
+    # Third person AMP score
+    ampDiffThird = ifelse(tp_pleasant_total > 0 & tp_unpleasant_total > 0,
+                          (tp_pleasant_pleasant / tp_pleasant_total) - (tp_unpleasant_pleasant / tp_unpleasant_total),
+                          NA_real_),
+    
+    # Third person awareness
+    tp_aware = sum(c_across(paste0("third_person_influenced_", 1:36)) == "influenced", na.rm = TRUE),
+    tp_total = sum(!is.na(c_across(paste0("third_person_influenced_", 1:36)))),
+    shareAwareThird = ifelse(tp_total > 0, tp_aware / tp_total, NA_real_)
+  ) %>%
+  ungroup() %>%
+  select(participant_id, ampDiffSelf, shareAwareSelf, ampDiffThird, shareAwareThird)
+
+# ============================================================================
+# PART 2: Descriptive Statistics
+# ============================================================================
+
+cat("\n=== FIRST-PERSON AMP ===\n")
+cat("AMP Score (Pdiff pleasant):\n")
+cat("Mean:", mean(participant_scores$ampDiffSelf, na.rm = TRUE), "\n")
+cat("Median:", median(participant_scores$ampDiffSelf, na.rm = TRUE), "\n")
+cat("SD:", sd(participant_scores$ampDiffSelf, na.rm = TRUE), "\n")
+cat("\nProportion with positive AMP effect:\n")
+print(prop.table(table(participant_scores$ampDiffSelf > 0)))
+
+cat("\nAwareness (P(aware)):\n")
+cat("Mean:", mean(participant_scores$shareAwareSelf, na.rm = TRUE), "\n")
+cat("Median:", median(participant_scores$shareAwareSelf, na.rm = TRUE), "\n")
+cat("SD:", sd(participant_scores$shareAwareSelf, na.rm = TRUE), "\n")
+
+cat("\n=== THIRD-PERSON AMP ===\n")
+cat("AMP Score (Pdiff pleasant):\n")
+cat("Mean:", mean(participant_scores$ampDiffThird, na.rm = TRUE), "\n")
+cat("Median:", median(participant_scores$ampDiffThird, na.rm = TRUE), "\n")
+cat("SD:", sd(participant_scores$ampDiffThird, na.rm = TRUE), "\n")
+cat("\nProportion with positive AMP effect:\n")
+print(prop.table(table(participant_scores$ampDiffThird > 0)))
+
+cat("\nAwareness (P(aware)):\n")
+cat("Mean:", mean(participant_scores$shareAwareThird, na.rm = TRUE), "\n")
+cat("Median:", median(participant_scores$shareAwareThird, na.rm = TRUE), "\n")
+cat("SD:", sd(participant_scores$shareAwareThird, na.rm = TRUE), "\n")
+
+# Histograms
+par(mfrow = c(2, 2))
+hist(participant_scores$ampDiffSelf, col = "white", 
+     main = "Distribution of AMP scores", 
+     xlab = "First-person AMP score")
+hist(participant_scores$shareAwareSelf, col = "white", 
+     main = "Distribution of awareness responses",
+     xlab = "First-person awareness response")
+hist(participant_scores$ampDiffThird, col = "white", 
+     main = "Distribution of AMP scores", 
+     xlab = "Third-party AMP score")
+hist(participant_scores$shareAwareThird, col = "white", 
+     main = "Distribution of awareness responses",
+     xlab = "Third-party awareness response")
+
+# ============================================================================
+# PART 3: Convert to long format for trial-level analysis
+# ============================================================================
+
+# First person trials
+fp_long <- data %>%
+  pivot_longer(
+    cols = starts_with("first_person_"),
+    names_to = c(".value", "trial_num"),
+    names_pattern = "first_person_(.+)_(\\d+)"
+  ) %>%
+  rename(prime_valence = prime, trial_response = choice, aware_response = influenced) %>%
+  mutate(
+    amp_target = "First person",
+    trial_num = as.numeric(trial_num)
+  ) %>%
+  filter(!is.na(prime_valence))
+
+# Third person trials
+tp_long <- data %>%
+  pivot_longer(
+    cols = starts_with("third_person_"),
+    names_to = c(".value", "trial_num"),
+    names_pattern = "third_person_(.+)_(\\d+)"
+  ) %>%
+  rename(prime_valence = prime, trial_response = choice, aware_response = influenced) %>%
+  mutate(
+    amp_target = "Third party",
+    trial_num = as.numeric(trial_num)
+  ) %>%
+  filter(!is.na(prime_valence))
+
+# Combine
+exp_long <- bind_rows(fp_long, tp_long) %>%
+  mutate(
+    aware_response_binary = ifelse(aware_response == "influenced", 1, 0),
+    aware_response_fact = factor(aware_response_binary),
+    trial_response_fact = factor(trial_response),
+    block_name = factor(prime_valence, levels = c("pleasant", "unpleasant"), 
+                       labels = c("Positive", "Negative"))
+  )
+
+```
+
+
+```{r B, echo=FALSE}
+library(lme4)
+library(emmeans)
+
+cat("\n=== TRIAL-LEVEL ANALYSIS ===\n")
+
+# Model 1: Intercept only
+m1 <- glmer(aware_response_fact ~ 1 + (1 | participant_id), 
+            family = "binomial", data = exp_long)
+
+# Model 2: Main effect of response
+m2 <- glmer(aware_response_fact ~ trial_response_fact + (1 | participant_id), 
+            family = "binomial", data = exp_long)
+cat("\nModel comparison: Response effect\n")
+print(anova(m1, m2))
+
+# Model 3: Response + Prime Type
+m3 <- glmer(aware_response_fact ~ trial_response_fact + block_name + (1 | participant_id), 
+            family = "binomial", data = exp_long)
+cat("\nModel comparison: Prime type effect\n")
+print(anova(m2, m3))
+
+# Model 4: Response × Prime Type
+m4 <- glmer(aware_response_fact ~ trial_response_fact * block_name + (1 | participant_id), 
+            family = "binomial", data = exp_long)
+cat("\nModel comparison: Response × Prime Type interaction\n")
+print(anova(m3, m4))
+
+# Model 5: Add AMP type (first vs third person)
+m5 <- glmer(aware_response_fact ~ trial_response_fact * block_name + amp_target + 
+              (1 | participant_id), 
+            family = "binomial", data = exp_long)
+cat("\nModel comparison: AMP target effect\n")
+print(anova(m4, m5))
+
+# Model 6: Three-way interaction
+m6 <- glmer(aware_response_fact ~ trial_response_fact * block_name * amp_target + 
+              (1 | participant_id), 
+            family = "binomial", data = exp_long)
+cat("\nModel comparison: Three-way interaction\n")
+print(anova(m5, m6))
+
+# Estimated marginal means
+emm <- emmeans(m6, ~ trial_response_fact | block_name * amp_target)
+cat("\nPairwise comparisons:\n")
+print(pairs(emm, adjust = "none"))
+
+# ============================================================================
+# PART 5: Correlations
+# ============================================================================
+
+cat("\n=== CORRELATIONS ===\n")
+cat("\nCorrelation between first-person and third-party awareness:\n")
+print(cor.test(participant_scores$shareAwareSelf, participant_scores$shareAwareThird))
+
+cat("\nCorrelation between first-person and third-party AMP scores:\n")
+print(cor.test(participant_scores$ampDiffSelf, participant_scores$ampDiffThird))
+
+# Scatter plots
+par(mfrow = c(1, 2))
+plot(participant_scores$shareAwareSelf, participant_scores$ampDiffSelf,
+     xlab = "Awareness", ylab = "AMP Score",
+     main = "First-person AMP")
+abline(lm(ampDiffSelf ~ shareAwareSelf, data = participant_scores), col = "red")
+
+plot(participant_scores$shareAwareThird, participant_scores$ampDiffThird,
+     xlab = "Awareness", ylab = "AMP Score",
+     main = "Third-party AMP")
+abline(lm(ampDiffThird ~ shareAwareThird, data = participant_scores), col = "red")
+
+# exp5long$aware_response_fact <- factor(exp5long$aware_response)
+# exp5long$trial_response_fact <- factor(exp5long$trial_response)
+# 
+# # First-person and third-party awareness judgments
+# cor.test(exp5$shareAwareSelf, exp5$shareAwareThird)
+# cor.test(exp5$ampDiffSelf, exp5$ampDiffThird)
+
+
+```
+1. Model Comparisons - What Predicts Awareness?
+Response effect (pleasant vs unpleasant choice): NOT significant (p = 0.96)
+
+Whether participants chose "pleasant" or "unpleasant" doesn't affect awareness reports
+Prime type effect (positive vs negative prime): NOT significant (p = 0.17)
+
+The valence of the prime alone doesn't affect awareness
+Response × Prime Type interaction: SIGNIFICANT (p = 0.001) ⭐
+
+This is the key awareness effect! Awareness depends on the combination of prime and response
+People notice influence when their response matches the prime
+AMP target effect (first-person vs third-person): NOT significant (p = 0.56) ⚠️
+
+This is surprising! Unlike the original study, you didn't find higher awareness in third-person
+Original study found P(aware) was higher in third-party (0.566) vs first-person (0.477)
+Three-way interaction: Marginally significant (p = 0.087)
+
+Suggests the awareness pattern might differ slightly between first and third-person, but weakly
+2. Pairwise Comparisons - When Do People Report Awareness?
+Looking at pleasant vs unpleasant responses:
+
+First person, Positive prime: p = 0.053 (marginal)
+
+After positive primes, people slightly more aware when choosing unpleasant (goes against the prime)
+First person, Negative prime: p = 0.70 (not significant)
+
+No difference
+Third party, Positive prime: p = 0.119 (not significant)
+
+No difference
+Third party, Negative prime: p = 0.003 ⭐⭐
+
+Strong effect! After negative primes, people are MORE aware when choosing pleasant (going against the prime)
+Estimate = 1.674 on log-odds scale (large effect)
+Pattern: People seem most aware when their response contradicts the prime (especially for negative primes in third-person)
+
+3. Correlations
+Correlation between first-person and third-person awareness: r = 0.91 (p = 0.035)
+
+Very high correlation!
+People who report high awareness in first-person also report high awareness in third-person
+This is within-subject consistency
+
+
+```{r awernessplot, echo=FALSE}
+#shareAwareSelf - P(aware) for first-person trials
+#shareAwareThird - P(aware) for third-person trials
+
 
 # Reshape data from wide to long format
 data_long <- data %>%
+  select(participant_id, starts_with("first_person"), starts_with("third_person")) %>%
   pivot_longer(
     cols = -participant_id,
     names_to = "variable",
     values_to = "value"
   ) %>%
-  # Extract perspective, measure type, and trial number
   extract(variable, 
           into = c("perspective", "measure", "trial_num"), 
           regex = "(first_person|third_person)_(prime|choice|influenced)_(\\d+)",
           remove = FALSE) %>%
-  # Pivot wider to get prime, choice, and influenced as separate columns
   pivot_wider(
     names_from = measure,
     values_from = value,
     id_cols = c(participant_id, perspective, trial_num)
   )
 
-# Calculate proportions
-summary_data <- data_long %>%
+# Calculate P(aware) per participant for each condition
+participant_aware <- data_long %>%
   mutate(
     perspective_label = ifelse(perspective == "first_person", "First-person AMP", "Third-party AMP"),
     prime_type = ifelse(prime == "pleasant", "Positive prime", "Negative prime"),
@@ -49,21 +407,41 @@ summary_data <- data_long %>%
     ),
     aware = ifelse(influenced == "influenced", 1, 0)  # 1 = aware, 0 = not aware
   ) %>%
-  group_by(perspective_label, prime_type, response_type) %>%
+  filter(!is.na(response_type)) %>%
+  # Calculate proportion aware for each participant × perspective × prime × response
+  group_by(participant_id, perspective_label, prime_type, response_type) %>%
   summarise(
     prop_aware = mean(aware, na.rm = TRUE),
-    n = n(),
+    n_trials = n(),
     .groups = "drop"
   ) %>%
-  filter(!is.na(response_type))
+  # Create ordered factor for x-axis positioning
+  mutate(
+    condition = paste(perspective_label, prime_type, response_type, sep = "\n"),
+    condition = factor(condition, levels = c(
+      "First-person AMP\nPositive prime\nPleasant",
+      "First-person AMP\nPositive prime\nUnpleasant",
+      "First-person AMP\nNegative prime\nPleasant",
+      "First-person AMP\nNegative prime\nUnpleasant",
+      "Third-party AMP\nPositive prime\nPleasant",
+      "Third-party AMP\nPositive prime\nUnpleasant",
+      "Third-party AMP\nNegative prime\nPleasant",
+      "Third-party AMP\nNegative prime\nUnpleasant"
+    ))
+  )
 
-# Create the plot
-plot <- ggplot(summary_data, aes(x = response_type, y = prop_aware, fill = response_type)) +
-  geom_bar(stat = "identity", position = position_dodge(width = 0.9), width = 0.7) +
+# Create the plot with all 8 beans in one row
+plot <- ggplot(participant_aware, aes(x = condition, y = prop_aware, fill = response_type)) +
+  # Add violin plot or beanplot-like distribution
+  geom_violin(alpha = 0.3, width = 0.7) +
+  # Add individual participant points
+  geom_jitter(width = 0.1, alpha = 0.5, size = 2) +
+  # Add mean line
+  stat_summary(fun = mean, geom = "point", size = 4, color = "black", shape = 18) +
+  stat_summary(fun = mean, geom = "crossbar", width = 0.5, color = "black", size = 0.3) +
   geom_hline(yintercept = 0.5, linetype = "dashed", color = "black") +
-  facet_grid(perspective_label ~ factor(prime_type, levels = c("Positive prime", "Negative prime"))) +
   labs(
-    x = "Response",
+    x = "",
     y = "P(aware)",
     title = "Awareness response by prime, response, and AMP type",
     subtitle = "Exp. 5"
@@ -71,8 +449,7 @@ plot <- ggplot(summary_data, aes(x = response_type, y = prop_aware, fill = respo
   theme_minimal() +
   theme(
     legend.position = "none",
-    strip.text = element_text(size = 12, face = "bold"),
-    axis.text.x = element_text(angle = 0, hjust = 0.5),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),
     panel.grid.major.x = element_blank(),
     panel.border = element_rect(color = "black", fill = NA, size = 1)
   ) +
@@ -82,352 +459,218 @@ plot <- ggplot(summary_data, aes(x = response_type, y = prop_aware, fill = respo
 print(plot)
 
 # Save the plot
-#ggsave(file.path('/Users/milka/Documents/GitHub/psyc 251/waniak2025/data/processed/pilot', "awareness_plot.png"), plot = plot, width = 10, height = 6, dpi = 300)
+#ggsave(file.path('/Users/milka/Documents/GitHub/psyc 251/waniak2025/data/processed/pilot', "awareness_plot.png"), plot = plot, width = 14, height = 6, dpi = 300)
 
 # Print summary data for verification
-print(summary_data)
+print(participant_aware)
+
+# Summary statistics
+summary_stats <- participant_aware %>%
+  group_by(perspective_label, prime_type, response_type) %>%
+  summarise(
+    mean_prop_aware = mean(prop_aware, na.rm = TRUE),
+    sd_prop_aware = sd(prop_aware, na.rm = TRUE),
+    n_participants = n(),
+    .groups = "drop"
+  )
+
+print(summary_stats)
 ```
-
-
-
-
-
-
-
-Both the first-person AMP, Pdiff(pleasant)
-=
-0.350
-(median
-=
-0.353; SD
-=
-0.358), and the third-party AMP,
-Pdiff(pleasant)
-=
-0.348 (median
-=
-0.389; SD
-=
-0.380), were
-characterized by an overall AMP effect. This finding is theo-
-retically inconsequential but is a precondition for meaningful
-analyses of the awareness items. More importantly, the AMP
-effect was indistinguishable across the two AMP versions,suggesting that any differences in awareness effects cannot
-be accounted for by differences in AMP performance alone.
-The first-person AMP was characterized by somewhat
-lower overall influence awareness rates, P(aware)
-=
-0.477
-(median
-=
-0.471; SD
-=
-0.342) than the third-party AMP,
-P(aware)
-=
-0.566 (median
-=
-0.583; SD
-=
-0.250). On the first-
-person AMP we replicated the congruency effect already
-observed in Experiments 1–4. Specifically, participants were
-more likely to report influence awareness following pleas-
-ant, P(aware)
-=
-0.512, than unpleasant, P(aware)
-=
-0.395,
-responses when primes were positive. Conversely, they were
-more likely to report influence awareness following unpleas-
-ant, P(aware)
-=
-0.594, than pleasant, P(aware)
-=
-0.272,
-responses when primes were negative.
-Crucially from a theoretical perspective, a similar con-
-gruency effect emerged on the third-party AMP. Specifi-
-cally, just as on the first-person AMP, participants were
-more likely to report influence awareness following pleas-
-ant, P(aware)
-=
-0.679, than unpleasant, P(aware)
-=
-0.345,
-responses when primes were positive. Conversely, they were
-more likely to report influence awareness following unpleas-
-ant, P(aware)
-=
-0.676, than pleasant, P(aware)
-=
-0.325,
-responses when primes were negative. Notably, the awareness
-effect was larger and more symmetric across prime valences
-on the third-party AMP than on the first-person AMP.
-Accordingly, the best-fitting model with influence
-awareness (aware vs. unaware) as the dependent variable
-contained random intercepts for participants and primes,
-as well as a Prime Type (positive vs. negative) × Response
-3181
-portion of aware responses, with the dashed line at 0.5 marking
-equiprobability. The solid lines represent condition means
-(pleasant vs. unpleasant) × AMP Type (first-person vs.
-third-party) interaction as the fixed effect, χ2(3)
-=
-139.64,
-p < 0.001. Overall, in line with the descriptive statistics
-reported above, the best-fitting model suggests that the
-congruency effect was present on both the first-person and
-the third-party AMP, but stronger on the latter than on the
-former. In planned comparisons, we found a significant
-congruency effect following both positive primes, b
-=
-0.41,
-z
-=
-5.05, p < 0.001, and negative primes, b
-=
-1.33, z
-=
-16.62,
-p < 0.001, on the first-person AMP. Crucially, similar but
-larger congruency effects were also obtained following
-both positive primes, b
-=
-1.87, z
-=
-23.76, p < 0.001, and
-negative primes, b
-=
-1.63, z
-=
-19.93, p < 0.001, on the third-
-party AMP.
-In a final preregistered analysis, we probed whether
-reported rates of influence awareness on the first-person
-and third-party AMPs were associated with each other. Such
-a relationship would provide initial evidence for the idea
-that influence awareness judgments for the self and third
-parties operate based on a shared mechanism not merely at
-the group level but even at the level of individual raters. In
-line with this idea, we found a robust correlation between
-the proportion of aware judgments for the self and the past
-participant at the individual level, r
-=
-0.487, t(263)
-=
-9.04,
-p < 0.001. In other words, participants who believed that
-they themselves were often influenced by the primes tended
-to believe that the past participant whose performance they
-were asked to judge had also often been influenced by the
-primes and vice versa. This association cannot be explained by any similarities in AMP effects across present and past
-participants given successful random assignment, r
-=
-0.007,
-t(263)
-=
-0.11, p
-=
-0.912, ­ BF01
-=
-6.94.
 
 
 ```{r original work, include=FALSE}
 # Exp. 5 ------------------------------------------------------------------
-
-exp5All <- read.csv(paste(citation, "Exp. 5.csv"))
-exp5AllLong <- read.csv(paste(citation, "Exp. 5 Long-format AMP.csv"))
-
-# Participant exclusions
-
-nrow(exp5All)
-table(exp5All$all_sameSelf, useNA = "always")
-table(exp5All$complete_ampSelf, useNA = "always")
-table(exp5All$all_sameThird, useNA = "always")
-table(exp5All$complete_ampThird, useNA = "always")
-
-
-exp5 <- exp5All[exp5All$all_sameSelf == 0 & exp5All$complete_ampSelf == 1 & exp5All$all_sameThird == 0 & exp5All$complete_ampThird == 1, ]
-exp5long <- exp5AllLong[exp5AllLong$session_id %in% exp5$session_id, ]
-
-# Demographics
-
-orderedTable(exp5$citizenship)
-prop.table(orderedTable(exp5$citizenship))
-prop.table(table(exp5$citizenship %in% c("United States", "Canada",
-                                         "United Kingdom", "Australia",
-                                         "South Africa", "New Zealand", "Ireland")))
-
-
-orderedTable(exp5$gender)
-prop.table(orderedTable(exp5$gender))
-
-mean(exp5$age, na.rm = TRUE)
-sd(exp5$age, na.rm = TRUE)
-
-# Descriptive statistics
-mean(exp5$ampDiffSelf, na.rm = TRUE)
-median(exp5$ampDiffSelf, na.rm = TRUE)
-sd(exp5$ampDiffSelf, na.rm = TRUE)
-table(exp5$ampDiffSelf > 0)
-prop.table(table(exp5$ampDiffSelf > 0))
-hist(exp5$ampDiffSelf, col = "white", main = "Distribution of AMP scores", 
-     xlab = "First-person AMP score")
-
-mean(exp5$shareAwareSelf, na.rm = TRUE)
-median(exp5$shareAwareSelf, na.rm = TRUE)
-sd(exp5$shareAwareSelf, na.rm = TRUE)
-hist(exp5$shareAwareSelf, col = "white", main = "Distribution of awareness responses",
-     xlab = "First-person awareness response")
-
-mean(exp5$ampDiffThird, na.rm = TRUE)
-median(exp5$ampDiffThird, na.rm = TRUE)
-sd(exp5$ampDiffThird, na.rm = TRUE)
-table(exp5$ampDiffThird > 0)
-prop.table(table(exp5$ampDiffThird > 0))
-hist(exp5$ampDiffThird, col = "white", main = "Distribution of AMP scores", 
-     xlab = "Third-party AMP score")
-
-mean(exp5$shareAwareThird, na.rm = TRUE)
-median(exp5$shareAwareThird, na.rm = TRUE)
-sd(exp5$shareAwareThird, na.rm = TRUE)
-hist(exp5$shareAwareThird, col = "white", main = "Distribution of awareness responses",
-     xlab = "Third-party awareness response")
-
-
-tapply(exp5long$aware_response[exp5long$amp_target == "First person"],
-       list(exp5long$block_name[exp5long$amp_target == "First person"],
-            exp5long$trial_response[exp5long$amp_target == "First person"]), mean)
-tapply(exp5long$aware_response[exp5long$amp_target == "Third party"],
-       list(exp5long$block_name[exp5long$amp_target == "Third party"],
-            exp5long$trial_response[exp5long$amp_target == "Third party"]), mean)
-
-plot(exp5$shareAwareSelf, exp5$ampDiffSelf)
-abline(lm(exp5$ampDiffSelf ~ exp5$shareAwareSelf), col = "red")
-cor(exp5$shareAwareSelf, exp5$ampDiffSelf, use = "pairwise.complete.obs")
-
-plot(exp5$shareAwareThird, exp5$ampDiffThird)
-abline(lm(exp5$ampDiffThird ~ exp5$shareAwareThird), col = "red")
-cor(exp5$shareAwareThird, exp5$ampDiffThird, use = "pairwise.complete.obs")
-
-# Trial-level analysis
-
-exp5long$aware_response_fact <- factor(exp5long$aware_response)
-exp5long$trial_response_fact <- factor(exp5long$trial_response)
-
-# (M1) Intercept only; random intercepts for participants
-exp5Model1 <- glmer(aware_response_fact ~ 1 + (1 | session_id), family = "binomial", exp5long)
-
-# (M2) Intercept only; random intercepts for participants and past participants
-exp5Model2 <- glmer(aware_response_fact ~ 1 + (1 | session_id) + (1 | target_session_id), family = "binomial",
-                    exp5long)
-anova(exp5Model1, exp5Model2)
-
-# (M3) Intercept only; random intercepts for participants and target stimuli
-exp5Model3 <- glmer(aware_response_fact ~ 1 + (1 | session_id) + (1 | target),
-                    family = "binomial", exp5long)
-anova(exp5Model1, exp5Model3)
-
-# (M4) Intercept only; random intercepts for participants and prime stimuli
-exp5Model4 <- glmer(aware_response_fact ~ 1 + (1 | session_id) + (1 | prime),
-                    family = "binomial", exp5long)
-anova(exp5Model1, exp5Model4)
-
-# (M5) Main effect for response; random intercepts for participants and prime stimuli
-exp5Model5 <- glmer(aware_response_fact ~ trial_response_fact + (1 | session_id) + (1 | prime),
-                    family = "binomial", exp5long)
-anova(exp5Model4, exp5Model5)
-
-# (M6) Main effect for response and prime type; random intercepts for participants and prime stimuli
-exp5Model6 <- glmer(aware_response_fact ~ trial_response_fact + block_name + (1 | session_id) + (1 | prime),
-                    family = "binomial", exp5long)
-anova(exp5Model5, exp5Model6)
-
-# (M7) Response × Prime Type interaction; random intercepts for participants and prime stimuli
-exp5Model7 <- glmer(aware_response_fact ~ trial_response_fact * block_name + (1 | session_id) + (1 | prime),
-                    family = "binomial", exp5long)
-anova(exp5Model6, exp5Model7)
-
-# (M8) Response × Prime Type interaction, main effect of AMP type; random intercepts for participants and prime stimuli
-exp5Model8 <- glmer(aware_response_fact ~ trial_response_fact * block_name + amp_target +
-                         (1 | session_id) + (1 | prime), family = "binomial", exp5long)
-anova(exp5Model7, exp5Model8)
-
-# (M9) Response × Prime Type × AMP Type interaction; random intercepts for participants and prime stimuli
-exp5Model9 <- glmer(aware_response_fact ~ trial_response_fact * block_name * amp_target +
-                         (1 | session_id) + (1 | prime), family = "binomial", exp5long)
-anova(exp5Model8, exp5Model9)
-
-emmeansFitExp5 <- emmeans(exp5Model9, ~ trial_response_fact | block_name * amp_target)
-pairs(emmeansFitExp5, adjust = "none")
-
-margMeansExp5 <- data.frame(emmeansFitExp5)
-margMeansExp5 <- margMeansExp5[c(4, 2, 3, 1, 8, 6, 7, 5), ]
-margMeansExp5$emmean <- log2prob(margMeansExp5$emmean)
-margMeansExp5$asymp.LCL <- log2prob(margMeansExp5$asymp.LCL)
-margMeansExp5$asymp.UCL <- log2prob(margMeansExp5$asymp.UCL)
-
-# Refitting model 9 to all participants
-exp5AllLong$aware_response_fact <- factor(exp5AllLong$aware_response)
-exp5AllLong$trial_response_fact <- factor(exp5AllLong$trial_response)
-
-exp5Model9all <- glmer(aware_response_fact ~ trial_response_fact * block_name * amp_target +
-                         (1 | session_id) + (1 | prime), family = "binomial", exp5AllLong)
-emmeansFitExp5all <- emmeans(exp5Model9all, ~ block_name | trial_response_fact * amp_target)
-pairs(emmeansFitExp5all, adjust = "none")
-
-# Refitting model 9 to participants from English-speaking countries
-exp5Model9eng <- glmer(aware_response_fact ~ trial_response_fact * block_name * amp_target +
-                         (1 | session_id) + (1 | prime),
-                       family = "binomial", exp5long[exp5long$session_id %in% exp5$session_id[exp5$citizenship %in% engCount], ])
-emmeansFitExp5eng <- emmeans(exp5Model9eng, ~ block_name | trial_response_fact * amp_target)
-pairs(emmeansFitExp5eng, adjust = "none")
-
-
-exp5sum <- with(exp5long, tapply(aware_response, list(session_id, block_name, trial_response, amp_target), mean))
-
-pdf(paste0(citation, " Exp. 5.pdf"), width = 12)
-beanplot(exp5sum[, , 2, 1][, "Positive"],
-         exp5sum[, , 1, 1][, "Positive"],
-         exp5sum[, , 2, 1][, "Negative"],
-         exp5sum[, , 1, 1][, "Negative"],
-         exp5sum[, , 2, 2][, "Positive"],
-         exp5sum[, , 1, 2][, "Positive"],
-         exp5sum[, , 2, 2][, "Negative"],
-         exp5sum[, , 1, 2][, "Negative"],
-         what = c(0, 1, 1, 0), beanlinewd = 1,
-         cutmin = 0, cutmax = 1,
-         col = list(rainbow(4, alpha = 0.30)[1], rainbow(4, alpha = 0.30)[4]),
-         border = "black",
-         main = "Awareness response by prime, response, and AMP type\nExp. 5",
-         axes = FALSE, bw = 0.2, ylab = "P(aware)",
-         ylim = c(0, 1.2), xlab = "Response")
-abline(h = 0.5, lty = 3)
-axis(1, at = 1:2, labels = c("Pleasant", "Unpleasant"))
-axis(1, at = 3:4, labels = c("Pleasant", "Unpleasant"))
-axis(1, at = 5:6, labels = c("Pleasant", "Unpleasant"))
-axis(1, at = 7:8, labels = c("Pleasant", "Unpleasant"))
-axis(2, at = seq(0, 1, by = 0.2))
-abline(v = 4.5)
-text(2.5, 1.2, "First-person AMP")
-text(1.5, 1.1, "Positive prime")
-text(3.5, 1.1, "Negative prime")
-text(6.5, 1.2, "Third-party AMP")
-text(5.5, 1.1, "Positive prime")
-text(7.5, 1.1, "Negative prime")
-dev.off()
-
-# First-person and third-party awareness judgments
-cor.test(exp5$shareAwareSelf, exp5$shareAwareThird)
-cor.test(exp5$ampDiffSelf, exp5$ampDiffThird)
-
-# Exploratory analyses
-
-exp5$influence_own <- as.numeric(paste(exp5$influence_own))
-hist(exp5$influence_own, col = "white")
-mean(exp5$influence_own, na.rm = TRUE)
-median(exp5$influence_own, na.rm = TRUE)
+# 
+# exp5All <- read.csv(paste(citation, "Exp. 5.csv"))
+# exp5AllLong <- read.csv(paste(citation, "Exp. 5 Long-format AMP.csv"))
+# 
+# # Participant exclusions
+# 
+# nrow(exp5All)
+# table(exp5All$all_sameSelf, useNA = "always")
+# table(exp5All$complete_ampSelf, useNA = "always")
+# table(exp5All$all_sameThird, useNA = "always")
+# table(exp5All$complete_ampThird, useNA = "always")
+# 
+# 
+# exp5 <- exp5All[exp5All$all_sameSelf == 0 & exp5All$complete_ampSelf == 1 & exp5All$all_sameThird == 0 & exp5All$complete_ampThird == 1, ]
+# exp5long <- exp5AllLong[exp5AllLong$session_id %in% exp5$session_id, ]
+# 
+# # Demographics
+# 
+# orderedTable(exp5$citizenship)
+# prop.table(orderedTable(exp5$citizenship))
+# prop.table(table(exp5$citizenship %in% c("United States", "Canada",
+#                                          "United Kingdom", "Australia",
+#                                          "South Africa", "New Zealand", "Ireland")))
+# 
+# 
+# orderedTable(exp5$gender)
+# prop.table(orderedTable(exp5$gender))
+# 
+# mean(exp5$age, na.rm = TRUE)
+# sd(exp5$age, na.rm = TRUE)
+# 
+# # Descriptive statistics
+# mean(exp5$ampDiffSelf, na.rm = TRUE)
+# median(exp5$ampDiffSelf, na.rm = TRUE)
+# sd(exp5$ampDiffSelf, na.rm = TRUE)
+# table(exp5$ampDiffSelf > 0)
+# prop.table(table(exp5$ampDiffSelf > 0))
+# hist(exp5$ampDiffSelf, col = "white", main = "Distribution of AMP scores", 
+#      xlab = "First-person AMP score")
+# 
+# mean(exp5$shareAwareSelf, na.rm = TRUE)
+# median(exp5$shareAwareSelf, na.rm = TRUE)
+# sd(exp5$shareAwareSelf, na.rm = TRUE)
+# hist(exp5$shareAwareSelf, col = "white", main = "Distribution of awareness responses",
+#      xlab = "First-person awareness response")
+# 
+# mean(exp5$ampDiffThird, na.rm = TRUE)
+# median(exp5$ampDiffThird, na.rm = TRUE)
+# sd(exp5$ampDiffThird, na.rm = TRUE)
+# table(exp5$ampDiffThird > 0)
+# prop.table(table(exp5$ampDiffThird > 0))
+# hist(exp5$ampDiffThird, col = "white", main = "Distribution of AMP scores", 
+#      xlab = "Third-party AMP score")
+# 
+# mean(exp5$shareAwareThird, na.rm = TRUE)
+# median(exp5$shareAwareThird, na.rm = TRUE)
+# sd(exp5$shareAwareThird, na.rm = TRUE)
+# hist(exp5$shareAwareThird, col = "white", main = "Distribution of awareness responses",
+#      xlab = "Third-party awareness response")
+# 
+# 
+# tapply(exp5long$aware_response[exp5long$amp_target == "First person"],
+#        list(exp5long$block_name[exp5long$amp_target == "First person"],
+#             exp5long$trial_response[exp5long$amp_target == "First person"]), mean)
+# tapply(exp5long$aware_response[exp5long$amp_target == "Third party"],
+#        list(exp5long$block_name[exp5long$amp_target == "Third party"],
+#             exp5long$trial_response[exp5long$amp_target == "Third party"]), mean)
+# 
+# plot(exp5$shareAwareSelf, exp5$ampDiffSelf)
+# abline(lm(exp5$ampDiffSelf ~ exp5$shareAwareSelf), col = "red")
+# cor(exp5$shareAwareSelf, exp5$ampDiffSelf, use = "pairwise.complete.obs")
+# 
+# plot(exp5$shareAwareThird, exp5$ampDiffThird)
+# abline(lm(exp5$ampDiffThird ~ exp5$shareAwareThird), col = "red")
+# cor(exp5$shareAwareThird, exp5$ampDiffThird, use = "pairwise.complete.obs")
+# 
+# # Trial-level analysis
+# 
+# exp5long$aware_response_fact <- factor(exp5long$aware_response)
+# exp5long$trial_response_fact <- factor(exp5long$trial_response)
+# 
+# # (M1) Intercept only; random intercepts for participants
+# exp5Model1 <- glmer(aware_response_fact ~ 1 + (1 | session_id), family = "binomial", exp5long)
+# 
+# # (M2) Intercept only; random intercepts for participants and past participants
+# exp5Model2 <- glmer(aware_response_fact ~ 1 + (1 | session_id) + (1 | target_session_id), family = "binomial",
+#                     exp5long)
+# anova(exp5Model1, exp5Model2)
+# 
+# # (M3) Intercept only; random intercepts for participants and target stimuli
+# exp5Model3 <- glmer(aware_response_fact ~ 1 + (1 | session_id) + (1 | target),
+#                     family = "binomial", exp5long)
+# anova(exp5Model1, exp5Model3)
+# 
+# # (M4) Intercept only; random intercepts for participants and prime stimuli
+# exp5Model4 <- glmer(aware_response_fact ~ 1 + (1 | session_id) + (1 | prime),
+#                     family = "binomial", exp5long)
+# anova(exp5Model1, exp5Model4)
+# 
+# # (M5) Main effect for response; random intercepts for participants and prime stimuli
+# exp5Model5 <- glmer(aware_response_fact ~ trial_response_fact + (1 | session_id) + (1 | prime),
+#                     family = "binomial", exp5long)
+# anova(exp5Model4, exp5Model5)
+# 
+# # (M6) Main effect for response and prime type; random intercepts for participants and prime stimuli
+# exp5Model6 <- glmer(aware_response_fact ~ trial_response_fact + block_name + (1 | session_id) + (1 | prime),
+#                     family = "binomial", exp5long)
+# anova(exp5Model5, exp5Model6)
+# 
+# # (M7) Response × Prime Type interaction; random intercepts for participants and prime stimuli
+# exp5Model7 <- glmer(aware_response_fact ~ trial_response_fact * block_name + (1 | session_id) + (1 | prime),
+#                     family = "binomial", exp5long)
+# anova(exp5Model6, exp5Model7)
+# 
+# # (M8) Response × Prime Type interaction, main effect of AMP type; random intercepts for participants and prime stimuli
+# exp5Model8 <- glmer(aware_response_fact ~ trial_response_fact * block_name + amp_target +
+#                          (1 | session_id) + (1 | prime), family = "binomial", exp5long)
+# anova(exp5Model7, exp5Model8)
+# 
+# # (M9) Response × Prime Type × AMP Type interaction; random intercepts for participants and prime stimuli
+# exp5Model9 <- glmer(aware_response_fact ~ trial_response_fact * block_name * amp_target +
+#                          (1 | session_id) + (1 | prime), family = "binomial", exp5long)
+# anova(exp5Model8, exp5Model9)
+# 
+# emmeansFitExp5 <- emmeans(exp5Model9, ~ trial_response_fact | block_name * amp_target)
+# pairs(emmeansFitExp5, adjust = "none")
+# 
+# margMeansExp5 <- data.frame(emmeansFitExp5)
+# margMeansExp5 <- margMeansExp5[c(4, 2, 3, 1, 8, 6, 7, 5), ]
+# margMeansExp5$emmean <- log2prob(margMeansExp5$emmean)
+# margMeansExp5$asymp.LCL <- log2prob(margMeansExp5$asymp.LCL)
+# margMeansExp5$asymp.UCL <- log2prob(margMeansExp5$asymp.UCL)
+# 
+# # Refitting model 9 to all participants
+# exp5AllLong$aware_response_fact <- factor(exp5AllLong$aware_response)
+# exp5AllLong$trial_response_fact <- factor(exp5AllLong$trial_response)
+# 
+# exp5Model9all <- glmer(aware_response_fact ~ trial_response_fact * block_name * amp_target +
+#                          (1 | session_id) + (1 | prime), family = "binomial", exp5AllLong)
+# emmeansFitExp5all <- emmeans(exp5Model9all, ~ block_name | trial_response_fact * amp_target)
+# pairs(emmeansFitExp5all, adjust = "none")
+# 
+# # Refitting model 9 to participants from English-speaking countries
+# exp5Model9eng <- glmer(aware_response_fact ~ trial_response_fact * block_name * amp_target +
+#                          (1 | session_id) + (1 | prime),
+#                        family = "binomial", exp5long[exp5long$session_id %in% exp5$session_id[exp5$citizenship %in% engCount], ])
+# emmeansFitExp5eng <- emmeans(exp5Model9eng, ~ block_name | trial_response_fact * amp_target)
+# pairs(emmeansFitExp5eng, adjust = "none")
+# 
+# 
+# exp5sum <- with(exp5long, tapply(aware_response, list(session_id, block_name, trial_response, amp_target), mean))
+# 
+# pdf(paste0(citation, " Exp. 5.pdf"), width = 12)
+# beanplot(exp5sum[, , 2, 1][, "Positive"],
+#          exp5sum[, , 1, 1][, "Positive"],
+#          exp5sum[, , 2, 1][, "Negative"],
+#          exp5sum[, , 1, 1][, "Negative"],
+#          exp5sum[, , 2, 2][, "Positive"],
+#          exp5sum[, , 1, 2][, "Positive"],
+#          exp5sum[, , 2, 2][, "Negative"],
+#          exp5sum[, , 1, 2][, "Negative"],
+#          what = c(0, 1, 1, 0), beanlinewd = 1,
+#          cutmin = 0, cutmax = 1,
+#          col = list(rainbow(4, alpha = 0.30)[1], rainbow(4, alpha = 0.30)[4]),
+#          border = "black",
+#          main = "Awareness response by prime, response, and AMP type\nExp. 5",
+#          axes = FALSE, bw = 0.2, ylab = "P(aware)",
+#          ylim = c(0, 1.2), xlab = "Response")
+# abline(h = 0.5, lty = 3)
+# axis(1, at = 1:2, labels = c("Pleasant", "Unpleasant"))
+# axis(1, at = 3:4, labels = c("Pleasant", "Unpleasant"))
+# axis(1, at = 5:6, labels = c("Pleasant", "Unpleasant"))
+# axis(1, at = 7:8, labels = c("Pleasant", "Unpleasant"))
+# axis(2, at = seq(0, 1, by = 0.2))
+# abline(v = 4.5)
+# text(2.5, 1.2, "First-person AMP")
+# text(1.5, 1.1, "Positive prime")
+# text(3.5, 1.1, "Negative prime")
+# text(6.5, 1.2, "Third-party AMP")
+# text(5.5, 1.1, "Positive prime")
+# text(7.5, 1.1, "Negative prime")
+# dev.off()
+# 
+# # First-person and third-party awareness judgments
+# cor.test(exp5$shareAwareSelf, exp5$shareAwareThird)
+# cor.test(exp5$ampDiffSelf, exp5$ampDiffThird)
+# 
+# # Exploratory analyses
+# 
+# exp5$influence_own <- as.numeric(paste(exp5$influence_own))
+# hist(exp5$influence_own, col = "white")
+# mean(exp5$influence_own, na.rm = TRUE)
+# median(exp5$influence_own, na.rm = TRUE)
 ```
