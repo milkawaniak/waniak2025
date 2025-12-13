@@ -3,7 +3,7 @@ library(tidyverse)
 #1. attention checks trial_index == 277 (i1) and 500 (e0) response column
 #2 text questions
 # Path to your folder
-path <- "/Users/milka/Documents/GitHub/psyc 251/waniak2025/data/raw/pilot B"
+path <- "/Users/milka/Documents/GitHub/psyc 251/waniak2025/data/raw/finalsample"
 
 # Read all CSV files from the folder
 files <- list.files(path, pattern = "\\.csv$", full.names = TRUE)
@@ -73,7 +73,7 @@ df_trials <- df %>%
     trial_index = first(trial_index),
     prime = first(valence[!is.na(valence)]),
     choice_raw = case_when(
-      first(perspective) == "first_person" ~ first(response[response %in% c("e","i")]),
+      first(perspective) == "first_person" ~ first(response[tolower(response) %in% c("e","i")]),
       first(perspective) == "third_person" ~ tolower(first(past_response_label[!is.na(past_response_label)]))
     ),
     influenced = first(response[response %in% c("0","1")]),
@@ -82,8 +82,8 @@ df_trials <- df %>%
   # Recode choice and influenced
   mutate(
     choice = case_when(
-      perspective == "first_person" & choice_raw == "e" ~ "unpleasant",
-      perspective == "first_person" & choice_raw == "i" ~ "pleasant",
+      perspective == "first_person" &  tolower(choice_raw) == "e" ~ "unpleasant",
+      perspective == "first_person" &  tolower(choice_raw) == "i" ~ "pleasant",
       perspective == "third_person" ~ choice_raw,
       TRUE ~ NA_character_
     ),
@@ -136,5 +136,5 @@ final_df_wide <- final_df_wide %>%
          everything())  # Put all additional responses at the front
 
 
-write_csv(final_df_wide, file.path('/Users/milka/Documents/GitHub/psyc 251/waniak2025/data/processed/pilot B', "data.csv"))
+write_csv(final_df_wide, file.path('/Users/milka/Documents/GitHub/psyc 251/waniak2025/data/processed/finalsample', "data.csv"))
 
